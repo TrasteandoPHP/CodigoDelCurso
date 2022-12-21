@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<meta charset="UTF-8">		
+	</head>
+	<body>
+		<h3>Operacion SUMAR</h3>
+		<p>Realiza la suma de 2 números</p>
+		<form action="operaciones.php?whatForm=1&operacion=suma&conjuncion=mas" method="POST">			
+			<input type="text" name="num1" placeholder="Introduzca el número1" required>
+			<input type="text" name="num2" placeholder="Introduzca el número2" required>
+			<input type="submit" value="Sumar">
+		</form>
+		<hr>
+		
+		<h3>Operacion RESTAR</h3>
+		<p>Realiza la resta de 2 números</p>
+		<form action="operaciones.php?whatForm=2&operacion=resta&conjuncion=menos" method="POST">
+			<input type="text" name="num1" placeholder="Introduzca el número1" required>
+			<input type="text" name="num2" placeholder="Introduzca el número2" required>
+			<input type="submit" value="Restar">
+		</form>
+		<hr>	
+
+		<h3>Operacion MULTIPLICAR</h3>
+		<p>Realiza la multiplicación de 2 números</p>
+		<form action="operaciones.php?whatForm=3&operacion=multiplicación&conjuncion=por" method="POST">
+			<input type="text" name="num1" placeholder="Introduzca el número1" required>
+			<input type="text" name="num2" placeholder="Introduzca el número2" required>
+			<input type="submit" value="Multiplicar">
+		</form>
+		<hr>	
+		
+		<h3>Operacion DIVIDIR</h3>	
+		<p>Realiza la división de 2 números</p>
+		<form action="operaciones.php?whatForm=4&operacion=división&conjuncion=entre" method="POST">
+			<input type="text" name="num1" placeholder="Introduzca el número1" required>
+			<input type="text" name="num2" placeholder="Introduzca el número2" required>
+			<input type="submit" value="Dividir">
+		</form>
+		<hr>	
+	</body>
+</html>

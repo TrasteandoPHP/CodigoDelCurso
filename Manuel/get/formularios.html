@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<meta charset="UTF-8">		
+	</head>
+	<body>
+		<h3>Alta Clientes</h3>
+		<form action="graba.php?whatForm=1" method="POST">
+			<input type="text" name="dni" placeholder="DNI Cliente" required>
+			<input type="text" name="nombre" placeholder="Nombre" required>
+			<input type="submit" value="Grabar Cliente">
+		</form>
+		<hr>
+		
+		<h3>Alta Productos</h3>
+		<form action="graba.php?whatForm=2" method="POST">
+			<input type="number" name="precio" placeholder="Precio" required>
+			<input type="text" name="descripcion" placeholder="Descripción" required>
+			<input type="submit" value="Grabar Producto">
+		</form>
+		<hr>
+		
+		<h3>Alta Categorias</h3>
+		<form action="graba.php?whatForm=3" method="POST">
+			<input type="text" name="categoria" placeholder="Categoria" required>
+			<input type="submit" value="Grabar Categoria">
+		</form>
+		<hr>
+	</body>
+</html>

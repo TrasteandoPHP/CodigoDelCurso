@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<meta charset="UTF-8">		
+	</head>
+	<body>
+		<h3>Alta Alumnos</h3>
+		<form action="operaciones.php?whatForm=1" method="POST">			
+			<input type="text" name="nombre" placeholder="Nombre alumno" required>
+			<input type="email" name="email" placeholder="Correo electrónico...." required>
+			<input type="submit" value="Grabar Alumno">
+		</form>
+		<hr>
+		
+		<h3>Alta Asignaturas</h3>
+		<form action="operaciones.php?whatForm=2" method="POST">
+			<input type="text" name="asignatura" placeholder="Nombre asignatura" required>
+			<input type="text" name="horas" placeholder="Cantidad de horas...." required>
+			<input type="submit" value="Grabar Asignatura">
+		</form>
+		<hr>		
+	</body>
+</html>

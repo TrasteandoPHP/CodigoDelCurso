@@ -1,0 +1,47 @@
+<html>
+	<head>
+		<meta charset="UTF-8">		
+	</head>
+	<body>
+		<h2>Enviando información con Etiqueta a href=""</h2>
+		<a href="https://www.google.es">Ir a Google</a>
+		<br>
+		<hr>
+		<h2>Llamando al documento consultaCli.php en el mismo nivel:</h2>
+		<a href="./consultacli.php?comprobar=0">Consulta Clientes</a>
+		<br>
+		<hr>
+		<h2>Enviando 1 dato por URL al documento consultaCli</h2>
+		<a href="./consultacli.php?comprobar=1&dni=12345678A">Envío de UNA variable (DNI) por URL para ser recogida a través de GET</a>
+		<br>
+		<hr>
+		<h2>Enviando 2 datos por URL al documento consultaCli</h2>
+		<a href="./consultacli.php?comprobar=2&nombre=Pepito&apellido=Grillo">Envío de DOS variables (nombre y apellido) por URL para ser recogidas a través de GET</a>
+		<br>
+		<hr>
+		<h2>Enviando 3 datos por URL al documento consultaCli</h2>
+		<a href="./consultacli.php?comprobar=3&edad=41&telefono=981981981&sexo=hombre">Envío de TRES variables (edad, teléfono y sexo)por URL para ser recogidas a través de GET</a>
+		<br>
+		<hr>		
+		<h2>Llamando a un documento propio</h2>
+		<a href="./index.html">Inicio</a>
+		<br>
+		<hr>		
+		<h2>Llamando a cualquier documento en una carpeta en el mismo nivel:</h2>
+		<a href="./privado/ejemplo.php">Ver ejemplo</a>
+		<br>
+		<hr>
+		<h2>Llamando a cualquier documento en una carpeta en el nivel superior:</h2>
+		<a href="../">Subir un nivel</a>
+		<br>
+		<hr>
+		<h2>Llamando a cualquier documento en una carpeta a dos niveles superiores:</h2>
+		<a href="../../">Subir dos niveles</a>
+		<br>
+		<hr>
+		<h2>Llamando a cualquier documento en carpeta dos niveles superior con refencia en la carpeta actual</h2>
+		<a href="./../../">Subir dos niveles desde carpeta actual</a>
+		<br>
+		<hr>
+	</body>
+</html>
