@@ -1,0 +1,27 @@
+Para que funcione el ejercicio se necesita:
+
+1.- Crear una base de datos de nombre: centro_estudios
+
+2.- Crear una tabla de nombre: alumnos
+    Crear en la tabla alumnos los siguientes campos: 
+	cod_alu: int(4) AI, 
+	nom_alu: varchar(20), 
+	ape_alu: varchar(35), 
+	dir_alu: varchar(50), 
+	tlf_alu; varchar(9),
+	mail_alu: varchar(50).
+
+3.- Crear una tabla de nombre: profesores
+    Crear en la tabla profesores los siguientes campos:
+	cod_prof: int(3) AI, 
+	nom_prof: varchar(20), 
+	ape_prof: varchar(35), 
+	mail_prof: varchar(50).	 
+
+4.- Crear una tabla de nombre: asignaturas
+    Crear en la tabla asignaturas los siguientes campos:
+	cod_asig: int(3) AI, 
+	nom_asig: varchar(20), 
+	hor_asig: int(4), 
+	cod_prof: int(3).	 
+	 	
