@@ -1,0 +1,126 @@
+<html>
+	<head>
+		<title></title>
+		<meta charset="UTF-8">
+		<style>
+		@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100&display=swap');
+		
+		body{
+			font-family: 'Roboto Flex', sans-serif;
+			margin:0;
+			padding:0;
+		}
+		
+		p{
+			padding:50px;
+		}
+		
+		h1, h2, h3, h4{
+			text-align:center;
+			color: red;
+		}
+		
+			div{
+				float:left;
+			}
+			.todo{
+				width:100%;
+				height:600px;
+			}
+			.izquierda{
+				width:20%;
+				background-color:blue;
+				height:600px;
+				color:white;
+			}
+			.derecha{
+				width:80%;
+				background-color:yellow;
+				height:600px;
+			}
+			.cabeza{
+				width:100%;
+				height: 
+			}
+			.cuerpo{
+				width:100%;
+			}
+			.pie{
+				width:100%;
+				text-align:center;
+			}
+			.eslogan{
+				width:80%;
+			}
+			.logo{
+				width:20%;
+			}
+			.titular{
+				width:100%;
+			}
+			.cuarenta{
+				width:40%;
+			}
+			.sesenta{
+				width:60%;
+			}
+			.cien{
+				width:100%;
+			}
+			
+			.grupo{
+				width:100%;
+			}
+			
+			.grupocuerpo{
+				width:100%;
+			}
+			
+			.grupocabeza{
+				width:100%;
+			}
+			.blanco{
+				color:white;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="todo">
+			<div class="izquierda">
+				<h1 class="blanco">Texto</h1>
+			</div>
+			<div class="derecha">
+				<div class="cabeza">
+					<div class="grupo">
+						<div class="grupocabeza">
+							<div class="eslogan">
+								<h1>texto</h1>
+							</div>
+							<div class="logo">texto</div>
+						</div>	
+						<div class="titular">
+							<h3>texto</h3>
+						</div>
+					</div>	
+				</div>
+				<div class="cuerpo">
+					<div class="grupo">
+						<div class="grupocuerpo">
+							<div class="cuarenta">
+								<p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto </p>
+							</div>
+							<div class="sesenta">
+								<p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto </p>
+							</div>
+						</div>	
+						<div class="cien">
+							<p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto </p>
+						</div>
+					</div>	
+				</div>
+				<div class="pie">2023</div>
+			</div>
+		</div>
+	</body>
+</html>

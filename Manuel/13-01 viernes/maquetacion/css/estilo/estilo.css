@@ -1,0 +1,26 @@
+h1{
+	color:blue;
+	text-align:center;
+}
+
+/* asdasdasd */
+
+h2{
+	color:red;
+	text-align:right;
+}
+
+nav ul{
+	list-style:none;
+	width:100%;
+	padding:0;
+}
+
+nav ul li{
+	float:left;
+	width:25%;
+	text-align:center;
+}
+
+
+
