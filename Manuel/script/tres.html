@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+        <script src="jquery-3.6.1.min.js"></script>
+        <title>Tres</title>
+    </head>
+    <body>
+        <input type="text" id="nuevo"><br>
+        <input type="text" id="repe"><br>
+        <button onclick="mira_pass()">Comprobar</button>
+        
+        <script>
+            function mira_pass(){
+                var nuevo = $("input#nuevo").val();
+                
+                var repe = $("input#repe").val();
+                
+                if(nuevo==""){
+                    alert("El campo contraseña no puede estar vacío");
+                    $("input#nuevo").focus();
+                } else {
+                    if (nuevo == repe){
+                        alert("Las contraseñas son iguales")
+                        borrar();
+                    } else {
+                        alert("Las contraseñas son distintas");
+                        $("input#repe").focus();
+                    }
+                }               
+            }
+
+            function borrar(){
+                $("input").val(""); 
+                $("input#nuevo").focus();
+            }
+        </script>
+    </body>
+</html>

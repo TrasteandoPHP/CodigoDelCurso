@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+        <script src="jquery-3.6.1.min.js"></script>
+        <title>Cinco</title>
+    </head>
+    <body>
+        <button onclick="mostrar_clientes()">Alta Clientes</button>
+        <button onclick="mostrar_productos()">Alta Productos</button>
+        <hr>
+        <form style="display:none" id="clientes">
+            <input type="text" placeholder="Nombre">
+            <input type="text" placeholder="Apellidos">
+            <input type="submit" value="Grabar Cliente">
+        </form>
+        <form style="display:none" id="productos">
+            <input type="text" placeholder="Nombre Producto">
+            <input type="text" placeholder="Descripción">
+            <input type="text" placeholder="Precio">
+            <input type="submit" value="Grabar Producto">
+        </form>
+        
+        <script>
+            function mostrar_clientes(){
+                $("form#clientes").show(500);
+                $("form#productos").hide(0);
+            }
+            function mostrar_productos(){
+                $("form#productos").show(500);
+                $("form#clientes").hide(0);
+                        
+            }
+        </script>
+    </body>
+</html>

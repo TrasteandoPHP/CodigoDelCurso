@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+     <link rel="stylesheet" href="./css/style.css">
+     <script src="jquery-3.6.1.min.js"></script>
+    <title>Siete</title>
+</head>
+<body>
+    <form id="form1">
+        <input id="nombre" type="text" onkeyup="copia_texto('nombre')" placeholder="Nombre"><br>
+        <input id="apellidos" type="text" onkeyup="copia_texto('apellidos')" placeholder="Apellidos"><br>
+        <input id="direccion" type="text" onkeyup="copia_texto('direccion')" placeholder="Dirección"><br>
+    </form>
+    <form id="form2">
+        <input id="nombreForm2" type="text" disabled><br>
+        <input id="apellidosForm2" type="text" disabled><br>
+        <input id="direccionForm2" type="text" disabled><br>
+    </form>
+    <div>
+        <button id="toggle" onclick="toggleForm2()">Toggle</button><br>
+        <button id="borrar" onclick="borrar()">Borrar</button>
+    </div>
+    
+
+
+    <script>
+        function copia_texto(dato){
+            var texto = $("input#"+dato).val();           
+            $("input#" + dato + "Form2").val(texto);
+        }
+
+        function toggleForm2(){
+            $("form#form2").toggle(500);
+
+        }
+
+        function borrar(){
+                $("input").val(""); 
+                $("input#nombre").focus();
+            }
+    </script>
+
+    
+</body>
+</html>

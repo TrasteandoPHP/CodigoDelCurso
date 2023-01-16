@@ -1,0 +1,41 @@
+#form1 {
+    float: left;
+    margin-right: 6px;
+    background-color:burlywood;
+}
+
+#form2 {
+    background-color:cadetblue;
+    display:inline-block;
+}
+
+form {
+    margin-bottom: 6px;
+    border-radius: 4px;
+}
+
+div {
+    float: left;
+}
+
+input {
+    margin: 6px;
+    font-size: 30px;
+}
+
+button {
+    float:inline-start;
+    padding: 10px;
+    width: 120px;
+    margin-right: 6px;
+    border-radius: 6px;
+}
+
+#toggle {
+    background-color: coral;
+}
+
+#borrar {
+    background-color: red;
+    
+}

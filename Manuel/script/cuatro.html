@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+    <script src="jquery-3.6.1.min.js"></script>
+    <title>Cuatro</title>
+</head>
+<body>
+    <button onclick="mostrar_ocultar()">Mostrar/Ocultar</button><br> <p id="p1">Texto de párrafo uno</p>    
+    <br>
+    <p id="p2">Texto de párrafo dos</p>
+
+    <script>
+        function mostrar_ocultar(){
+            $("p#p1").toggle(500);
+        }
+    </script>
+</body>
+</html>
