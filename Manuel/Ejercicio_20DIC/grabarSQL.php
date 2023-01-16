@@ -100,7 +100,7 @@
 	echo $valores."<br><br>";
 	$valores=substr($valores,0,-2)."<br>";
 	echo "<b>$valores</b><br>";
-	grabarSQL($tablaPersonas,$campos,$valores);	
+	grabarSQL($tablaPersonas, $campos, $valores);	
 	
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////

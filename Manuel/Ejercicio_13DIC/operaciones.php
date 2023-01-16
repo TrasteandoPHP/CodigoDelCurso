@@ -36,6 +36,6 @@
 			}
 	}	
 	echo "<br>";
-	echo "La $operacion de <b>$num1</b> $conjuncion <b>$num2</b> es <font size=5><b>$resultado</b></font><br>";
+	echo "La $operacion de <b>$num1</b> $conjuncion <b>$num2</b> es <font size=5><b>$resultado</b></font><br><br>";
 	echo "<button onclick='window.location.href=`./index.html`'>Volver</button>";					
 ?>

@@ -21,8 +21,8 @@
 	
 	$nombreCategoria = $registroCategoria["nombre_cat"];
 	
-	echo "Nombre producto: $nombreProducto";
-	echo "Descripcion producto: $descripcionProducto";
-	echo "Precio producto: $precioProducto";
-	echo "Categoria producto: $nombreCategoria";
+	echo "Nombre producto: $nombreProducto<br>";
+	echo "Descripcion producto: $descripcionProducto<br>";
+	echo "Precio producto: $precioProducto<br>";
+	echo "Categoria producto: $nombreCategoria<br>";
 ?>
