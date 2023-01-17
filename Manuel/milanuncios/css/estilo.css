@@ -1,0 +1,98 @@
+body {
+    background-color: grey;
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    float: left;
+}
+
+.todo {
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.datos {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: white;
+    margin-top: 10%;
+    border-radius: 10px;
+
+}
+
+.mitad {
+    width: 50%;
+    margin-top: 5%;
+    margin-bottom: 2%;
+}
+
+.completo {
+    width: 100%;
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+
+.archivos {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: white;
+    margin-top: 2%;
+    border-radius: 10px;
+}
+
+.add {
+    width: 50%;
+    margin-left: 5%; /* borrar */
+    margin-bottom: 10px; /* borrar */
+    margin-top: 20px; /* borrar */
+
+}
+
+.boton {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
+}
+
+input {
+    width: 80%;
+    margin-left: 10%;
+}
+
+textarea {
+    width: 80%;
+    margin-left: 10%;
+    resize: none;
+}
+
+input[type=button]{
+    width: 10%;
+    margin-left: 45%;
+    border: none;
+    border-radius: 5px;
+    height: 40px; /* borrar */
+    margin-bottom: 20px; /* borrar */
+    margin-top: 10px; /* borrar */
+}
+
+input[type=button]:hover {
+    background-color: pink;
+}
+
+input[type=submit] {
+    width: 20%;
+    margin-left: 40%;
+    border: none;
+    border-radius: 5px; /* borrar */
+    height: 40px; /* borrar */
+}
+
+input[type=submit]:hover {
+    background-color: purple;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./css/estilo.css">
+        <script src="./js/jquery-3.6.1.min.js"></script>
+        <title>Mil Anuncios</title>
+    </head>
+    <body>
+        <form action="./php/grabaAnu.php" method="POST" enctype="multipart/form-data">
+            <div class="todo">
+                <div class="datos">
+                    <div class="mitad">
+                        <input type="text" name="nombre" placeholder="Nombre Anuncio">
+                    </div> <!-- div.mitad -->
+                    <div class="mitad">
+                        <input type="text" name="precio" placeholder="Precio Anuncio">
+                    </div> <!-- div.mitad -->
+                    <div class="completo">
+                        <textarea name="descripcion" cols="30" rows="10" placeholder="Descripción Anuncio"></textarea>
+                    </div> <!-- div.completo -->
+                </div> <!-- div.datos-->
+                <div class="archivos">
+                    <div class="add">
+                        <input type="file" name="archivo1" >
+                    </div> <!-- div.add -->
+                    <input type="button" onclick="unomas()" value="+">
+                    <input type="hidden" name="contador" id="numero" value=1>
+                </div> <!-- div.archivos-->
+                <div class="boton">
+                    <input type="submit" value="boton">
+                </div> <!-- div.boton-->            
+            </div> <!-- div.todo -->
+        </form>
+        <script src="./js/funciones.js"></script>        
+    </body>
+</html>
