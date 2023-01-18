@@ -1,0 +1,84 @@
+<?php
+$array1=array("nom_per","prov_per","ciudad_per","cp_per","email_per","pass_per");
+$array2=array("nom_cat","descri_cat");
+$arrayp=array("pedro","coruna","coruna","15172","pch@outlook.com","123456");
+
+// $valc="";
+// foreach($array1 as $ac)
+// {
+	// $valc.="$ac,";
+// }
+// $valc=substr($valc,0,-1);
+// echo $valc;
+// echo "<br>";
+
+
+//echo $valp;
+
+include "funciones.php";
+
+//$valp
+//$valc=;
+//echo "fdfs";
+
+
+insertar("personas",sacarcadena($array1),extraercadena($arrayp));
+
+ 
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// $sql2="Select * from personas";
+ // $consulta=$con->query($sql2);
+ // foreach($consulta as $reg)
+ // {
+//	echo $reg[0];
+ // }
+ 
+ /*
+ $campos1="";
+ foreach($array1 as $c)
+ {
+	 $campo1.="$c,";
+ }
+ $valores1="";
+ foreach($datos1 as $v)
+ {
+	 $valores1.="'$v1,";
+ }
+ $campos1=substr($campo1,0,-1);
+ $valores=substr($valores1,0,-1);
+ grabar("personas",$campos1,$valores1);
+ $campos2="";
+ 
+ 
+ */
+ 
+ 
+ 

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    
+    <title>Document</title>
+</head>
+<body>
+  <button onclick="cliente()">Alta Clientes</button>
+  <button onclick="producto()">Alta Productos</button>
+  <hr>
+    <form action="" id="cliente" style="display:none;" >
+    <input type="text" placeholder="Nombre">
+    <input type="text" placeholder="Apellidos">
+    <input type="submit" value="Grabar cliente" >
+    </form>
+  
+    <form action="" id="producto" style="display:none;">
+        <input type="text" placeholder="Nombre Producto">
+        <input type="text" placeholder="Descripcion producto">
+        <input type="text" placeholder="Precio">
+        <input type="submit" value="Grabar Producto">
+        </form>
+      
+    <script>
+function cliente(){
+$("form#cliente").show(1000);
+$("form#producto").hide(1000);
+}
+function producto(){
+$("form#producto").show(1000);
+$("form#cliente").hide(1000);
+}
+
+</script>  
+
+  <!--  <button onclick="mostrar()">Mostrar</button>-->
+</body>
+</html>

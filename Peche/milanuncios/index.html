@@ -1,0 +1,38 @@
+<html> 
+<head>
+    <meta charset="UTF-8">
+        <title>Document</title>
+    <link rel="stylesheet" href="./css/estilo.css" type="text/css">
+</head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="todo" >
+        <form action="./php/grabaanu.php" method="POST" enctype="multipart/form-data">
+   <div class="datos">
+        <div class="mitad">
+            <input type="text" name="nombre" placeholder="Titulo anuncio">
+        </div>
+        <div class="mitad">
+            <input type="text" name="precio" placeholder="Precio">
+        </div>
+        <div class="completo">
+            <textarea name="descripcion" placeholder="Descripcion anuncio"></textarea>
+        </div>
+    </div>
+    <div class="archivos">
+        <div class="add">
+            <input type="file" name="archivo1">
+        </div>
+        <input type="button" onclick="unomas()" value="+">
+        <input type="text" name="contador" id="numero" value=1>
+    </div>
+    <div class="boton">
+        <input type="submit" value="Enviar">
+    </div>
+        </form>
+
+</div>
+<script src="./js/funciones.js"></script>
+</body>
+</html>
