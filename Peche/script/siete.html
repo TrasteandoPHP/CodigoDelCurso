@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="./mio.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+div{
+    float:left;
+width:30%;
+margin-left: 10%;
+
+}
+button{
+    margin-left: 30%;
+    float: left;
+}
+input{
+float:left;
+width: 100%;
+}
+</style>
+
+
+</head>
+<body bgcolor=#2874a6>
+    
+    <div>
+   <form id="f1">
+<input id="n" type="text" placeholder="nombre" onkeyup="escribe('n','n1')">
+<input id="a" type="text" placeholder="apellidos" onkeyup="escribe('a','a1')">
+<input id="d" type="text" placeholder="direccion" onkeyup="escribe('d','d1')">
+   </form>
+</div>
+
+<div id="oculta" >
+<form id="f2">
+<input id="n1" type="text" readonly >
+<input id="a1" type="text" readonly>
+<input id="d1" type="text" readonly>
+</form>
+
+</div>
+<button onclick="mostrar('f2')">Oculta/ Mostrar</button>
+
+
+</body>
+
+
+</html>

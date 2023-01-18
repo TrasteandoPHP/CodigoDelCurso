@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <form action="recoge.php" method="POST" enctype="multipart/form-data">
+        <div class="ficheros">
+            <input type="text" name="contador" id="numero" value="1">
+            <input type="file" name="archivo1"><br>
+        </div>
+            <input type="button" onclick="anadirdos()" value="+">
+            <br>
+
+            <input type="submit" value="Enviar">
+            <p></p>
+
+    </form>
+<script>
+    var c=1;
+    function anadiruno(){
+         c++;
+        var cajetin;
+        var nom="archivo"+c;
+        cajetin="<input type='file' name='"+nom+"'><br>";
+        $("div.ficheros").append(cajetin);
+        $("p").text(nom);
+
+    }
+</script>
+
+<script>
+  var  contador;
+    function anadirdos(){
+var cajetin;
+var contador;
+contador =parseInt ($("input#numero").val());
+contador= contador+1;
+$("input#numero").val(contador);
+
+//alert(contador);
+cajetin = "<input type='file' name='archivo"+contador+"'><br>";
+$("div.ficheros").append(cajetin);
+    }
+</script>
+
+</body>
+</html>

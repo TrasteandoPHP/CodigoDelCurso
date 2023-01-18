@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<style>
+    body{
+        background-color: rgb(70, 81, 100);
+        color: azure;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+.todo{
+width:100;
+}
+
+.logo{
+    width:20%;
+float: left;
+
+}
+.menu{
+    width:80%;
+float: left;
+margin-left:0;
+}
+.m{
+    width:20%;
+float: left;
+
+}
+.lg{
+    float: left;
+    width: 100%;
+}
+
+</style>
+</head>
+<body>
+    <div class="todo">
+        
+        <div class="logo">
+            <div class="lg">LOGO</div>  
+        </div>
+
+
+        <div class="menu">
+            <div class="m">INICIO</div>  
+            <div class="m">CONTACTO</div>  
+            <div class="m">NOSOTROS</div>  
+            <div class="m">UBICACION</div>  
+            <div class="m">QUIENES</div>  
+      </div>
+    </div>
+<button onclick="hacer()">hacer</button>
+<input name="" placeholder="">
+<script>
+function hacer()
+{
+$("input").val("pedro");
+}
+
+</script>
+
+
+</body>
+</html>

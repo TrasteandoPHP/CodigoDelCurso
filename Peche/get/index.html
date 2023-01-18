@@ -1,0 +1,39 @@
+Etiqueta a href<br>
+<!-- lo que quede envuelta en esta etiqueta se convierte en link-->
+<a href="https://www.google.es">Ir a Google</a>
+<br>
+<a href="index.html">Inicio</a>
+<br>
+Cualquier documento en el mismo nivel:
+
+<br>
+Entrar en carpeta q esta en el mismo nivel
+<a href="privado/ejemplo.php">Ejemplo</a>
+<br>
+<a href="imagenes/nieve.jpg">Ver nieve</a>
+<br>
+<a href="imagenes/familiares/navidad21.jpg">Ver foto navidad</a>
+<br>
+Ora formaction
+<a href="./imagenes/familiares/navidad21.jpg">ver foto</a>
+<br>
+cuando quiero salir de una carpeta 
+<a href="../archivo.ext">Subir un nivel</a>
+<br>
+subir 2 niveles
+<a href="../../archivo2.ext">Subir dos nivel</a>
+<br>
+subir 2 niveles
+<a href="./../../archivo2.ext">Subir dos nivel desde aqui</a>
+<br>
+<h1>Enviando datos por url</h1>
+<a href="consultacli.php?com=0">Consultar Clientes</a>|
+<a href="consultacli.php?com=1&dni=12345678A">Envio una variable</a>|
+<a href="consultacli.php?com=2&nom=Pedro&ape=Peche">Dos Variables</a>|
+<a href="consultacli.php?com=3&eda=41&tel=23432433&sex=hombre">Envio tres variables</a>
+
+
+<form action="consultacli.php?com=5" method="POST">
+<input type="text" name="cosa" >
+<input type="submit" value="Enviar">
+</form>

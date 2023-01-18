@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <input type="password" id="nuevo"><br>
+    <input type="password" id="repe"><br>
+    <button onclick="mira_pass()">Comprobar</button>
+<script>
+function mira_pass()
+{
+    var pass1;
+    var pass2;
+    pass1=$("input#nuevo").val();
+    pass2=$("input#repe").val();
+    if((pass1||pass2))
+        {
+            if(pass1==pass2){
+            alert("Son iguales");
+            $("input").val("");
+            $("input#nuevo").focus();
+        }else
+{
+alert("Son distintos");
+$("input#nuevo").focus();
+}
+}
+else
+{
+alert("tiene que escribir algo");
+}
+}
+</script>
+</body>
+</html>
