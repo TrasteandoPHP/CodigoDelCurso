@@ -26,14 +26,15 @@ div {
 
 .mitad {
     width: 50%;
-    margin-top: 5%;
-    margin-bottom: 2%;
+    float: left; /* borrar */
+    margin-top: 5%; /* borrar */
+    margin-bottom: 2%; /* borrar */
 }
 
 .completo {
     width: 100%;
-    margin-top: 2%;
-    margin-bottom: 5%;
+    margin-top: 2%; /* borrar */
+    margin-bottom: 5%; /* borrar */
 }
 
 .archivos {
@@ -47,7 +48,8 @@ div {
 
 .add {
     width: 50%;
-    margin-left: 5%; /* borrar */
+    margin-left: 25%;
+    margin-right: 25%;
     margin-bottom: 10px; /* borrar */
     margin-top: 20px; /* borrar */
 
@@ -61,11 +63,18 @@ div {
 }
 
 input {
-    width: 80%;
-    margin-left: 10%;
+    width: 80%; /* Corregir a 80% */
+    /*margin-left: 10%;*/
+    margin-top: 4%;
 }
 
+input[name=nombre]{
+    float: right;
+}
+
+
 textarea {
+    margin-top: 4%;
     width: 80%;
     margin-left: 10%;
     resize: none;
@@ -94,5 +103,5 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-    background-color: purple;
+    background-color: pink;
 }
