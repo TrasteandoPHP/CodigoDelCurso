@@ -40,7 +40,7 @@
                     <p>Precio: <?php echo $precio ?>/persona</p>
                 </div> <!-- div.precio -->
                 <div class="boton">
-                    <button onclick="window.location.href='ver.php?cod=<?php echo $codigo;?>'">Ver</button>
+                   <button onclick="window.location.href='./ver.php?codigo=<?php echo $codigo;?>'">Ver</button>                    
                 </div> <!-- div.boton -->
             </div> <!-- div.anuncio -->    
            
