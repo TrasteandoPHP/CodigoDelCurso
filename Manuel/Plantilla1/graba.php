@@ -1,15 +1,16 @@
 <?php
     $nombre = $_POST["nombre"];
     $email = $_POST["email"];
-    $pass = $_POST["pass"];
+    // $pass = $_POST["pass"];
+    $encryptedPass = base64_encode($_POST["pass"]);
 
     include ("./assets/php/conexion.php");
 
     $sqlExisteCliente = "SELECT * FROM clientes WHERE email_cli='$email'";
-    $ejecutarSqlExisteCliente = $conexion->query($sqlExisteCliente);
+    $ejecutarSqlExisteCliente = $conexion->query($sqlExisteCliente);    
 
-    if(!$ejecutarSqlExisteCliente){
-        $sqlRegistroCliente = "INSERT INTO clientes (nom_cli, email_cli, pass_cli) VALUES ('$nombre','$email','$pass')";
+    if(!$ejecutarSqlExisteCliente->fetch_array()){
+        $sqlRegistroCliente = "INSERT INTO clientes (nom_cli, email_cli, pass_cli) VALUES ('$nombre','$email','$encryptedPass')";
         $ejecutarRegistroCliente = $conexion->query($sqlRegistroCliente);
 
         if($ejecutarRegistroCliente)
@@ -35,5 +36,6 @@
     {
         echo "Este email ya está registrado";
     }
-    
-?>
+
+    echo "<br><br><button onclick='window.location.href=`./alta.php`'>Volver</button>";
+?>    
