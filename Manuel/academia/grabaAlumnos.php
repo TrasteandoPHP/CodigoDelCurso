@@ -1,6 +1,6 @@
 <?php
     $nombre = $_POST["nombre"];
-    $apellidos = $_POST["apellidos"];
+    $apellidos = $_POST["apellidos"];    
     $dni = $_POST["dni"];
     $encryptedPass = base64_encode($_POST["pass"]); 
     $email = $_POST["email"];
@@ -12,7 +12,7 @@
     $ejecutarSqlExisteAlumno = $conexion->query($sqlExisteAlumno);    
 
     if(!$ejecutarSqlExisteAlumno->fetch_array()){
-        $sqlRegistroAlumno = "INSERT INTO alumno (nom_alu, ape_alu, dni_alu, pas_alu, dir_alu, email_alu) VALUES ('$nombre','$apellidos','$dni','$encryptedPass','$email','$codigoCurso')";
+        $sqlRegistroAlumno = "INSERT INTO alumnos (nom_alu, ape_alu, dni_alu, pass_alu, email_alu, cod_cur) VALUES ('$nombre','$apellidos','$dni','$encryptedPass','$email','$codigoCurso')";
         $ejecutarRegistroAlumno = $conexion->query($sqlRegistroAlumno);
 
         if($ejecutarRegistroAlumno)

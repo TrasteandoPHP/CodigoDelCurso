@@ -15,7 +15,7 @@
 						<div class="inner">
 							<section>
 								<h2>Registro Alumnos</h2>
-								<form method="POST" action="graba.php">
+								<form method="POST" action="grabaAlumnos.php">
 									<div class="fields">
 										<div class="field half">
 											<input type="text" name="nombre" id="nombre" placeholder="Nombre" require/>
@@ -25,7 +25,7 @@
 										</div>
 										<div class="field">
 											<input type="text" name="apellidos" id="apellidos" placeholder="Apellidos" require/>
-										</div>
+										</div>										
 										<div class="field half">
 											<input type="password" name="pass" id="pass" placeholder="Password" require/>
 										</div>
@@ -38,12 +38,12 @@
 													$conexion = new mysqli("localhost","root","","academia");
 													$sqlConsultaCursos = "SELECT * FROM cursos ORDER BY nom_cur ASC";
 													$ejecutarConsultaCursos = $conexion->query($sqlConsultaCursos);
-													echo "<option selected> --- Elige un Curso --- </option>";	
+													echo "<option value=''> --- Elige un Curso --- </option>";	
 													foreach($ejecutarConsultaCursos as $registroCursos)
 													{
 														$cod_cur = $registroCursos["cod_cur"];
 														$nom_cur = $registroCursos["nom_cur"];																											
-														echo "<option value='$cod_cur' required>$nom_cur</option><br>";
+														echo "<option value='$cod_cur'>$nom_cur</option><br>";
 													}					
 												?>	
 											</select>
