@@ -18,19 +18,19 @@
 								<form method="POST" action="grabaAlumnos.php">
 									<div class="fields">
 										<div class="field half">
-											<input type="text" name="nombre" id="nombre" placeholder="Nombre" require/>
+											<input type="text" name="nombre" id="nombre" placeholder="Nombre" required/>
 										</div>
 										<div class="field half">
-											<input type="text" name="dni" id="dni" placeholder="DNI" require/>
+											<input type="text" name="dni" id="dni" placeholder="DNI" required/>
 										</div>
 										<div class="field">
-											<input type="text" name="apellidos" id="apellidos" placeholder="Apellidos" require/>
+											<input type="text" name="apellidos" id="apellidos" placeholder="Apellidos" required/>
 										</div>										
 										<div class="field half">
-											<input type="password" name="pass" id="pass" placeholder="Password" require/>
+											<input type="password" name="pass" id="pass" placeholder="Password" required/>
 										</div>
 										<div class="field half">
-											<input type="email" name="email" id="email" placeholder="email" require/>
+											<input type="email" name="email" id="email" placeholder="email" required/>
 										</div>
 										<div class="field">
 											<select class="field" name="cod_cur" required>
