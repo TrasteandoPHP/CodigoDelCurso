@@ -15,22 +15,22 @@
 						<div class="inner">
 							<section>
 								<h2>Registro Alumnos</h2>
-								<form method="POST" action="graba.php">
+								<form method="POST" action="grabaAlumnos.php">
 									<div class="fields">
 										<div class="field half">
-											<input type="text" name="nombre" id="nombre" placeholder="Nombre" require/>
+											<input type="text" name="nombre" id="nombre" placeholder="Nombre" required/>
 										</div>
 										<div class="field half">
-											<input type="text" name="dni" id="dni" placeholder="DNI" require/>
+											<input type="text" name="dni" id="dni" placeholder="DNI" required/>
 										</div>
 										<div class="field">
-											<input type="text" name="apellidos" id="apellidos" placeholder="Apellidos" require/>
+											<input type="text" name="apellidos" id="apellidos" placeholder="Apellidos" required/>
+										</div>										
+										<div class="field half">
+											<input type="password" name="pass" id="pass" placeholder="Password" required/>
 										</div>
 										<div class="field half">
-											<input type="password" name="pass" id="pass" placeholder="Password" require/>
-										</div>
-										<div class="field half">
-											<input type="email" name="email" id="email" placeholder="email" require/>
+											<input type="email" name="email" id="email" placeholder="email" required/>
 										</div>
 										<div class="field">
 											<select class="field" name="cod_cur" required>
@@ -38,12 +38,12 @@
 													$conexion = new mysqli("localhost","root","","academia");
 													$sqlConsultaCursos = "SELECT * FROM cursos ORDER BY nom_cur ASC";
 													$ejecutarConsultaCursos = $conexion->query($sqlConsultaCursos);
-													echo "<option selected> --- Elige un Curso --- </option>";	
+													echo "<option value=''> --- Elige un Curso --- </option>";	
 													foreach($ejecutarConsultaCursos as $registroCursos)
 													{
 														$cod_cur = $registroCursos["cod_cur"];
 														$nom_cur = $registroCursos["nom_cur"];																											
-														echo "<option value='$cod_cur' required>$nom_cur</option><br>";
+														echo "<option value='$cod_cur'>$nom_cur</option><br>";
 													}					
 												?>	
 											</select>
