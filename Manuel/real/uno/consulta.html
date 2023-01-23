@@ -14,13 +14,18 @@
         <script>
             function abuscar(){
                 var texto = $("#textoabuscar").val();
-                $.post(
+                if(texto !=""){
+                    $.post(
                     "./busca.php",
                     {dato: texto},
                     function(resultadoPHP){
-                        $("#resultados").text(resultadoPHP);
+                        $("#resultados").html(resultadoPHP);
                     }
                 );
+                } else{
+                    $("#resultados").html("");
+                }
+                
             }
         </script>
     </body>

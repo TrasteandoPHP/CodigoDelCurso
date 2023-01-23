@@ -14,9 +14,9 @@
             $nom = $registroDato["nom_cli"];
             $ape1 = $registroDato["ape1_cli"];
             $ape2 = $registroDato["ape2_cli"];
-            echo "$nom $ape1 $ape2 | ";
+            echo "$nom $ape1 $ape2 <br>";
         }
     } else {
-        echo "No existe ningún dato. Intente otra consulta";
+        echo "No existe ningúna coincidencia con esos datos. Intente otra consulta";
     }    
 ?>
