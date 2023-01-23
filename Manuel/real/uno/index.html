@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <title>Real: Uno</title>
+</head>
+<body>
+    <form>
+        <input type="text" id="nombre" placeholder="Nombre">
+        <input type="text" id="apellido1" placeholder="Primer Apellido">
+        <input type="text" id="apellido2" placeholder="Segundo Apellido">        
+        <input type="button" value="Grabar" onclick="enviardatos()">
+    </form>   
+    <script>
+        function enviardatos(){
+            var nombre = $("input#nombre").val();
+            var papellido = $("input#apellido1").val(); 
+            var sapellido = $("#apellido2").val();            
+            
+            if(nombre.lenght!="" && papellido!="" && sapellido!=""){
+                // Código para enviar a PHP [1.Qué método?, 2.A dónde va?, 3.Qué envío?]
+                $.post(
+                    "./graba.php", 
+                    {nom:nombre, ap1:papellido, ap2:sapellido},
+                    function(resultadoPHP){
+                        alert(resultadoPHP);
+                    }
+                );
+            } else {
+                alert("No puedes dejar campos vacíos");
+            }
+        }
+    </script>
+</body>
+</html>
