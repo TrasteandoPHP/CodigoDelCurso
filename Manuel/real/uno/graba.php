@@ -9,8 +9,6 @@
 
     $sqlGrabacion = "INSERT INTO clientes (nom_cli, ape1_cli, ape2_cli) VALUES ('$n','$a1','$a2')";
 
-    $ejecutarSqlGrabacion = $conexion->query($sqlGrabacion);
-
     if ($conexion->query($sqlGrabacion)){
         echo "Cliente grabado correctamente";
     }else{
