@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <title>Eventos</title>
+</head>
+<body>
+    <button onclick="mostrarTodo()">Mostrar TODO</button>    
+    <button onclick="mostrarParrafo()">Mostrar SOLO etiqueta P</button>
+    <button onclick="mostrarInput()">Mostrar SOLO etiqueta INPUT</button>
+    <button onclick="mostrarLabel('label')">Mostrar SOLO etiqueta LABEL</button>
+    <div style="display: none;" id="papuchi">        
+        <p>Hola</p>
+        <label>Hola</label>
+        <input type="text" placeholder="Hola">
+        <div id="julito">Hola</div>
+        <a href="">Hola</a>
+    </div>
+
+    <script>        
+
+        function mostrarTodo(){
+            $("#papuchi").show();
+            $("p").show();
+            $("label").show();
+            $("input").show();
+            $("#julito").show();            
+            $("a").show();
+        }
+
+        function ocultarTodo(){
+            $("#papuchi").show();
+            $("p").hide();
+            $("label").hide();
+            $("input").hide();
+            $("#julito").hide();            
+            $("a").hide();
+        }
+
+        function mostrarParrafo(){
+            ocultarTodo();
+            $("p").show();            
+        }
+
+        function mostrarInput(){
+            ocultarTodo();
+            $("input").show();
+        }
+
+        function mostrarLabel(id){
+            ocultarTodo();
+            $(id).show();
+        }
+    </script>
+        
+</body>
+</html>

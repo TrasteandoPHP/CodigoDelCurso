@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <title>Eventos</title>
+    </head>
+    <body>
+        <button onclick="encender()">Mostrar TODO</button>    
+        <button onclick="TODO('p')">Mostrar SOLO etiqueta P</button>
+        <button onclick="TODO('input')">Mostrar SOLO etiqueta INPUT</button>
+        <button onclick="TODO('a')">Mostrar SOLO etiqueta A</button>
+        <button onclick="TODO('#julito')">Mostrar SOLO etiqueta DIV#Julito</button>
+        <button onclick="TODO('label')">Mostrar SOLO etiqueta LABEL</button>
+        <hr>
+        
+        <div style="display: none;" id="papuchi">        
+            <p>Esto es un párrafo</p>
+            <label>Esto es una Label</label><br>
+            <input type="text" placeholder="Esto es un Input">
+            <div id="julito">Esto es el div Julito</div>
+            <a href="">Esto es una etiqueta A</a>
+        </div>
+
+        <script>
+            function apagar(){
+                $("#papuchi").show();
+                $("#papuchi").children().hide();
+            } 
+            
+            function encender(){
+                $("#papuchi").show();
+                $("#papuchi").children().show();
+            }  
+            
+            function TODO(etiqueta){
+                apagar();
+                $(etiqueta).show();
+            }             
+        </script>            
+    </body>
+</html>

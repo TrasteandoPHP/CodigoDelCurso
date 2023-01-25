@@ -1,0 +1,28 @@
+div {
+    text-align: center;
+}
+
+ul {   
+    height: 60px;
+    display: inline-block;
+    
+}
+
+li {
+  list-style-type:none;
+  float:left;
+  height: 60px;
+  margin-top: 4px;  
+}  
+
+button {
+    border: none;
+    width: 120px;
+    padding: 12px;
+}
+
+.submenu-container {
+    margin-top: 4px;
+    display: none;
+}
+

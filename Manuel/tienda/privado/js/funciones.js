@@ -7,7 +7,7 @@ function login(){
         alert("No puedes dejar campos vacíos");        
     } else {
         $.post(
-            "./sesion/php/login.php", 
+            "./php/login.php", 
             {mail:email, password:pass},
             function(resultadoPHP){               
                 if(resultadoPHP=="bien"){
