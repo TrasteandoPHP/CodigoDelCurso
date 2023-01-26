@@ -20,3 +20,19 @@ function login(){
         );        
     }
 }
+
+// Función para mostrar opciones del submenú
+function mostrar(id){    
+    $(".submenu-container").show();
+    $(".options-container").hide()
+    ocultar();         
+    $("#"+id).show();  
+}
+
+// Función para ocultar opciones del submenú
+function ocultar(){
+    $("#altas").hide(); 
+    $("#consultar").hide();
+    $("#modificar").hide();
+    $("#borrar").hide(); 
+}  

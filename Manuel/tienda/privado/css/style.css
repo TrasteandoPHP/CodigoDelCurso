@@ -1,6 +1,6 @@
-div {
+/*div {
     text-align: center;
-}
+}*/
 
 ul {   
     height: 60px;
@@ -12,17 +12,44 @@ li {
   list-style-type:none;
   float:left;
   height: 60px;
-  margin-top: 4px;  
+  
 }  
 
 button {
     border: none;
     width: 120px;
     padding: 12px;
+    margin-top: 10px;
+}
+
+.global-container {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: center;
+    height: 200px;
+}
+
+.menu-container {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: center;
 }
 
 .submenu-container {
     margin-top: 4px;
     display: none;
+    text-align: center;
 }
 
+.options-container {
+    width: 20%;
+    margin-left: 40%;
+    margin-right: 40%;
+    text-align: center;
+}
+/*
+h1 {
+    text-align: center;
+}*/
