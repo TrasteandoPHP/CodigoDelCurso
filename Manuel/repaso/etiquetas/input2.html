@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>Formulario Defensivo</title>
+        <meta charset="UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <form>
+            <br><br>
+            <input onkeypress="borrar()" size="30" id="password" type="text" placeholder="Introduce una contraseña">
+            <br><br>
+            <input  size="30" id="passwordBis" type="text" placeholder="Repite la contraseña">
+            <br><br>
+                <span id="msgError"style="display:none;">Las contraseñas no coinciden</span>
+                <span id="msgOk" style="display:none;">Las contraseñas coinciden</span>
+            <br><br>
+            <input onclick="comprobar()" type="button" value="Enviar">
+        </form>
+        <script>
+            function comprobar(){
+                var password = $("#password").val();
+                var passwordBis = $("#passwordBis").val();
+
+                if(password!=passwordBis){
+                    $("#msgError").show();
+                    $("#msgOk").hide();
+                    $("#msgError").css("color","red");
+                    $("#passwordBis").val("");
+                    $("#passwordBis").focus();
+                    $("#passwordBis").css("background-color","pink");
+                } else {
+                    $("#msgError").hide();
+                    $("#msgOk").show();
+                    $("#passwordBis").css("background-color","white");
+                    $("#password").val("");
+                    $("#passwordBis").val("");
+                    $("#password").focus();
+                }
+            }
+
+            function borrar(){
+                $("#msgError").hide();
+                $("#msgOk").hide();
+                $("#nombre").css("background-color","white");                
+            }
+        </script>
+    </body>
+</html>

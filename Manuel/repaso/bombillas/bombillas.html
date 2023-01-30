@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>Bombillas</title>
+        <meta charset="UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <style>
+            button{
+                width: 100px;
+                border-radius: 6px;
+            }
+        </style>
+    </head>
+    <body style="background-color:black">
+        <div style="margin-left: 40%;">
+            <img src="./bombillaApagada.png" style="margin-top: 50px;">
+            <br><br>
+            <!-- <button onclick="encender()" style="background-color:white; color:black; margin-left: 3%; padding: 8px;">Encender</button> -->
+            <!-- <button onclick="apagar()" style="background-color:white; color:black; padding: 8px;">Apagar</button><br><br> -->
+            <button onclick="encender_apagar()" style="background-color:white; color:black; margin-left: 3%; padding: 8px; width: 200px;">Encender/Apagar</button>
+        </div>
+        <script>
+            /*
+            function encender(){
+                $("img").attr("src","./bombillaEncendida.png");
+            }
+            */
+            /*
+            function apagar(){
+                $("img").attr("src","./bombillaApagada.png");
+            }
+            */
+            var bombilla = 0;
+            function encender_apagar(){                
+                if(bombilla == 0){
+                    $("img").attr("src","./bombillaEncendida.png");
+                    bombilla = 1;
+                } else {
+                    $("img").attr("src","./bombillaApagada.png");
+                    bombilla = 0;
+                }
+            }
+        </script>        
+    </body>
+</html>

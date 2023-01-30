@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>Cambia iframe 2</title>
+        <meta charset="UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <button onclick="ir_a('meteogalicia.gal')">El tiempo</button>
+        <button onclick="ir_a('effuture.es')">Escuela</button>
+        <button onclick="ir_a('marca.com')">Marca</button><br><br>
+        <iframe src="https://www.lavozdegalicia.es/" frameborder="0" style="width: 100%; height: 98vh;"></iframe>
+        <script>
+            function ir_a(url){
+                $("iframe").attr("src", "https://"+url)
+            }            
+        </script>
+    </body>
+</html>
