@@ -1,0 +1,21 @@
+Consultas SQL relacionando varias tablas:
+-----------------------------------------
+
+SELECT * FROM `tickets` INNER JOIN camareros USING (cod_cam); // Junta la tabla 'tickets' y la tabla 'camareros' mediante el campo común 'cod_cam' 
+
+SELECT * FROM `tickets` INNER JOIN mesas USING (cod_mes); // Junta la tabla 'tickets' y la tabla 'camareros' mediante el campo común 'cod_cam'
+
+SELECT * FROM detalle_ticket INNER JOIN bebidas USING (cod_beb); 
+
+SELECT * FROM `camareros` INNER JOIN tickets ON camareros.cod_cam = tickets.cod_camareros // Junta las tablas mediante campo común cuando tienen el nombre de campo distinto  
+
+SELECT * FROM camareros INNER JOIN tickets USING(cod_cam) INNER JOIN detalle_ticket USING(cod_tick) INNER JOIN bebidas USING(cod_beb); 
+
+SELECT cod_tick, nom_cam, fecha_tick, hora_tick, nom_mes, cant_beb, nom_beb, precio_beb, precio_tick FROM camareros INNER JOIN tickets USING(cod_cam)
+																										   INNER JOIN detalle_ticket USING(cod_tick)
+																										   INNER JOIN bebidas USING(cod_beb)
+																										   INNER JOIN mesas USING(cod_mes)
+																										   WHERE tickets.cod_tick=1; 	
+
+SELECT nom_cam, fecha_tick, hora_tick FROM `camareros` INNER JOIN tickets USING(cod_cam);
+
