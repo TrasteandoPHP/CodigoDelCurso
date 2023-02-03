@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <title>Preguntas</title>
+</head>
+<body>
+    <div class="containerFormPregunta">
+        <h1>Formulario Crear Preguntas</h1>
+        <button id="volver" onclick="window.location.href='./index.html'">Volver</button><br>
+        <h3>Crear pregunta</h3>
+        <form action="./grabarPregunta.php" method="POST">
+            <input id="pregunta" type="text" name="pregunta" maxlength="200" required><br>
+            <input id="grabar" type="submit" value="Grabar">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+.containerIndex {
+    background-color:darkolivegreen;
+    width: 30%;
+    margin-left: 35%;
+    margin-top: 150px;
+    height: 250px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.containerFormPregunta {
+    background-color:darkolivegreen;
+    width: 30%;
+    margin-left: 35%;
+    margin-top: 150px;
+    height: 320px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.containerFormRespuesta {
+    background-color:darkolivegreen;
+    width: 30%;
+    margin-left: 35%;
+    margin-top: 150px;
+    height: 320px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+
+button {
+    width: 70%;
+    height: 50px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    background-color: cadetblue;
+    color: cornsilk;
+    font-size: 1.2em;
+    font-weight: 400;
+}
+
+h1 {
+    padding-top: 20px;
+    color:darkorange;
+}
+
+h3 {
+    float: left;
+    margin-top: 30px;
+    margin-left: 15%;
+
+}
+
+#volver {
+    width:15%;
+    float: left;
+    margin-left: 10%;
+    font-size: 1em;
+    font-weight: 200;
+    height: 30px;    
+}
+
+#grabar {
+    width:20%;
+    font-size: 1em;
+    font-weight: 200;
+    height: 30px; 
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    background-color: cadetblue;
+    color: cornsilk;
+    font-size: 1.2em;
+    font-weight: 400;  
+    margin-top: 40px;
+}
+
+#pregunta {
+    width: 80%;   
+    height: 40px; 
+    font-size: 1.2em;
+}
+
+
