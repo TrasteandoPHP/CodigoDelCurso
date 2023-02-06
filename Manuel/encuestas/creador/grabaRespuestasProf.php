@@ -19,8 +19,7 @@
             $correcto2 = $_POST["c2"];
             $correcto3 = $_POST["c3"];
 
-            // Me conecto a la Base de Datos
-            //$conexion = new mysqli("localhost","root","","encuestas");
+            // Me conecto a la Base de Datos            
             $conexion = new mysqli("10.10.10.199","escorpion","1234","encuestas");
 
             // SQL grabación

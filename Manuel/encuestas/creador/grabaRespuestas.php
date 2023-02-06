@@ -26,19 +26,21 @@
             $sqlGrabacionRespuesta1 = "INSERT INTO respuestas (cod_pre, respuesta_res, correcta_res) 
                                        VALUES ('$codigoPregunta','$respuestaUno','$validacionUno')";
 
-            // Ejecuto la grabación con comprobación           
+            // Ejecuto la grabación 1 con comprobación           
             if ($conexion->query($sqlGrabacionRespuesta1)){
 
                 // SQL grabación 2
                 $sqlGrabacionRespuesta2 = "INSERT INTO respuestas (cod_pre, respuesta_res, correcta_res) 
                                            VALUES ('$codigoPregunta','$respuestaDos','$validacionDos')";
 
+                // Ejecuto la grabación 2 con comprobación
                 if($conexion->query($sqlGrabacionRespuesta2)){
 
                     // SQL grabación 3
                     $sqlGrabacionRespuesta3 = "INSERT INTO respuestas (cod_pre, respuesta_res, correcta_res) 
                                                VALUES ('$codigoPregunta','$respuestaTres','$validacionTres')";
 
+                    // Ejecuto la grabación 2 con comprobación
                     if($conexion->query($sqlGrabacionRespuesta3)){
                         echo "
                             <script>

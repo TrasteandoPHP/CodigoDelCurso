@@ -17,6 +17,7 @@
 
             // Me conecto a la base de datos
             $conexion = new mysqli("10.10.10.199","escorpion","1234","encuestas");
+            //$conexion = new mysqli("localhost","root","","encuestas");
 
             // SQL grabación
             $sqlGrabacion = "INSERT INTO preguntas (pregunta_pre) VALUES ('$pregunta')";
