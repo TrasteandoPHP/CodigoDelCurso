@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Alumnos</title>
+    </head>
+    <body>
+        <br>
+        <form action="grabaAlumno.php" method="POST">
+            <input type="email" name="email" size="50" maxlength="30" placeholder="Introduzca email..." required>
+            <br><br>
+            <input type="password" name="password" size="50" minlength="8" maxlength="12" placeholder="Escriba una contraseña entre 8 y 12 caracteres" required>
+            <br><br>
+            <input type="submit" value="Alta Alumno">
+        </form> 
+        <br>
+        <button onclick="window.location.href='./consultaAlumnos.php'">Consulta Alumnos</button>      
+    </body>
+</html>
