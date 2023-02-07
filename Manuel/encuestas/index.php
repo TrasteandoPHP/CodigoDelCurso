@@ -9,7 +9,7 @@
     <body>
         <form action="./grabaExamen.php" method="POST">
             <label>Nombre</label>
-            <input type="text" name="nombre" size="40" placeholder="Escribe tu nombre">
+            <input type="text" name="nombre" size="40" placeholder="Escribe tu nombre" required>
             <br><br>
             <?php
                 $letras = array("a", "b","c");
@@ -37,11 +37,11 @@
                         $textoRespuesta = $registroRespuestas["respuesta_res"];
                         $codigoRespuesta = $registroRespuestas["cod_res"];
                         
-                        echo "<input type='radio' name='respuesta$numeroPregunta' value='$codigoRespuesta'><b>$letras[$posicion]</b> - $textoRespuesta<br>";
+                        echo "<input type='radio' name='respuesta$numeroPregunta' value='$codigoRespuesta' required><b>$letras[$posicion]</b> - $textoRespuesta<br>";
                         $posicion++;
                     } 
                     echo "<br>"; 
-                    $numeroPregunta++;    
+                    $numeroPregunta++;                       
                 }       
             ?>
             <br><br><input type="submit" value="Enviar">
