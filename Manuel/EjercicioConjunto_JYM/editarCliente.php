@@ -13,6 +13,8 @@
             <div class="row">
                 <div class="col-3"></div>
                 <div class="col-6" style="margin-top:40px;">
+                    <h4>Actualizar Cliente</h4>
+                    <hr>
                     <?php
                         // Recibimos los datos por GET
                         $codigo = $_GET["c"];
