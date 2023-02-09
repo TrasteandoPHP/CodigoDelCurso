@@ -16,7 +16,9 @@
 
             //echo "$nombre - $email - $passwordEncriptado";
         
-            $conexionBaseDatosRemota = new mysqli("10.10.10.199","fila3","1234","fila3");
+            //$conexionBaseDatosRemota = new mysqli("10.10.10.199","fila3","1234","fila3");VOLVER
+            $conexionBaseDatosRemota = new mysqli("localhost","fila3","1234","fila3");
+
 
             $sqlConsultaEmailRepetido = "SELECT email_cli FROM clientes WHERE email_cli='$email'";
 
@@ -24,17 +26,18 @@
 
             if($ejecutarConsultaEmailRepetido->fetch_array()){
 
-            echo "Este email ya se encuentra registrado. Regístrese con otro email distinto"; 
+            echo "Este email ya se encuentra registrado. Regístrese con otro email distinto<br>"; 
             
             } else {
                 $sqlGrabacionCliente = "INSERT INTO clientes(nom_cli, email_cli, pass_cli) VALUES ('$nombre','$email','$passwordEncriptado')";
                 if($conexionBaseDatosRemota->query($sqlGrabacionCliente)){
-                    echo "Grabación en Base de Datos remota correcta";
+                    echo "Grabación en Base de Datos remota correcta<br>";
                     
-                    $conexionBaseDatosLocal = new mysqli("10.10.10.113","fila3","1234","fila3");
+                    //$conexionBaseDatosLocal = new mysqli("10.10.10.113","fila3","1234","fila3"); VOLVER
+                    $conexionBaseDatosLocal = new mysqli("localhost","fila3","1234","fila3");
 
                     if($conexionBaseDatosLocal->query($sqlGrabacionCliente)){
-                        echo "Grabación en Base de Datos local correcta";
+                        echo "Grabación en Base de Datos local correcta<br>";
 
                     } else {                        
                         echo "Ha ocurrido un error durante la grabación en Base de Datos local<br>";
