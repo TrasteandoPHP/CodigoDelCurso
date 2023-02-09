@@ -18,17 +18,16 @@
                         $codigo = $_GET["c"];
 
                         // Establecemos conexion con la BBDD
-                        $conexion = new mysqli("10.10.10.199","fila3","1234","fila3");
-                        //$conexion = new mysqli("localhost","fila3","1234","fila3");
-
+                        $conexion = new mysqli("10.10.10.102","javimanu","1234","ejercicioa2");
+                        
                         // SQL para buscar
-                        $sqlConsultaCliente = "SELECT * FROM clientes WHERE cod_cli='$codigo'";
+                        $sqlConsultaCliente = "SELECT * FROM altaclientes WHERE cod_cli='$codigo'";
 
                         $ejecutarSqlConsultaCliente = $conexion->query($sqlConsultaCliente);
                             
                         $registro = $ejecutarSqlConsultaCliente->fetch_array();           
                         $nombre = $registro["nom_cli"];  
-                        $email = $registro["email_cli"];                    
+                        $password = $registro["pass_cli"];                    
                     ?>   
                     
                     <form action="modificaCliente.php" method="POST">
@@ -37,8 +36,8 @@
                             <input type="text" name="nombre" value="<?php echo $nombre;?>" class="form-control">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Email</label>
-                            <input type="email" name="email" value="<?php echo $email;?>" class="form-control">
+                            <label class="form-label">Password</label>
+                            <input type="password" name="password" value="<?php echo $password;?>" class="form-control">
                         </div>
                         <div class="mb-3">                            
                             <input type="hidden" name="codigo" value="<?php echo $codigo?>" class="form-control">

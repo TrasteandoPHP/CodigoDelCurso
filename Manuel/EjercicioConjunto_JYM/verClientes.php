@@ -13,36 +13,36 @@
         <div class="container" style="margin-top:20px;">
             <div class="row">
                 <div class="col-2"></div>
-                <div class="col-7">
-                    <h4>Clientes de la empresa</h4>
+                <div class="col-8">
+                    <h4>Consulta Clientes</h4>
                     <hr>
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Nombre</th><th>Email</th><th></th>
+                                <th>Nombre</th><th>Password</th><th>Fecha Alta</th><th>Hora Alta</th><th></th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                                $conexion = new mysqli("10.10.10.199","fila3","1234","fila3");
-                                //$conexion = new mysqli("localhost","fila3","1234","fila3");
-                                $sqlConsultaClientes = "SELECT * FROM clientes";
+                                $conexion = new mysqli("10.10.10.102","javimanu","1234","ejercicioa2");                               
+                                $sqlConsultaClientes = "SELECT * FROM altaclientes";
                                 $ejecutarSqlConsultaClientes = $conexion->query($sqlConsultaClientes);
                                 foreach($ejecutarSqlConsultaClientes as $registro){
                                     $codigo = $registro["cod_cli"];
                                     $nombre = $registro["nom_cli"];
-                                    $email = $registro["email_cli"];
+                                    $password = $registro["pass_cli"];
+                                    $fechaAlta = $registro["fech_alta"];
+                                    $horaAlta = $registro["hora_alta"];
                                     echo "
                                         <tr>
                                             <td>$nombre</td>
-                                            <td>$email</td>
+                                            <td>$password</td>
+                                            <td>$fechaAlta</td>
+                                            <td>$horaAlta</td>
                                             <td>
-                                                <a href='editarCliente.php?c=$codigo'style='margin-right:10px; margin-left:10px'>
+                                                <a href='./editarCliente.php?c=$codigo'style='margin-right:10px; margin-left:10px'>
                                                     <i class='fa-solid fa-edit' style='color:black'></i>
                                                 </a> 
-                                                <a href='borraCliente.php?c=$codigo'>
-                                                    <i class='fa-solid fa-trash' style='color:black'></i>
-                                                </a>
                                             </td>
                                         </tr>
                                     ";
