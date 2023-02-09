@@ -14,7 +14,8 @@
             $email = $_POST["email"];
 
             // Establecemos conexion con la BBDD
-            $conexion = new mysqli("10.10.10.199","fila3","1234","fila3");
+            //$conexion = new mysqli("10.10.10.199","fila3","1234","fila3"); VOLVER
+            $conexion = new mysqli("localhost","fila3","1234","fila3");
 
             // SQL para borrar
             $sqlModificarCliente = "UPDATE clientes SET nom_cli='$nombre', email_cli='$email' WHERE cod_cli='$codigo'";

@@ -12,7 +12,8 @@
         $codigo = $_GET["c"];
 
         // Establecemos conexion con la BBDD
-        $conexion = new mysqli("10.10.10.199","fila3","1234","fila3");
+        //$conexion = new mysqli("10.10.10.199","fila3","1234","fila3"); VOLVER
+       $conexion = new mysqli("localhost","fila3","1234","fila3");
 
         // SQL para borrar
         $sqlBorrarCliente = "DELETE FROM clientes WHERE cod_cli='$codigo'";

@@ -24,7 +24,8 @@
                         </thead>
                         <tbody>
                             <?php
-                                $conexion = new mysqli("10.10.10.199","fila3","1234","fila3");
+                                //$conexion = new mysqli("10.10.10.199","fila3","1234","fila3"); VOLVER
+                                $conexion = new mysqli("localhost","fila3","1234","fila3");
                                 $sqlConsultaClientes = "SELECT * FROM clientes";
                                 $ejecutarSqlConsultaClientes = $conexion->query($sqlConsultaClientes);
                                 foreach($ejecutarSqlConsultaClientes as $registro){
