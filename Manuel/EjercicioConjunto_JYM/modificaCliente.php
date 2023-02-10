@@ -65,7 +65,9 @@
                         <a href='verClientes.php'>Volver</a>            
                     ";
                 } 
+               
             }
+            
         ?>        
     </body>
 </html>
