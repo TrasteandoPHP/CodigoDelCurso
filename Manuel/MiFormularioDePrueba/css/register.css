@@ -1,0 +1,146 @@
+.registerFormContainer {
+    background-color: white;
+    height: 100vh;
+    min-height: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.registerForm {
+    padding: 3rem;
+    max-width: 600px;
+    width: 95%;
+    background-color: #f6f6e0;
+    border-radius: 1rem;
+}
+
+.registerForm > h1 {
+    cursor: default;
+}
+
+h1 {
+    text-align: center;
+    font-style: normal;
+    font-family: 'Lora', sans-serif;
+    font-weight: 700;
+    /*font-size: 2.5rem;*/
+}
+
+.fieldForm {
+    display: flex;
+    margin-bottom: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.registerLabel {
+    /*flex: 0 0 100px;*/
+    font-family: 'Lora', sans-serif;
+}
+
+.fieldForm > input {
+  border: 1px solid #e1e1e1;
+  padding: 1rem;
+  flex: 1;
+}
+
+input {
+  font-size: large;
+}
+
+.registerButton {
+  font-family: 'Lora', sans-serif;
+  padding: 1.5rem;
+  font-size: 1.4;
+  font-weight: 400;
+  border-radius: .5rem;
+  border: none;
+  background-color: orange;
+  color: white;
+  display: block;
+  width: 100%;
+  
+}
+
+.linksRegisterForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.linkToLogin {
+  /*margin: 0px;*/
+  color: orange;
+  text-decoration: underline;
+  font-family: 'Lora', sans-serif;
+  display: inline-block;
+}
+
+.linkToMainVeiw {
+  margin: 0px;
+  color: orange;
+  text-decoration: underline;
+  font-family: 'Lora', sans-serif;
+  display: inline-block;
+}
+
+a {
+  display: inline-block;
+}
+
+@media only screen and (max-width: 400px) {
+  .fieldForm {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    align-items: center;
+    justify-content: center;    
+  }  
+
+  .registerLabel {
+    display: flex;
+    height:auto;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+  }
+
+  .registerButton {
+    width: 100%;
+  }
+
+  .linksRegisterForm {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    
+  }
+
+  .registerForm {
+    padding: 3rem;
+    max-width: 600px;
+    width: 95%;
+    background-color: #f6f6e0;
+    border-radius: 1rem;      
+  }  
+
+}
+
+@media only screen and (min-width: 400px) {
+  .registerForm {
+    padding: 3rem;
+    max-width: 600px;
+    width: 95%;
+    background-color: #f6f6e0;
+    border-radius: 1rem;      
+  }  
+
+  .registerLabel {
+    flex: 0 0 100px;
+  }
+
+  .linkToLogin {
+    margin: 0px;
+  }
+}    
