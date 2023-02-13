@@ -11,8 +11,8 @@
     <body>
         <div class="container">
             <div class="row">
-                <div class="col-3"></div> <!-- div.col-3 -->
-                <div class="col-4">
+                <!-- <div class="col-3"></div> --> <!-- div.col-3 -->
+                <div class="offset-3 col-4">
                     <?php
                         session_start();
 
