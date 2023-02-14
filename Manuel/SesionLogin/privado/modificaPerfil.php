@@ -8,17 +8,21 @@
 </head>
 <body>
     <?php
+        session_start();
         if(isset($_SESSION["usuario"])){
             // Recogemos los datos del formulario.
             $codigo = $_SESSION["usuario"];
             $nombre = $_POST["nombre"];
+            $imagen = $_FILES["imagen"]["name"];
 
             // Nos conectamos a la BBDD.
             $conexion = new mysqli("10.10.10.199","febrero","1234","alumnos");
             // SQL para modificar registro.
-            $sqlActualizarUsuario = "UPDATE alumnado SET nom_alu='$nom' WHERE cod_alu='$codigo'";
+            $sqlActualizarUsuario = "UPDATE alumnado SET nom_alu='$nombre', avatar_alu='$imagen' WHERE cod_alu='$codigo'";
             // Ejecutamos preguntando.
             if($conexion->query($sqlActualizarUsuario)){
+                $ruta = "./imagenes/$codigo/$imagen";
+                @move_uploaded_file($_FILES["imagen"]["tmp_name"],$ruta);
                 echo "
                         <script>
                             alert ('Perfil modificado.');
@@ -38,7 +42,7 @@
             echo "
                         <script>
                             alert ('No puedes acceder a esta página sin realizar LOGIN.');
-                            window.location.href='./index.html.php';
+                            window.location.href='./index.php';
                         </script>
                     ";    
 
