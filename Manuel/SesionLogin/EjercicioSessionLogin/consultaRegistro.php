@@ -16,12 +16,13 @@
                         session_start();
                         if(isset($_SESSION["usuario"])){
                             $conexion = new mysqli("localhost","root","","EjercicioSessionLogin");
-                            $sqlConsultaRegistros = "SELECT * FROM registros INNER JOIN usuarios USING (cod_user)";
+                            $sqlConsultaRegistros = "SELECT * FROM registros INNER JOIN usuarios USING (cod_user) ORDER BY cod_reg DESC";
                             $ejecutarSqlConsultaRegistros = $conexion->query($sqlConsultaRegistros);
                             $registro = $ejecutarSqlConsultaRegistros->fetch_array();
                             $nombreLogin = $registro["nom_user"];                            
                     ?>
-                    <h1 class="text-center">Bienvenido <?php echo $nombreLogin?></h1><br><br>    
+                    <h1 class="text-center">Bienvenido <?php echo $nombreLogin?></h1><br><br>
+                    <a href="./logout.php"><button class="btn btn-danger col-3 mt-1 mb-2">Salir</button></a>    
                     <table class="table table-striped text-center">
                         <thead>
                             <tr><th colspan=5>Registro de Accesos</th></tr>
@@ -55,7 +56,7 @@
                     ?>
                         </tbody>
                     </table>                    
-                    <a href="./logout.php"><button class="btn btn-danger col-3 mt-2">Salir</button></a>
+                    <a href="./logout.php"><button class="btn btn-danger col-3 mt-3 mb-5">Salir</button></a>
                 </div> <!-- div.col -->
             </div> <!-- div.row -->
         </div> <!-- div.container -->       
