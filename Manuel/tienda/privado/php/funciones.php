@@ -29,7 +29,7 @@
         return $conexion->query($sqlActualizar);
     }
 
-    function borrar (){
+    function borrar ($tabla, $condicion){
         $conexion = conectar();
         $sqlBorrado = "DELETE FROM $tabla $condicion";
         return $conexion->query($sqlBorrado);
