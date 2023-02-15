@@ -11,30 +11,39 @@
     <body>
         <?php
             session_start();
-            if(isset($_SESSION["administrador"])){}else
-        
-        ?>
-       
-        <div class="container">
-            <div class="row my-3">
-                <div class="offset-2 col-md-8">
-                    <nav class="nav bg-light">
-                        <a class="nav-link btn btn-info text-white px-4" href="#">Inicio</a>
-                        <a class="nav-link btn btn-info text-white" href="#">Alta Alumnos</a>                        
-                        <a class="nav-link btn btn-info text-white" href="#">Consulta Registros</a>
-                        <a class="nav-link btn btn-info text-white" href="#">Alta Administradores</a>
-                        <a class="nav-link btn btn-danger text-white px-4" href="#">salir</a>
-                        <a class="nav-link mx-5">Admin</a>
-                    </nav>
-                </div>
-            </div>
-        </div>
-
-        <?php
+            if(isset($_SESSION["administrador"])){
+                $codigoAdmin = $_SESSION["administrador"];
+                $conexion = new mysqli("localhost","root","","ensal");
+                $sqlConsultaAdmin = "SELECT * FROM administradores WHERE cod_adm='$codigoAdmin'";
+                $ejecutarSqlConsultaAdmin = $conexion->query($sqlConsultaAdmin);
+                $registro = $ejecutarSqlConsultaAdmin->fetch_array();
+                $nombreAdmin = $registro["nom_adm"];
+                
+                echo "
+                    <div class='container'>
+                        <div class='row my-3'>
+                            <div class='offset-2 col-12 col-md-12'>
+                                <nav class='nav bg-light'>
+                                    <a class='nav-link btn btn-info text-white px-4' href='#'>Inicio</a>
+                                    <a class='nav-link btn btn-info text-white' href='#'>Alta Alumnos</a>                        
+                                    <a class='nav-link btn btn-info text-white' href='#'>Consulta Registros</a>
+                                    <a class='nav-link btn btn-info text-white' href='#'>Alta Administradores</a>
+                                    <a class='nav-link btn btn-danger text-white px-4' href='window.location.href=`./../../index.html'>salir</a>
+                                    <a class='nav-link mx-5'>$nombreAdmin</a>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>             
+                ";
             
-           
-        
-        
-        ?>
+            } else {
+                echo "
+                    <script>
+                        alert ('Para acceder a esta página tienes que iniciar sesión como Administrador.');
+                        window.location.href='./index.html';
+                    </script>
+                "; 
+             }        
+        ?>        
     </body>
 </html>
