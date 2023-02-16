@@ -31,10 +31,38 @@
                                 <a class='nav-link btn btn-danger text-white px-4' href='./../index.html'>salir</a>
                                 <a class='nav-link mx-5'><?php echo $nombreAdmin?></a>
                             </nav>
-                            <hr>
-                            
-                        </div>
+                            <hr>                            
+                        </div>                        
                     </div>
+                    <div class="row my-3">
+                        <div class='offset-2 col-12 col-md-8'>
+                            <h1 class="text-center my-2 pb-3">Consulta Registros</h1>                            
+                            <table class="table table-striped text-center">
+                                <thead>                                    
+                                    <tr><th>Fecha</th><th>Hora</th><th>Código Alumno</th><th>Nombre</th><th>Tipo Registro</th></tr>
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
+<?php
+                                    
+
+
+
+
+
+
+
+?>                                
+
+
+
+
+
+
+                            </table>
+                        </div>    
+                    </div>   
                 </div> 
             </body>
         </html>                    
@@ -49,4 +77,3 @@
                 "; 
             }        
 ?>        
-   
