@@ -21,15 +21,17 @@
         ?> 
                 <div class='container'>
                     <div class='row my-3'>
-                        <div class='offset-2 col-12 col-md-12'>
+                    <div class='offset-2 col-12 col-md-8'>
                             <nav class='nav bg-light'>
-                                <a class='nav-link btn btn-info text-white px-4' href='#'>Inicio</a>
-                                <a class='nav-link btn btn-info text-white' href='#'>Alta Alumnos</a>                        
-                                <a class='nav-link btn btn-info text-white' href='#'>Consulta Registros</a>
-                                <a class='nav-link btn btn-info text-white' href='#'>Alta Administradores</a>
-                                <a class='nav-link btn btn-danger text-white px-4' href='window.location.href=`./../../index.html'>salir</a>
-                                <a class='nav-link mx-5'><?php echo $nombreAdmin?></a>
+                                <!-- <button onclick="window.location.href'./index.php'">Inicio</button> -->
+                                <a class='nav-link btn btn-info text-white px-4' href='./index.php'>Inicio</a>
+                                <a class='nav-link btn btn-info text-white' href='./altaalumnos.php'>Alta Alumnos</a>                        
+                                <a class='nav-link btn btn-info text-white' href='./consultar.php'>Consulta Registros</a>
+                                <a class='nav-link btn btn-info text-white' href='./altaadm.php'>Alta Administradores</a>
+                                <a class='nav-link btn btn-danger text-white px-4' href='./../index.html'>salir</a>
+                                <a class='nav-link mx-6'><?php echo $nombreAdmin?></a>
                             </nav>
+                            <hr>                            
                         </div>
                     </div>
                 </div>                            

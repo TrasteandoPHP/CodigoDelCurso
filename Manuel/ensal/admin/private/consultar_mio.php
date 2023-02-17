@@ -41,25 +41,28 @@
                                 <thead>                                    
                                     <tr><th>Fecha</th><th>Hora</th><th>Código Alumno</th><th>Nombre</th><th>Tipo Registro</th></tr>
                                 </thead>
-                                <tbody>
-                                    
-                                </tbody>
+                                <tbody>                                
 <?php
-                                    
-
-
-
-
-
-
-
-?>                                
-
-
-
-
-
-
+                                    $sqlConsultaRegistros = "SELECT *FROM registros INNER JOIN alumnos USING(cod_alu)";
+                                    $ejecutarSqlConsultaRegistros = $conexion->query($sqlConsultaRegistros);
+                                    foreach($ejecutarSqlConsultaRegistros as $registro){
+                                        $fechaRegistro = $registro["fecha_reg"];
+                                        $horaRegistro = $registro["hora_reg"];
+                                        $tipoRegistro = $registro["tipo_reg"];
+                                        $codigoAlumno = $registro["cod_alu"];
+                                        $nombreAlumno = $registro["nom_alu"];
+?>                                      
+                                        <tr>
+                                            <td><?php echo $fechaRegistro ?></td>
+                                            <td><?php echo $horaRegistro?></td>
+                                            <td><?php echo $codigoAlumno?></td>
+                                            <td><?php echo $nombreAlumno?></td>
+                                            <td><?php echo $tipoRegistro?></td>
+                                        </tr>
+<?php
+                                    }
+?>
+                                </tbody>
                             </table>
                         </div>    
                     </div>   

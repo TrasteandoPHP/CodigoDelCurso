@@ -1,18 +1,23 @@
+<?php
+    session_start();
+    if(isset($_SESSION["administrador"])){
+        $codigoAdmin = $_SESSION["administrador"];
+        
+        session_destroy();
 
+        echo "
+        <script>
+            alert ('Bye bye........sesión cerrada');
+            window.location.href='./../index.html';
+        </script>
+    "; 
 
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign out</title>
-</head>
-<body>
-    <h1>Bye bye.....</h1>
-</body>
-</html>
-
+    } else {
+        echo "
+            <script>
+                alert ('Para acceder a esta página tienes que iniciar sesión como Administrador.');
+                window.location.href='./../index.html';
+            </script>
+        "; 
+    }
+?>

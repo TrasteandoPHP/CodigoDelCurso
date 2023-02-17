@@ -22,7 +22,7 @@
                 echo "
                     <div class='container'>
                         <div class='row my-3'>
-                            <div class='offset-2 col-12 col-md-12'>
+                            <div class='offset-2 col-12 col-md-8'>
                                 <nav class='nav bg-light'>
                                     <a class='nav-link btn btn-info text-white px-4' href='#'>Inicio</a>
                                     <a class='nav-link btn btn-info text-white' href='#'>Alta Alumnos</a>                        

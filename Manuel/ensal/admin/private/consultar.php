@@ -24,18 +24,15 @@
                 <div class='container'>
                     <div class='row my-3'>
                         <div class='offset-2 col-12 col-md-8'>
-                            <nav class='nav bg-light'>
-                                <!-- <button onclick="window.location.href'./index.php'">Inicio</button> -->
-                                <a class='nav-link btn btn-info text-white px-4' href='./index.php'>Inicio</a>
-                                <a class='nav-link btn btn-info text-white' href='./altaalumnos.php'>Alta Alumnos</a>                        
-                                <a class='nav-link btn btn-info text-white' href='./consultar.php'>Consulta Registros</a>
-                                <a class='nav-link btn btn-info text-white' href='./altaadm.php'>Alta Administradores</a>
-                                <a class='nav-link btn btn-danger text-white px-4' href='./../index.html'>salir</a>
-                                <a class='nav-link mx-5'><?php echo $nombreAdmin?></a>
-                            </nav>
-                            <hr>
+                            <?php include('./menu.html')?>                            
+                        </div>
+                    </div>
+                    <div class='row my-3'>
+                        <div class='offset-2 col-12 col-md-8'>                           
                             <h1 class="text-center">Consultar entradas y salidas</h1>
                             <input class="my-4" id="buscar" type="text" placeholder="buscar....">
+                            <br>
+                            <a href="./consultarDes.php">Descargar Tabla</a>
                             <br>
                             <table class="table table-striped text-center">
                                 <thead >
@@ -64,28 +61,28 @@
 <?php
                                     }
 ?>
-                               </tbody>
+                                </tbody>
                             </table>
                         </div>
                     </div>
                 </div> 
                 <script type="text/javascript">
+                    
                     $(function(){
-                        $("#buscar").quicksearch("table tbody tr");
-                    })
-                </script>                    
-
-
+                        $("#buscar").quicksearch("table tbody tr");                                             
+                    });
+                    
+                </script> 
             </body>
         </html>                    
 <?php     
             
-            } else {
-                echo "
-                    <script>
-                        alert ('Para acceder a esta página tienes que iniciar sesión como Administrador.');
-                        window.location.href='./../index.html';
-                    </script>
-                "; 
-            }        
+    } else {
+        echo "
+            <script>
+                alert ('Para acceder a esta página tienes que iniciar sesión como Administrador.');
+                window.location.href='./../index.html';
+            </script>
+        "; 
+    }        
 ?>        
