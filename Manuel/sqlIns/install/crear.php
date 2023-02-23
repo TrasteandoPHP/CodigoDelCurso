@@ -24,13 +24,15 @@
                         $passwordEncriptada = password_hash($passwordAdmin, PASSWORD_DEFAULT);
 
                         // Creamos conexión.
-                        $conexion = new mysqli("10.10.10.199","manuelcp","1234","manuelcp");
+                        $conexion = new mysqli("localhost","root","","manuelcp");
+
+                        // Hay que comprobar que el correo de administrador no está duplicado.
 
                         // Crear la tabla administradores e insertar el admin dado.
                         $sqlCrearTablaAdmin = "CREATE TABLE if not exists administradores(
                                                     cod_adm int(3) NOT NULL PRIMARY KEY AUTO_INCREMENT,                                        
                                                     nom_adm varchar(50) NOT NULL,
-                                                    email_adm varchar(100) UNIQUE NOT NULL,
+                                                    email_adm varchar(100) NOT NULL,
                                                     pass_adm varchar(100) NOT NULL                              
                         )";
 
@@ -81,8 +83,16 @@
                                             echo "<div class='alert alert-success' role='alert'>Tabla productos creada correctamente.<br></div>";    
                                             
                                             // Vamos a crear la carpeta en donde se van a guardar las imagenes.
-                                            mkdir("./../imagenes/", 0777);
-                                            echo "<div class='alert alert-primary' role='alert'>La instalación ha finalizado.<br></div>";    
+                                            $ruta = "./../imagenes/";
+                                            if (!file_exists($ruta)) {
+                                                mkdir($ruta, 0777, true);
+                                                echo "<div class='alert alert-success' role='alert'>Carpeta imagenes creada correctamente.<br></div>";    
+                                            } else {
+
+                                                echo "<div class='alert alert-danger' role='alert'>La carpeta imagenes ya existe.<br></div>";                                                  
+                                            }                                       
+                                            
+                                            echo "<div class='alert alert-primary' role='alert'>La instalación ha finalizado.<br></div>";
                                             
                                         } else {
                                             echo "<div class='alert alert-danger' role='alert'>Error al crear la tabla productos.<br></div>"; 
