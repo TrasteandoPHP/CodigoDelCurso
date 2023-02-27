@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+            <script src="./lib/jQuery-3.6.3.min.js"></script>
+        <title>Ejercicio jQuery</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="offset-2 col-7 my-5 text-center">
+                    <button type="button" class="btn btn-success col-10" onclick="limpiar()">Limpiar</button>
+                    <br><br>
+
+                    <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item m-auto"><a href="https://www.marca.com/" id="link1" onmouseover="linkVisitado('1')">Marca</a></li>
+                        <li class="list-group-item m-auto"><a href="https://www.lavozdegalicia.es/" id="link2" onmouseover="linkVisitado('2')">La Voz de Galicia</a></li>
+                        <li class="list-group-item m-auto"><a href="https://www.20minutos.es/" id="link3" onmouseover="linkVisitado('3')">20 Minutos</a></li>
+                    </ul>                                     
+                    <br><br>
+
+                    <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item m-auto"><img src="./img/html5.png" width="100" alt="HTML5 Logo" id="img1" onclick="imagenVisitada('1')"></li>
+                        <li class="list-group-item m-auto"><img src="./img/css.png" width="100" alt="CSS3 Logo" id="img2" onclick="imagenVisitada('2')"></li>
+                        <li class="list-group-item m-auto"><img src="./img/javascript.png" width="100" alt="JS Logo" id="img3" onclick="imagenVisitada('3')"></li>
+                    </ul>                    
+                    <br><br>
+
+                    <ul class="list-group list-group-horizontal col-5">
+                        <li class="list-group-item m-auto"><input type="text" name="Escribiendo en input Text ..." id="input1" onkeyup="inputEscrito('1')" onblur="limpiarInput()" ></li>
+                        <li class="list-group-item m-auto"><input type="number" name="Escribiendo en input Number ..." id="input2" onkeyup="inputEscrito('2')" onblur="limpiarInput()"></li>
+                        <li class="list-group-item m-auto"><input type="email" name="Escribiendo en input Email ..." id="input3" onkeyup="inputEscrito('3')" onblur="limpiarInput()"></li>
+                    </ul>                    
+                    <br><br>
+
+                    <textarea id="pantalla" cols="75" rows="2" maxlength="200"></textarea><br><br>
+                    <hr>
+                    <p id="resultados"></p>
+                                      
+                </div>
+            </div>           
+        </div>
+
+
+        <script type="text/javascript">
+
+            function limpiar(){
+                $("#pantalla").val("");                              
+            }
+
+            function limpiarInput(){
+                $("input").val("");
+            }
+
+            function linkVisitado(id){
+                limpiar();
+                let linkVisitado = $("#link"+id).attr("href");
+                $("#pantalla").val(linkVisitado);
+            }
+
+            function imagenVisitada(id){
+                limpiar();
+                //let imgVisitada = $('#'+id).attr("src");
+                let imgVisitada = $("#img"+id).attr("src");
+                $("#pantalla").val(imgVisitada);
+                let mostrarImagen = "<img width='100%' src='"+imgVisitada+"'>";
+                $("p#resultados").html(mostrarImagen);
+            }
+
+            function inputEscrito(id){
+                limpiar();
+                let inputEscrito = $("#input"+id).attr("name");
+                $("#pantalla").val(inputEscrito);
+            }
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> -->
+        <script src="./lib/jQuery-3.6.3.min.js"></script>
+        <title>jQuery</title>
+    </head>
+    <body>
+        <p>Buenos días</p><br>
+        <a href="https://direccion.com" onmouseover="leeTextoDeA()">Ir a marca</a><br><br>
+        <button onclick="mostrarTextoP()">Texto del párrafo</button><br><br>
+        <input type="text" onkeyup="copiaLetras()">
+        <br>
+        <hr>
+        <p id="resultados"></p>
+
+
+        <script type="text/javascript">
+
+            function mostrarTextoP(){
+                var textoP = $("p").text();
+                //alert(textoP);
+                //$("button").text(textoP);
+                $("a").attr("href","https://www.marca.com");
+                
+                //var textoParrafo = document.querySelector("p").textContent;
+                //document.querySelector("button").innerText = textoParrafo;
+                //console.log(textoParrafo);
+               
+                //const resultados = document.getElementById("resultados").textContent;
+                //console.log(resultados);
+            }
+
+            function leeTextoDeA(){
+                var textoEnlace = $("a").text();
+                //alert(textoEnlace);
+                $("p#resultados").text(textoEnlace);
+
+                var enlace = $("a").attr("href");
+                //<div class='alert alert-success' role='alert'>Tabla Administradores creada correctamente.</div>
+                //alert(enlace);
+                //window.location.href = enlace;
+            }
+
+            function copiaLetras(){
+                var datos = $("input").val();
+                $("p#resultados").text(datos);
+            }
+        </script>
+    </body>
+</html>
