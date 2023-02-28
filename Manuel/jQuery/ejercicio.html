@@ -25,7 +25,8 @@
 
                     <ul class="list-group list-group-horizontal">
                         <li class="list-group-item m-auto"><img src="./img/html5.png" width="100" alt="HTML5 Logo" id="img1" onclick="imagenVisitada('1')"></li>
-                        <li class="list-group-item m-auto"><img src="./img/css.png" width="100" alt="CSS3 Logo" id="img2" onclick="imagenVisitada('2')"></li>
+                        <li class="list-group-item m-auto"><img src="./img/css.png" width="100" alt="CSS3 Logo" id="img2" onclick="imagenVisitada('2')"></li> 
+                        <!-- se puede enviar el parámetro de la función que hace referencia la id como "this.id"-->
                         <li class="list-group-item m-auto"><img src="./img/javascript.png" width="100" alt="JS Logo" id="img3" onclick="imagenVisitada('3')"></li>
                     </ul>                    
                     <br><br>
@@ -44,8 +45,6 @@
                 </div>
             </div>           
         </div>
-
-
         <script type="text/javascript">
 
             function limpiar(){
@@ -59,6 +58,7 @@
             function linkVisitado(id){
                 limpiar();
                 let linkVisitado = $("#link"+id).attr("href");
+                // Para recoger el id que viene de la función como "this.id" cambiar a $("#"+id)
                 $("#pantalla").val(linkVisitado);
             }
 
