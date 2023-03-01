@@ -21,4 +21,16 @@
         echo "Grabado boton nº$botonPulsado con 1ª pulsación";
         
     }
+
+    // Se puede omitir la consulta si previamente se crea el registro. Solo habría que hacer el UPDATE.
+    // $botonPulsado = $_POST["botonPulsado"];
+    // $conexion = new mysqli ("localhost","root","","contadorClicks");
+    // $sqlActualizarContadorBoton = "UPDATE botonpulsado SET pul_bot=pul_bot+1  WHERE num_bot='$botonPulsado'";
+    // $ejecutarSqlActualizarContadorBoton = $conexion->query($sqlActualizarContadorBoton);
+    
+
+
+
+
+
 ?>
