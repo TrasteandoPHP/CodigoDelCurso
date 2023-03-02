@@ -15,36 +15,42 @@
                 <div class="offset-2 col-8 my-5">
 
                     <table class="table table-striped">
-                        <tr>
+                        <tr>                           
+
+                            <?php
+                                $conexion = new mysqli("localhost","root","","contadorClicks");
+                                
+                                $sql1 = "SELECT * FROM botonPulsado WHERE num_bot='1'";
+                                $ejecutarSql1 = $conexion->query($sql1);
+                                $clicksBoton1 = $ejecutarSql1->num_rows;
+
+                                $sql2 = "SELECT * FROM botonPulsado WHERE num_bot='2'";
+                                $ejecutarSql2 = $conexion->query($sql2);
+                                $clicksBoton2 = $ejecutarSql2->num_rows;
+
+                                $sql3 = "SELECT * FROM botonPulsado WHERE num_bot='3'";
+                                $ejecutarSql3 = $conexion->query($sql3);
+                                $clicksBoton3 = $ejecutarSql3->num_rows;
+                            ?>
+
                             <th>Botón1</th>
                             <th>Botón2</th>
                             <th>Botón3</th>
                         </tr>
-                    </table>    
-
+                        <tr>
+                            <td><?php echo $clicksBoton1 ?></td>
+                            <td><?php echo $clicksBoton2 ?></td>
+                            <td><?php echo $clicksBoton3 ?></td>
+                        </tr>    
+                    </table>
+                    <div class='alert alert-primary my-4 py-4' role='alert'>El número total de clicks es <?php echo $clicksBoton1+$clicksBoton2+$clicksBoton3?><br></div>                  
                     <?php
-                        $conexion = new mysqli("localhost","root","","contadorClicks");
                         
-                        $sql = "SELECT * FROM botonPulsado WHERE num_bot='1'";
-                        $ejecutarSql = $conexion->query($sql);
-                        $clicksBoton1 = $ejecutarSql->num_rows;
-
-                        $sql = "SELECT * FROM botonPulsado WHERE num_bot='2'";
-                        $ejecutarSql = $conexion->query($sql);
-                        $clicksBoton2 = $ejecutarSql->num_rows;
-
-                        $sql = "SELECT * FROM botonPulsado WHERE num_bot='3'";
-                        $ejecutarSql = $conexion->query($sql);
-                        $clicksBoton3 = $ejecutarSql->num_rows;
-
-                       
-                        echo "<div class='alert alert-primary my-4 py-4' role='alert'>El número total de clicks del Boton1 es $clicksBoton1.<br></div>";
-                               
-                        $ejecutarSql->free_result();
+                        $ejecutarSql1->free_result();
+                        $ejecutarSql2->free_result();
+                        $ejecutarSql3->free_result();
                         $conexion->close();                        
-                    ?>
-                    
-                        
+                    ?>                                               
                 </div>
             </div>
         </div>        
