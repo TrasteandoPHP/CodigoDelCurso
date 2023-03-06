@@ -1,0 +1,47 @@
+body {
+    height: 100vh; 
+    min-height: 800px;   
+    margin: 0;
+    display: flex;        
+}
+
+.primary-container {
+    width: 40%;
+    height: 500px; 
+    min-width: 750px;   
+    text-align: center;
+    background-color: lightslategrey;
+    border-radius: 20px;
+}
+
+nav {
+    height: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+}
+
+a {
+    text-decoration: none;
+    margin: 20px;
+    padding: 10px;
+}
+
+.fa-solid {
+    color: black;
+    font-size: 30px;
+}
+
+.icon:hover {
+    color:cornflowerblue
+}
+
+hr {
+    margin-top: 30px;    
+}
