@@ -8,15 +8,14 @@
         echo "
                 <script>
                     alert('Asignación de Vehículo registrada correctamente.');
-                    window.location.href='./altaVehiculos.php';
                 </script>
             ";    
            
-        $sqlActualizacionEstadoEmpleado = "UPDATE empleados SET est_veh=1 WHERE cod_emp='$codigoEmpleado'";
+        $sqlActualizacionEstadoEmpleado = "UPDATE empleados SET est_veh='1' WHERE cod_emp='$codigoEmpleado'";        
         
-        if($ejecutarSqlActualizacionEmpleado->query($sqlActualizacionEstadoEmpleado)){
-            $sqlActualizacionEstadoVehiculo = "UPDATE vehiculos SET est_veh=1 WHERE cod_veh='$codigoVehiculo'";
-                if($ejecutarSqlActualizacionVehiculo->query($sqlActualizacionEstadoVehiculo)){
+        if($conexion->query($sqlActualizacionEstadoEmpleado)){
+            $sqlActualizacionEstadoVehiculo = "UPDATE vehiculos SET est_veh='1' WHERE cod_veh='$codigoVehiculo'";
+                if($conexion->query($sqlActualizacionEstadoVehiculo)){
                     echo "
                     <script>
                         window.location.href='./altaVehiculos.php';

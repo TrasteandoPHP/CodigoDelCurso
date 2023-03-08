@@ -2,6 +2,25 @@
     session_start();
     if(isset($_SESSION["usuario"])){
 
+        $hoy = date("Y-m-d");
+              
+        $conexion = new mysqli ("10.10.10.199","fila3","fila3","fila3");
+        $sqlConsultaFecha  = "SELECT * FROM asignaciones ORDER BY fecha_asi DESC";
+        $ejecutarSqlConsultaFecha = $conexion->query($sqlConsultaFecha);
+        $registro=$ejecutarSqlConsultaFecha->fetch_array();
+        $fechaRegistro = $registro["fecha_asi"];
+        
+        if($hoy == $fechaRegistro){
+            echo "<script>alert('Los Empleados/vehículos ya están registrados en fecha de hoy');</script>";
+        } else {
+            $sqlLiberarEmpleados = "UPDATE empleados SET est_veh='0'";
+            $conexion->query($sqlLiberarEmpleados);
+
+            $sqlLiberarVehiculos = "UPDATE vehiculos SET est_veh='0'";
+            $conexion->query($sqlLiberarVehiculos);         
+            
+        }
+
 ?>        
         <!DOCTYPE html>
         <html lang="en">
@@ -99,7 +118,7 @@
                                         <i class="fa-solid fa-book icon" title="Consultas"></i>               
                                     </a>
                                     <a href="./../peche/cerrar.php">
-                                        <i class="fa-solid fa-right-from-bracket" title="exit"></i>                                          
+                                        <i class="fa-solid fa-right-from-bracket icon" title="exit"></i>                                          
                                     </a>
                                 </div>                           
                             </nav>

@@ -44,7 +44,7 @@
                             ?>
                             <div class="offset-1 col-10 text-center">
                                 
-                                <h1>Alta Vehículos</h1> 
+                                <h1 class="text-center mt-2 pb-3">Alta Vehículos</h1> 
                                 <form action="" method="POST">
                                     <input class="col-3 p-1"type="text" name="marca" required>
                                     <input class="col-3 p-1"type="text" name="matricula" required>
