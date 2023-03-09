@@ -1,0 +1,73 @@
+
+Tres impactos de INSERT para cada tabla.
+----------------------------------------
+
+	INSERT INTO alumnos(nom_alu,fecha_alu) VALUES ('Manuel','2023-03-09')
+
+	INSERT INTO mensajes(cod_alu, txt_men, fecha_men, hora_men) VALUES ('1','Está abierta la piscina','2023-03-09','09:48:00')
+
+	INSERT INTO respuestas(cod_men, cod_alu, txt_res, fecha_res, hora_res) VALUES ('1','1','Seguro, está lloviendo','2023-03-09','09:53:00')
+
+
+Consulta para buscar todos los alumnos.
+---------------------------------------
+
+	SELECT * FROM alumnos
+
+
+Consulta para buscar al alumno Alfonso.
+---------------------------------------
+
+	SELECT * FROM alumnos WHERE nom_alu='Alfonso'
+
+
+Consulta para ver todas las preguntas con fecha superior al 01-Enero-2023.
+--------------------------------------------------------------------------
+
+	SELECT * FROM mensajes WHERE fecha_men>'2023-01-01'
+
+
+Mostrar todas las preguntas que tiene respuestas.
+-------------------------------------------------
+
+	SELECT * FROM mensajes INNER JOIN respuestas USING(cod_men)
+
+
+Mostrar las preguntas que ha hecho Alfonso.
+-------------------------------------------
+
+	SELECT * FROM mensajes INNER JOIN alumnos USING(cod_alu) WHERE alumnos.nom_alu='Alfonso'  
+
+	SELECT * FROM mensajes INNER JOIN respuestas ON mensajes.cod_pre = respuestas.cod_pre INNER JOIN alumnos ON preguntas.cod_alu = alumnos.cod_alu
+			          WHERE alumnos.nom.alu='Alfonso' AND preguntas.fecha_pre='2023-03-09'	 
+
+
+Modificar el nombre al alumno Alfonso.
+--------------------------------------
+
+	UPDATE alumnos SET nom_alu='Fonsi' WHERE cod_alu='2'
+
+
+Borrar al alumno Alfonso.
+-------------------------
+
+	DELETE FROM alumnos WHERE cod_alu='2';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
