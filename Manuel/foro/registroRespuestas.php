@@ -45,8 +45,12 @@
                                     <textarea id="respuesta" name="respuesta" rows="3" cols="75"></textarea>
                                     <input type="submit" class="btn btn-success col-8 my-3" value="Registrar">
                                 </form>
+                                <br><br>
+                                <div class="row offset-5 col-10">
+                                    <button class="btn btn-light col-2" onclick="window.location.href='./index.html'">Inicio</button>
+                                </div> 
                             </div>
                         </div>
-                    </div>    
+                    </div>                    
                 </body>
             </html>

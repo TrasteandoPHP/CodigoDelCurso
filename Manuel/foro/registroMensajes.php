@@ -31,6 +31,42 @@
                         <textarea id="mensaje" name="mensaje" rows="3" cols="60"></textarea>
                         <input type="submit" class="btn btn-success col-8 my-3" value="Registrar">
                     </form>
+                    <br><br>
+                    <div class="row offset-5 col-10">
+                        <button class="btn btn-light col-2" onclick="window.location.href='./index.html'">Inicio</button>
+                    </div>
+                    <table class="table table-striped my-5">
+                        <tr><th>Mensaje</th><th>Usuario</th><th>Fecha</th><th>Hora</th></tr>
+                        <?php
+                            $conexion = new mysqli("localhost", "root", "", "escuela");
+                            $sqlConsultaMensajes = "SELECT * FROM mensajes";
+                            $ejecutarSqlConsultaMensajes = $conexion->query($sqlConsultaMensajes);
+                            foreach($ejecutarSqlConsultaMensajes as $registro){
+                                $codigoMensaje = $registro["cod_men"];
+                                $codigoAlumno = $registro["cod_alu"];
+                                $textoMensaje = $registro["txt_men"];
+                                $fechaMensaje = $registro["fecha_men"];
+                                $horaMensaje = $registro["hora_men"];
+
+                                $fecha = explode('-',$fechaMensaje);
+                                $fechaBienFormada = $fecha[2]."-".$fecha[1]."-".$fecha[0];
+
+                                $sqlConsultaAlumno = "SELECT * FROM alumnos WHERE cod_alu='$codigoAlumno'";
+                                $ejecutarSqlConsultaAlumno = $conexion->query($sqlConsultaAlumno);
+                                $alumno = $ejecutarSqlConsultaAlumno->fetch_array();                                                                  
+                                $nombreAlumno = $alumno["nom_alu"];
+                               
+                                echo "
+                                    <tr>
+                                        <td><a href='./registroRespuestas.php?cod=$codigoMensaje'>$textoMensaje</a></td>
+                                        <td>$nombreAlumno</td>
+                                        <td>$fechaBienFormada</td>
+                                        <td>$horaMensaje</td>
+                                    </tr>
+                                ";                                
+                            }                
+                        ?>
+                    </table>     
                 </div>
             </div>
         </div>    
