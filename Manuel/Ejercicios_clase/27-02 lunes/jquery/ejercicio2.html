@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+	<button onclick="vaciar()">Vaciar</button>
+	<br>
+	<hr>
+	<a href="" id="enlace1" onmouseover="pasanporenlace1()">Productos</a> 
+	<a href="" id="enlace2" onmouseover="pasanporenlace2()">Historia</a> 
+	<a href="" id="enlace3" onmouseover="pasanporenlace3()">Contacto</a>
+	<br>
+	<hr>
+	<img id="im1" width="5%" src="perro1.jpg" onclick="imagen('im1')">
+	<img id="imt2" width="5%" src="./perro2.jpg" onclick="imagen(this.id)">
+	<img id="im3" width="5%" src="./perro3.jpg" onclick="imagen('im3')">
+	<br>
+	<hr>
+	<input type="text" placeholder="Nombre" id="inputtexto" onkeyup="escribenentexto()">
+	<input type="number" placeholder="Edad" id="inputnumero" onkeyup="escribenennumero()">
+	<input type="email" placeholder="Email" id="inputemail" onkeyup="escribenenemail()">
+	<br>
+	<hr>
+	<p id="resultados"></p>
+	<script>
+		function vaciar()
+		{
+			$("p#resultados").text("");
+		}	
+
+		function pasanporenlace1()
+		{
+			var textoenlace;
+			textoenlace = $("a#enlace1").text();
+			$("p#resultados").text("Han pasado por "+textoenlace);
+
+		}
+
+		function pasanporenlace2()
+		{
+			var textoenlace;
+			textoenlace = $("a#enlace2").text();
+			$("p#resultados").text("Han pasado por el enlace "+textoenlace);
+		}
+
+		function pasanporenlace3()
+		{
+			var textoenlace;
+			textoenlace = $("a#enlace3").text();
+			$("p#resultados").text("Han pasado por "+textoenlace);
+		}
+
+		function imagen(identificador)
+		{
+			var ruta;
+			alert(identificador);
+			ruta = $("#"+identificador).attr("src");	
+			$("p#resultados").text(ruta);
+			var etiquetaimagen;
+			etiquetaimagen = "<img width='100%' src='"+ruta+"'>";
+			$("p#resultados").html(etiquetaimagen);			
+		}
+
+		function imagenuno()
+		{
+			var ruta;
+			ruta = $("img#im1").attr("src");	
+			$("p#resultados").text(ruta);
+		}
+		function imagendos()
+		{
+			var ruta;
+			ruta = $("img#im2").attr("src");	
+			$("p#resultados").text(ruta);
+		}
+		function imagentres()
+		{
+			var ruta;
+			ruta = $("img#im3").attr("src");	
+			$("p#resultados").text(ruta);
+		}
+
+
+		function escribenentexto()
+		{
+			$("p#resultados").text("Están escribiendo en el input de texto");
+		}
+
+		function escribenennumero()
+		{
+			$("p#resultados").text("Están escribiendo en el input de número");
+		}
+
+		function escribenenemail()
+		{
+			$("p#resultados").text("Me escriben en el input de tipo email");
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<h1>Crear administrador modo Dios</h1>
+	<form action="graba.php" method="POST">
+		<input type="text" name="nombre" placeholder="Nombre" maxlength="50" required>
+		<br>
+		<input type="email" name="email" placeholder="Email" maxlength="100" required>
+		<br>
+		<input type="password" name="pass" placeholder="Password" maxlength="100" required>
+		<br>
+		<select name="rol" required>
+			<option value="">Selecciona rol</option>
+			<option value="1">Todo</option>
+			<option value="2">Altas</option>
+			<option value="3">Consultar</option>
+		</select>
+		<input type="submit" value="Grabar">
+	</form>
+
+</body>
+</html>

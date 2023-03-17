@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+	<form action="grabar.php" method="POST">
+		<div id="datos">
+			<input type="hidden" id="lineas" name="lineas" value=1>
+			<input type="text" name="caja1" placeholder="producto 1">
+			<br>
+		</div>
+		<br>
+			<input type="button" onclick="mas()" value="+">
+		<br>
+		<input type="submit" value="Grabar">
+	</form>
+
+	<script type="text/javascript">
+		function mas()
+		{
+			var numero;
+			numero = parseInt($("#lineas").val());
+			numero = numero + 1;
+			var anadir;
+			anadir = "<input type='text' name='caja"+numero+"' placeholder='producto "+numero+"'><br>";
+			$("#datos").append(anadir);
+			$("#lineas").val(numero);
+		}	
+	</script>
+</body>
+</html>

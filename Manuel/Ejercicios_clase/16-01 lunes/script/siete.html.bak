@@ -1,0 +1,107 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+		<style>
+			body{
+				background-color:grey;
+			}
+			
+			div{
+				float:left;
+			}
+			.todo{
+				width:80%;
+				margin-left:10%;
+				background-color:white;
+			}
+			
+			.izquierda
+			{
+				width:50%;
+			}
+			
+			.derecha
+			{
+				width:50%;
+			}
+			
+			.abajo
+			{
+				width:100%;
+			}
+			
+			input
+			{
+				width:80%;
+				margin-left:10%;
+				margin-top:1%;
+
+			}
+			
+			textarea
+			{
+				width:80%;
+				margin-left:10%;
+				margin-top:1%;
+
+			}
+			
+			input:hover
+			{
+				background-color:pink;
+			}
+			
+			.derecha input
+			{
+				background-color:grey;
+				margin-top:1%;
+				color:white;
+				border:none;
+			}
+			.derecha textarea
+			{
+				background-color:grey;
+				margin-top:1%;
+				color:white;
+				border:none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="todo">
+			<div class="izquierda">
+				<form>
+					<input id="nom" type="text" placeholder="Nombre" onkeyup="pasar_texto('nom')">
+					<input id="ap" type="text" placeholder="Apellidos" onkeyup="pasar_texto('ap')">
+					<textarea id="dir" placeholder="Dirección" onkeyup="pasar_texto('dir')"></textarea>
+				</form>
+			</div>
+			<div class="derecha">
+				<input id="nomderecha" type="text" placeholder="Nombre" readonly>
+				<input id="apderecha" type="text" placeholder="Apellidos" readonly>
+				<textarea id="dirderecha" placeholder="Dirección" readonly></textarea >
+			</div>
+			<div class="abajo">
+			<button onclick="ver_ocultar_derecha()">Mostrar-Ocultar</button>
+			</div>
+		</div>
+		
+		<script>
+			function ver_ocultar_derecha()
+			{
+				$("div.derecha").toggle(1200);
+			}
+			
+			function pasar_texto(identificador)
+			{
+				var texto;
+				
+					texto = $("#"+identificador).val();
+					$("#"+identificador+"derecha").val(texto);
+				
+			}
+		</script>
+		
+	</body>
+</html>

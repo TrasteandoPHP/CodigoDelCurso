@@ -1,0 +1,19 @@
+<?php
+	if(isset($_POST["email"]))
+	{
+		include("./funciones.php");
+		//recibimos datos
+		$ema = $_POST["email"];
+		$pas = $_POST["contrasena"];
+		
+		
+		
+		//echo "bien";
+	}
+	else
+	{
+		
+	}	
+
+
+?>

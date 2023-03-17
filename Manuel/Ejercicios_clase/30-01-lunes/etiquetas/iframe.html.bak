@@ -1,0 +1,15 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<iframe src="https://effuture.es" style="width:20%;height:100px;border:none">
+		</iframe>
+		
+		<iframe src="./../../Ejemplo.pdf"></iframe>
+		
+		<iframe src="https://www.youtube.com/watch?v=_WoY_XHt_cM"></iframe>
+		
+		<iframe src="https://www.youtube.com/embed/_WoY_XHt_cM"></iframe>
+		
+	</body>
+</html>

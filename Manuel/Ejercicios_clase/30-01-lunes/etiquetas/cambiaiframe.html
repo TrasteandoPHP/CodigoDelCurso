@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<button onclick="mostrar_tiempo()">El tiempo</button>
+		<button onclick="mostrar_escuela()">Escuela</button>
+		<button onclick="mostrar_marca()">Marca</button>
+		<iframe src=""></iframe>
+		<script>
+			function mostrar_tiempo()
+			{
+				$("iframe").attr("src","https://meteogalicia.gal");
+			}
+			
+			function mostrar_escuela()
+			{
+				$("iframe").attr("src","https://effuture.es");
+			}
+			
+			function mostrar_marca()
+			{
+				$("iframe").attr("src","https://marca.com");
+			}
+			
+		</script>
+	</body>
+</html>

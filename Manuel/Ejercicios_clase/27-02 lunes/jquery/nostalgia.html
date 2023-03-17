@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+
+	<textarea onkeyup="miraletras()" onblur="vaciar()" onfocus="miraletras()" maxlength="50"></textarea>
+	<br>
+	<p id="resultados"></p>
+
+	<script>
+		function miraletras()
+		{
+			var letras;
+			letras = $("textarea").val();
+			var cantidadletras;
+			cantidadletras = letras.length;
+			//alert(cantidadletras);
+			var resta;
+			resta = 50 - cantidadletras;
+			$("p#resultados").text("");
+			$("p#resultados").text("Te quedan "+resta+" caracteres");
+		}
+		function vaciar()
+		{
+			$("p#resultados").text("");
+		}
+	</script>
+</body>
+</html>

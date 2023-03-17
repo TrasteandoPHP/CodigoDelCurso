@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<input type="text" id="textoabuscar" placeholder="Nombre..." onkeyup="abuscar()">
+		<hr>
+		<p id="resultados">
+			<h1>asdas</h1>
+			<li></li>
+		</p>
+		
+		<script>
+				function abuscar()
+				{
+					var texto;
+					texto = $("#textoabuscar").val();
+					if(texto !="")
+					{
+						$.post(
+							"./busca.php",
+							{dato:texto},
+							function(resultadophp){
+								$("#resultados").html(resultadophp);
+							}
+						);
+					}
+					else
+					{
+						$("#resultados").html("");
+					}
+				
+				}
+		</script>
+		
+	</body>
+</html>	

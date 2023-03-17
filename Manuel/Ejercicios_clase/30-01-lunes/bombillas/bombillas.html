@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<img src="./apagada.PNG" style="width:15%;">
+		<br>
+		<button onclick="encender()">Encender</button>
+		<button onclick="apagar()">Apagar</button>
+		
+		<script>
+			function encender()
+			{
+				$("img").attr("src","./encendida.PNG");
+			}
+			
+			function apagar()
+			{
+				$("img").attr("src","./apagada.PNG");
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<form>
+			<input id="nombre" type="text" placeholder="Escribe tu nombre por favor" onkeyup="borrar()">
+			<br>
+				<span style="display:none;">Me cago en tu raza, NO TE PEDÍ EL NOMBRE POR FAVOR???? RELLÉNALO ATONTADO/A</span>
+			<br>
+			<input type="button" value="Enviar" onclick="comprobar()">
+		</form>
+		<script>
+			function comprobar()
+			{
+				var texto;
+				texto = $("#nombre").val();
+				if(texto=="")
+				{
+					$("span").show();
+					$("span").css("color","red");
+					$("#nombre").focus();
+					$("#nombre").css("background-color","pink");
+				}
+			}
+			
+			function borrar()
+			{
+				$("span").hide();
+				$("#nombre").css("background-color","white");
+				comprobar();
+			}
+		</script>
+	</body>
+</html>

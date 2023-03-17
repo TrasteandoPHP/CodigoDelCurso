@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<p onmouseover="alert('Hola Mundo')">Párrafo Uno</p>
+		<p onclick="cambiacolor()">Párrafo Dos</p>
+		<p onmouseleave="cambiatexto()">Párrafo Tres</p>
+		<p onclick="cambiafuente()">Párrafo Cuatro</p>
+		<p onclick="borratodo()">Párrafo Cinco</p>
+		
+		<script>
+			function cambiacolor()
+			{
+				$("p").css("background-color","red");
+			}
+			
+			function cambiatexto()
+			{
+				$("p").text("Corre Carmela que chove");
+			}
+			
+			function cambiafuente()
+			{
+				$("p").css("font-family","Courier");	
+			}
+			
+			function borratodo()
+			{
+				$("p").text("aaaaa");
+				$("p").css("background-color","white");
+			}
+			
+			
+			
+		</script>
+		
+	</body>
+</html>

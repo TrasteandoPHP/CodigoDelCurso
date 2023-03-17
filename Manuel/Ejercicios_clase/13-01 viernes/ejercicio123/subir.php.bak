@@ -1,0 +1,18 @@
+<?php
+
+	//vamos a recoger los datos que vienen del formulario. OJO si viene algún tipo de dato file, hay que hacerlo de la siguiente manera
+	
+	//para recoger el nombre del fichero:
+	
+	$fichero = $_FILES["archivo"]["name"];
+	
+	echo $fichero;
+	
+	$trozos = explode(".",$fichero);
+
+	mkdir("./ficheros/$trozos[0]",0777);
+	
+
+
+
+?>

@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,200&display=swap');
+
+
+body{
+	margin:0;
+	padding:0;
+	background-color:grey;
+	height:500px;
+	font-family: 'Roboto Flex', sans-serif;
+}
+
+a{
+	text-decoration:none;
+	color:pink;
+}
+
+a:hover{
+	color:purple;
+}
+
+h1{
+	color:purple;
+	text-align:center;
+}
+
+img{
+	width:50%;
+}
+
+div{
+	float:left;
+}
+
+.todo{
+	width:76%;
+	margin-left:10%;
+	margin-top:5%;
+	background-color:white;
+	height:500px;
+	border-radius:10px;
+	padding:2%;
+	height:500px;
+}
+
+.cien{
+	width:100%;
+}
+
+.cienseparado{
+	width:100%;
+	margin-top:5%;
+}
+
+.logo{
+	width:20%;
+	height:100px;
+}
+
+.menu{
+	width:80%;
+	height:100px;
+}
+
+.lateral{
+	width:20%;
+	height:400px;
+}
+
+.centro{
+	width:80%;
+	height:400px;
+	
+}
+
+ul{
+	padding:0;
+	margin:0;
+	list-style:none; 
+}
+
+.menu nav ul li{
+	float:left;
+	width:20%;
+	text-align:center;
+}
+
+.activo{
+	
+	color:grey;
+	
+}

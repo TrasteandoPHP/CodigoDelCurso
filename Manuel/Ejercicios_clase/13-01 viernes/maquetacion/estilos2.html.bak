@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<title>Estilos 2</title>
+		<meta charset="UTF-8">
+		<style>
+			div
+			{
+				float:left;
+				width:50%;
+			}
+			
+			h1
+			{
+				color:red;
+				text-align:center;
+			}
+			
+			.verde
+			{
+				color:green;
+				background-color:yellow;
+				text-align:right;
+			}
+			
+			a
+			{
+				text-decoration:none;
+				color:red;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<h1>Texto A</h1>
+		<h1>Texto B</h1>
+		<h1 class="verde">Texto C</h1>
+		<div>
+			<p class="verde">Texto de un lado</p>
+			<a href="">Texto enlace</a>
+		</div>
+		<div class="verde">
+			<p>Texto de otro lado</p>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<form>
+			<input type="text" id="nombre" placeholder = "Nombre">
+			<input type="text" id="apellido1" placeholder = "Primer apellido">
+			<input type="text" id="apellido2" placeholder = "Segundo apellido">
+			<input type="button" value="Grabar" onclick="enviardatos()">
+		</form>
+		
+		
+		<script>
+			function enviardatos()
+			{
+				var nombre;
+				var papellido;
+				var sapellido;
+				nombre = $("input#nombre").val();
+				papellido = $("input#apellido1").val();
+				sapellido = $("#apellido2").val();
+				if(nombre != "" && papellido != "" && sapellido !="")
+				{
+					//código para enviar a php
+					$.post(
+							"./graba.php",
+							{nom:nombre, ap1:papellido, ap2:sapellido},
+							function(resultadophp){
+								alert(resultadophp);
+								$("input").val("");
+								
+							}
+					
+					);
+				}
+				else
+				{
+					alert("No puedes dejar inputs vacíos");
+				}
+			}
+		</script>
+	</body>
+</html>

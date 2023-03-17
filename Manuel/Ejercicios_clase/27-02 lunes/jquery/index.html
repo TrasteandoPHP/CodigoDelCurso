@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+	<p>Buenos días</p>
+	<a href="https://direccion.com" onmouseover="leetextodea()">Ir a marca</a>
+	<button onclick="mostrartextop()">Texto de p</button>
+	<br>
+	<input type="text" onkeyup="copialetras()">
+	<br>
+	<hr>
+	<p id="resultados" style="background-color: yellow;"></p>
+	<script type="text/javascript">
+		
+		function mostrartextop()
+		{
+			var texto;
+			texto = $("p").text();
+			// alert(texto);
+			$("a").attr("href","https://marca.com");
+		}
+
+		function leetextodea()
+		{
+			var textoenlace;
+			textoenlace = $("a").text();
+			// alert(textoenlace);
+			$("p#resultados").text(textoenlace);
+			var enlace;
+			enlace = $("a").attr("href");
+			// alert(enlace);
+		}
+
+		function copialetras()
+		{
+			var datos;
+			datos = $("input").val();
+			$("p#resultados").text(datos);
+		}
+
+	</script>	
+</body>
+</html>

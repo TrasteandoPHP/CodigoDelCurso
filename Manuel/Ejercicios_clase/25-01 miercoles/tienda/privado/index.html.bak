@@ -1,0 +1,15 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<form>
+			<input type="text" class="email" placeholder="Email">
+			<input type="text" id="pass" placeholder="Password">
+			<input type="button" value="Entrar" onclick="login()">
+		</form>
+		
+		<script src="./js/funciones.js"></script>	
+	</body>
+</html>

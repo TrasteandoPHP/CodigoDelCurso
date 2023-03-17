@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<form action="diez.php" method="POST" enctype="multipart/form-data">
+			<input type="hidden" name="contador" id="numero" value=1>
+			<div class="ficheros">
+				<input type="file" name="archivo1"><br>
+			</div>
+			<input type="button" onclick="anadiruno()" value="+">
+			<br>
+			<input type="submit" value="Enviar">
+		</form>
+		<script>
+			function anadiruno()
+			{
+				var cajetin;
+				var contador;
+				contador = parseInt($("input#numero").val());
+				contador = contador + 1;
+				$("input#numero").val(contador);
+				//alert(contador);
+				cajetin = "<input type='file' name='archivo"+contador+"'><br>";
+				$("div.ficheros").append(cajetin);
+				
+			}
+		</script>
+	</body>
+</html>

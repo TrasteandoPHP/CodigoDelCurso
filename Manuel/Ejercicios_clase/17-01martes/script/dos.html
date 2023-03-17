@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	</head>
+	<body>
+	<input type="text" onkeydown="copia_texto()">
+	<br>
+	<p></p>
+	<br>
+	<button onclick="borrar()">Limpiar</button>
+	
+	<script>
+		function copia_texto()
+		{
+			var texto;
+			texto = $("input").val();
+			$("p").text(texto);
+			
+		}
+		
+		function borrar()
+		{
+			$("input").val("");
+			$("p").text("");
+			$("input").focus();
+		}
+	</script>
+
+	</body>
+</html>

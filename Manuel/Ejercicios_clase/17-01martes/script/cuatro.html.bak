@@ -1,0 +1,18 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<button onclick="mostrar_ocultar()">Mostrar/ocultar</button> <p id="primerap">Texto de párrafo</p>
+		<br>
+		<p>Texto de párrafo dos</p>
+		
+		<script>
+			function mostrar_ocultar()
+			{
+				$("p#primerap").toggle();
+			}
+		</script>		
+	</body>
+</html>

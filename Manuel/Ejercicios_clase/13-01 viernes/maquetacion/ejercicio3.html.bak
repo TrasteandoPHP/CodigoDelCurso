@@ -1,0 +1,127 @@
+<html>
+	<head>
+		<title></title>
+		<meta charset="UTF-8">
+		<style>
+			body{
+				background-color:grey;
+			}
+			
+			div{
+				float:left
+			}
+			
+			.todo{
+				width:100%;
+			}
+			
+			.cabeza{
+				width:100%;
+			}
+			
+			.cuerpo{
+				width:100%;
+			}
+			
+			.formulario{
+				width:40%;
+				margin-left:25%;
+				margin-right:25%;
+				padding:5%;
+				background-color:white;
+			}
+			
+			.cienuno{
+				width:100%;
+				
+				margin-bottom:5%;
+			}
+			
+			.cien{
+				width:100%;
+				text-align:center;
+				margin-bottom:5%;
+			}
+			
+			
+			.cincuenta{
+				width:50%;
+			}
+			
+			label{
+				width:100%;
+				text-align:center;
+			}
+			
+			h1{
+				text-align:center;
+			}
+			
+			input{
+				width:100%;
+			}
+			
+			.boton{
+				width:20%;
+				margin-left:40%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="todo">
+			<div class="cabeza">
+				<h1>Registro</h1>
+			</div>
+			<div class="cuerpo">
+				<div class="formulario">
+					<form>
+						<div class="cien">
+							<div class="cincuenta">
+								<div class="cien">
+									<label>Nombre</label>
+								</div>
+								<div class="cien">
+									<input type="text">
+								</div>
+							</div>
+							<div class="cincuenta">
+								<div class="cien">
+									<label>Apellidos</label>
+								</div>
+								<div class="cien">
+									<input type="text">
+								</div>
+							</div>
+						</div>
+						
+						<div class="cien">
+							<div class="cien">
+								<label>Email</label>
+							</div>
+							<div class="cien">
+								<input type="text">
+							</div>
+						</div>
+						
+						<div class="cien">
+							<div class="cien">
+								<label>Dirección</label>
+							</div>
+							<div class="cien">
+								<input type="text">
+							</div>
+						</div>
+						
+						<div class="cien">
+							<div class="cienuno">
+								<input type="submit" class="boton">
+							</div>
+						</div>
+						
+					</form>
+				</div>
+			</div>
+			<div class="pie"></div>
+		</div>
+	</body>
+</html>

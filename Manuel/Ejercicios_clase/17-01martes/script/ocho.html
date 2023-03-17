@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<button onclick="cambia_fondo('red')">Rojo</button>
+		<button onclick="cambia_fondo('green')">Verde</button>
+		<button onclick="cambia_fondo('yellow')">Amarillo</button>
+		<button onclick="cambia_fondo('blue')">Azul</button>
+		<button onclick="cambia_fondo('rgb(0,255,255)')">Mezcla</button>
+
+	<script>
+		function cambia_fondo(color)
+		{
+			$("body").css("background-color",color);
+			
+		}
+	</script>
+		
+	</body>
+</html>
