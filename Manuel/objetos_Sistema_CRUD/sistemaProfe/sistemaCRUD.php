@@ -25,7 +25,7 @@
         function __construct($tabla, $condicion){
             $this->tabla = $tabla;
             $this->condicion = $condicion;
-            $this->conexion = new mysli("10.10.10.199","viernes","1234","pruebas");
+            $this->conexion = new mysqli("10.10.10.199","viernes","1234","pruebas");
         }
 
         function setCondicion($condicion){
@@ -52,7 +52,7 @@
             } else {
                 $condicion = "";
             }
-            $sql = "SELECT * FROM $this->tabla $this->condicion";
+            $sql = "SELECT * FROM $this->tabla $condicion";
             $ejecutar = $this->conexion->query($sql);
             return $ejecutar->fetch_array();
         }
@@ -63,7 +63,7 @@
             } else {
                 $condicion = "";
             }
-            $sql = "SELECT * FROM $this->tabla $this->condicion";
+            $sql = "SELECT * FROM $this->tabla $condicion";
             return $this->conexion->query($sql);                        
         }
 
@@ -73,7 +73,7 @@
             } else {
                 $condicion = "";
             }
-            $sql = "SELECT * FROM $this->tabla $this->condicion";
+            $sql = "SELECT * FROM $this->tabla $condicion";
             $ejecutar = $this->conexion->query($sql);
             return $ejecutar->num_rows;
 
@@ -85,7 +85,7 @@
     class Modificar {
         private $tabla, $campos, $condicion, $conexion;
 
-        function __construct(){
+        function __construct($tabla, $campos, $condicion){
             $this->tabla = $tabla;
             $this->campos = $campos;
             $this->condicion = $condicion;
@@ -119,7 +119,7 @@
     class Borrar {
         private $tabla, $condicion, $conexion;
 
-        function __construct(){
+        function __construct($tabla, $condicion){
             $this->tabla = $tabla;          
             $this->condicion = $condicion;
             $this->conexion = new mysli("10.10.10.199","viernes","1234","pruebas");
