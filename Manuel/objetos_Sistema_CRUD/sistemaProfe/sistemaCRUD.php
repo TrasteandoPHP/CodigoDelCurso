@@ -38,11 +38,11 @@
 
         function setTablayCondicion($tabla, $condicion){
             if($tabla!=""){
-                setTabla($tabla);
+                $this->setTabla($tabla);
             }
 
             if($condicion!=""){
-                setCondicion($condicion);
+                $this->setCondicion($condicion);
             }
         }
 
@@ -89,11 +89,12 @@
             $this->tabla = $tabla;
             $this->campos = $campos;
             $this->condicion = $condicion;
-            $this->conexion = new mysli("10.10.10.199","viernes","1234","pruebas");
+            $this->conexion = new mysqli("10.10.10.199","viernes","1234","pruebas");
         }
 
         function setCondicion($condicion){
             $this->condicion = $condicion;
+
         }
 
         function setTabla($tabla){
@@ -105,9 +106,9 @@
         }
 
         function setAll($condicion, $tabla, $campos){
-            setCondicion($condicion);
-            setTabla($tabla);
-            setCampos($campos);
+            $this->setCondicion($condicion);
+            $this->setTabla($tabla);
+            $this->setCampos($campos);
         }
 
         function actualizar($tabla, $campos, $condicion){
@@ -122,7 +123,7 @@
         function __construct($tabla, $condicion){
             $this->tabla = $tabla;          
             $this->condicion = $condicion;
-            $this->conexion = new mysli("10.10.10.199","viernes","1234","pruebas");
+            $this->conexion = new mysqli("10.10.10.199","viernes","1234","pruebas");
         }
 
         function setTabla($tabla){
