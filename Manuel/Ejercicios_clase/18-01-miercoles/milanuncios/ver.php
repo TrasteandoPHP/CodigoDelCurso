@@ -30,26 +30,25 @@
 						$imagen = $registroima["nom_ima"];
 						$ruta = "./imagenes/$codigo/$imagen";
 			?>
-			<div class="anuncio">
-				<div class="imagen">
-					<img src="<?php echo $ruta;?>">
-				</div>
-				<div class="titulo">
-					<h3><?php echo $titulo;?></h3>
-				</div>
-				<div class="precio">
-					<p><?php echo $precio; ?></p>
-				</div>
-				<div class="boton">
-					<button onclick="window.location.href='ver.php?cod=<?php echo $codigo;?>'">Ver</button>
-				</div>
-			</div>	
+					<div class="anuncio">
+						<div class="imagen">
+							<img src="<?php echo $ruta;?>">
+						</div>
+						<div class="titulo">
+							<h3><?php echo $titulo;?></h3>
+						</div>
+						<div class="precio">
+							<p><?php echo $precio; ?></p>
+						</div>
+						<div class="boton">
+							<button onclick="window.location.href='ver.php?cod=<?php echo $codigo;?>'">Ver</button>
+						</div>
+					</div>	
 			
 			<?php
-				}
-			?>
-			//HASTA AQUI
-			
+					}
+				}	
+			?>			
 		</div>
 	</body>
 </html>	
