@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <title>Prueba</title>
+    </head>
+    <body>
+        <table border="1">
+            <tr id="t1" ondblclick="editar(1)">
+                <form action="actualizar.php">
+                    <td id="td1" >                    
+                        <!-- <button onclick="muestraInput(1)">Editar</button> -->
+                        <input type="hidden" name="codigo" value="1">
+                        <span >Alfonso</span>
+                        <input type="text" name="nombre" value="Alfonso" style="display:none;">
+                    </td>
+                    <td>
+                        <span>Carro</span>
+                        <input type="text" name="apellido" value="Carro" style="display:none;">
+                    </td>
+                </form>
+            </tr>
+            <tr id="t2" ondblclick="editar(2)">
+                <form action="actualizar.php">
+                    <td>
+                        <!-- <button onclick="muestraInput(2)">Editar</button> -->
+                        <input type="hidden" name="codigo" value="2">
+                        <span>Manuel</span>
+                        <input type="text" name="nombre" value="Manuel" style="display:none;">
+                    </td>
+                    <td>
+                        <span>Casado</span>
+                        <input type="text" name="apellido" value="Casado" style="display:none;">
+                    </td>
+                </form>        
+            </tr>        
+            <tr>
+                <button>Actualizar</button>
+            </tr>           
+        </table>
+        <script>
+            function muestraInput(iden){
+                $("tr#t"+iden+" input").toggle();
+                $("tr#t"+iden+" span").toggle();
+            }
+
+            function editar(iden){
+                $("tr#t"+iden +" input").toggle();
+                $("tr#t"+iden +" span").toggle();
+            }
+        </script>        
+    </body>
+</html>
