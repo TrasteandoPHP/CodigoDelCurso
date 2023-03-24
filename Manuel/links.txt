@@ -19,3 +19,6 @@ jQuery Quicksearch
                 $("#busca").quicksearch("table tbody tr");
             }) 
         </script>
+
+sweetalert
+https://blog.endeos.com/notificaciones-al-usuario-con-jquery-sweet-alert/        
