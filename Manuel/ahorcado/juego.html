@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <title>Juego</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="offset-2 col-8 text-center">
+                    <h1>Juego del ahorcado</h1>
+                    <hr>
+                    <button class="btn btn-secondary" onclick="window.location.href='./index.html'">Volver</button>
+                    <button class="btn btn-primary" onclick="window.location.href='./juego.html'">Nueva Partida</button>
+                    <hr>
+                    <div id="intentos">
+                        <p>Tienes: <span>10</span> intentos</p>
+                        <input class="col-1 mb-3" type="text"><button onclick="comprobar()">Comprobar</button>
+                    </div>
+                    <div id="palabra">
+                        <input class="col-1 rounded-2 p-1 text-center mt-2" type="text" name="" >
+                    </div>
+                    <div id="palabra_oculta">
+                        <input class="col-1 rounded-2 p-1 text-center mt-2" type="text" name="">
+                    </div>
+                    <div class="offset-2 col-3 text-center">
+                        <img src="./imagenes/10.jpg">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <script>
+
+            function comprobar(){
+                var letrita = $("div#intentos input").val();
+                // Vamos a recorrer los inputs de palabra_oculta. 
+                // Tenemos que mirar el value que tiene y compararlo con letrita. Si coinciden, sacamos id.
+                $("div#palabra_oculta input").each(function(){
+                    var letraOculta = $(this).val();
+                    if(letraOculta==letrita){
+                        // Las letras coinciden. Vamos a sacar el id de this.
+                        var iden = $(this).attr("id");
+                        $("div#palabra input#"+iden).val(letraOculta);
+                    }
+                })
+                $("div#intentos input").val("").focus();   
+            }
+
+            $(function(){
+                $("div#intentos input").val("").focus(); 
+                    $.post(
+                        "./php/buscaPalabra.php",{},function(echoPHP){
+                            var miArray = JSON.parse(echoPHP);
+                            $("div#palabra input").hide();
+                            $("div#palabra_oculta input").hide();
+                            $("div#palabra input").val(miArray[1]);
+                            $("div#palabra_oculta input").val(miArray[2]);
+                           
+
+                            for(i=0; i<miArray[2];i++){
+                                $("div#palabra").append("<input class='col-1 mb-2 text-center' type='text' id='in"+i+"'>");                                
+                                $("div#palabra_oculta").append("<input class='col-1 mb-2 text-center' type='text' id='in"+i+"'>");
+                                $("div#palabra_oculta input").last().val(miArray[1][i]);
+                            }
+                        }
+                    )
+                }           
+            )
+        </script>        
+    </body>
+</html>
