@@ -12,7 +12,7 @@
     <body>
         <div class="container">
             <div class="row">
-                <div class="offset-2 col-8 text-center">
+                <div class="col-12 text-center mt-4">
                     <h1>Juego del ahorcado</h1>
                     <hr>
                     <button class="btn btn-secondary" onclick="window.location.href='./index.html'">Volver</button>
@@ -20,25 +20,30 @@
                     <hr>
                     <div id="intentos">
                         <p>Tienes: <span>10</span> intentos</p>
-                        <input class="col-1 mb-3" type="text"><button onclick="comprobar()">Comprobar</button>
+                        <p class="text-danger"></p>
+                        <input class="mb-3 mx-3 text-center" type="text" size="1" maxlength="1"><button onclick="comprobar()">Comprobar</button>
                     </div>
                     <div id="palabra">
-                        <input class="col-1 rounded-2 p-1 text-center mt-2" type="text" name="" >
+                        <input class="col-1 rounded-2 p-1 text-center mt-2" type="text" name="">
                     </div>
                     <div id="palabra_oculta">
                         <input class="col-1 rounded-2 p-1 text-center mt-2" type="text" name="">
                     </div>
                     <div class="offset-2 col-3 text-center">
-                        <img src="./imagenes/10.jpg">
+                        <img src="">
                     </div>
 
                 </div>
             </div>
         </div>
         <script>
-
+            var letrasAcertadas = 0;
+            var totalLetras;
+            var aciertos = 0;
             function comprobar(){
-                var letrita = $("div#intentos input").val();
+                var letrita = $("div#intentos input").val();                
+                var imagen = 1;             
+                
                 // Vamos a recorrer los inputs de palabra_oculta. 
                 // Tenemos que mirar el value que tiene y compararlo con letrita. Si coinciden, sacamos id.
                 $("div#palabra_oculta input").each(function(){
@@ -47,26 +52,59 @@
                         // Las letras coinciden. Vamos a sacar el id de this.
                         var iden = $(this).attr("id");
                         $("div#palabra input#"+iden).val(letraOculta);
-                    }
+                        aciertos = aciertos + 1;                             
+                    } 
                 })
-                $("div#intentos input").val("").focus();   
+
+                letrasAcertadas = aciertos;
+                console.log("total Letras acertadas: ",letrasAcertadas);
+                console.log("aciertos: ", aciertos);
+                
+                $("div#intentos input").val("").focus();
+                
+                if(aciertos==0){
+                    $("p").last().append(letrita);
+                    var fallos = parseInt($("span").text());
+                    fallos = fallos - 1;
+
+                    $("span").text(fallos);                    
+                    var imagen = 10 - fallos; 
+                    $("img").attr("src", "./imagenes/"+imagen+".jpg");
+
+                    if(fallos==0){
+                        alert("Fin de partida. Has tenido 10 fallos");
+                        window.location.href="./juego.html";
+                    }            
+                }
+                
+                if(letrasAcertadas==totalLetras){
+                    alert("Enhorabuena. Has acertado.");
+                    window.location.href="./juego.html";
+                }
+
             }
 
             $(function(){
-                $("div#intentos input").val("").focus(); 
+                $("div#intentos input").val("").focus();
+                                 
                     $.post(
                         "./php/buscaPalabra.php",{},function(echoPHP){
                             var miArray = JSON.parse(echoPHP);
                             $("div#palabra input").hide();
                             $("div#palabra_oculta input").hide();
+                            $("div#palabra_oculta").hide();                            
                             $("div#palabra input").val(miArray[1]);
                             $("div#palabra_oculta input").val(miArray[2]);
+                            
+                            totalLetras = parseInt(miArray[2]);
+                            console.log("Total letras: ", totalLetras);
                            
 
                             for(i=0; i<miArray[2];i++){
-                                $("div#palabra").append("<input class='col-1 mb-2 text-center' type='text' id='in"+i+"'>");                                
+                                $("div#palabra").append("<input class='col-1 mb-2 mt-5 text-center border-0 border-bottom border-dark' type='text' id='in"+i+"' disabled> ");                                
                                 $("div#palabra_oculta").append("<input class='col-1 mb-2 text-center' type='text' id='in"+i+"'>");
                                 $("div#palabra_oculta input").last().val(miArray[1][i]);
+                                
                             }
                         }
                     )
