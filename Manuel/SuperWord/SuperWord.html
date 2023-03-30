@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <title>Super Word</title>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <h1 class="my-5">
+                    <marquee direction="right" scrollamount="2" scrolldelay="2" truespeed="truespeed"> ☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠     Super Word     ☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠ </marquee>
+                </h1>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="offset-2 col-8 text-center">
+                    <button class="btn btn-primary col-4" onclick="nuevaPartida()">Nueva Partida</button>
+                </div>                
+            </div>
+            <div class="row">
+                <div class="offset-2 col-8 text-center">                    
+                    <div id="palabraOculta" class="my-5">
+                        <input class="col-1 text-center" value="I" type="text" maxlength="1" readonly>
+                        <input class="col-1 text-center" value="K" type="text" maxlength="1" readonly>
+                        <input class="col-1 text-center" value="E" type="text" maxlength="1" readonly>
+                        <input class="col-1 text-center" value="A" type="text" maxlength="1" readonly>
+                    </div>
+                    <div id="palabraVista" class="my-5">
+                        <input class="col-1 text-center rounded-1" type="text" maxlength="1">
+                        <input class="col-1 text-center rounded-1" type="text" maxlength="1">
+                        <input class="col-1 text-center rounded-1" type="text" maxlength="1">
+                        <input class="col-1 text-center rounded-1" type="text" maxlength="1">
+                        <br><br>
+                        <button class="btn btn-success col-4 mt-3 " onclick="comprobar()">Comprobar</button>
+                    </div>
+                    <div id="resultado" class="my-5">
+                        <input class="col-1 text-center" type="text" maxlength="1" id="r0" readonly>
+                        <input class="col-1 text-center" type="text" maxlength="1" id="r1" readonly>
+                        <input class="col-1 text-center" type="text" maxlength="1" id="r2" readonly>
+                        <input class="col-1 text-center" type="text" maxlength="1" id="r3" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+
+            $("#palabraVista input").on("keyup",function(){
+                $(this).next().focus();
+            })
+
+            function nuevaPartida(){
+                $("#resultado input").val("").css("background-color","white");;
+                $("#palabraVista input").val("");
+                $("#palabraVista input").first().focus();
+            } 
+            function comprobar(){
+                var palabraOculta = [];
+                var palabraVista = [];
+                
+                $("div#palabraOculta input").each(function(){
+                        palabraOculta.push($(this).val());
+                        console.log(palabraOculta);
+                })
+
+                $("div#palabraVista input").each(function(){
+                        palabraVista.push($(this).val());
+                        console.log(palabraVista);
+                })
+
+                for(i=0;i<=3;i++){
+                    for(j=0;j<=3;j++){
+                        if(palabraOculta[i]==palabraVista[j]){
+                            if(i==j){
+                                $("#r"+j).val(palabraVista[j]).css("background-color","green");
+                            } else {
+                                $("#r"+j).val(palabraVista[j]).css("background-color","yellow");                            
+                            }
+                        }                                    
+                    }                       
+                }        
+
+                for(k=0; k<=3; k++){
+                    if($("#r"+k).val()==""){
+                        $("#r"+k).val(palabraVista[k]).css("background-color","red");  
+                    }
+                }                
+            }                  
+        </script>        
+    </body>
+</html>
