@@ -26,16 +26,16 @@
             <div class="row">
                 <div class="offset-2 col-8 text-center">                    
                     <div id="palabraOculta" class="my-5">
-                        <input class="col-1 text-center" value="I" type="text" maxlength="1" readonly>
-                        <input class="col-1 text-center" value="K" type="text" maxlength="1" readonly>
-                        <input class="col-1 text-center" value="E" type="text" maxlength="1" readonly>
-                        <input class="col-1 text-center" value="A" type="text" maxlength="1" readonly>
+                        <input class="col-1 text-center" value="A" type="text" maxlength="1" id="p0"readonly>
+                        <input class="col-1 text-center" value="M" type="text" maxlength="1" id="p1" readonly>
+                        <input class="col-1 text-center" value="P" type="text" maxlength="1" id="p2" readonly>
+                        <input class="col-1 text-center" value="J" type="text" maxlength="1" id="p3" readonly>
                     </div>
                     <div id="palabraVista" class="my-5">
-                        <input class="col-1 text-center rounded-1" type="text" maxlength="1">
-                        <input class="col-1 text-center rounded-1" type="text" maxlength="1">
-                        <input class="col-1 text-center rounded-1" type="text" maxlength="1">
-                        <input class="col-1 text-center rounded-1" type="text" maxlength="1">
+                        <input class="col-1 text-center rounded-1" type="text" maxlength="1" style="text-transform:uppercase">
+                        <input class="col-1 text-center rounded-1" type="text" maxlength="1" style="text-transform:uppercase">
+                        <input class="col-1 text-center rounded-1" type="text" maxlength="1" style="text-transform:uppercase">
+                        <input class="col-1 text-center rounded-1" type="text" maxlength="1" style="text-transform:uppercase">
                         <br><br>
                         <button class="btn btn-success col-4 mt-3 " onclick="comprobar()">Comprobar</button>
                     </div>
@@ -45,20 +45,44 @@
                         <input class="col-1 text-center" type="text" maxlength="1" id="r2" readonly>
                         <input class="col-1 text-center" type="text" maxlength="1" id="r3" readonly>
                     </div>
+                    <div>
+                        <button class="btn btn-secondary" onclick="borrar()">Otro intento</button>
+                    </div>
                 </div>
             </div>
         </div>
         <script>
 
+            $(function(){
+                //$("#palabraOculta input").hide();
+                empezar();                      
+            })
+
             $("#palabraVista input").on("keyup",function(){
                 $(this).next().focus();
             })
 
-            function nuevaPartida(){
+            function empezar(){
+                for(i=0;i<=3;i++){
+                    var num = Math.floor(Math.random()*((90+1)-65)+65);
+                    var letra = String.fromCharCode(num);
+                    $("#p"+i).val(letra);
+                }        
+            }
+
+            function borrar(){
+                $("div#palabraVista input").val("").first().focus();
+                $("div#resultado input").val("").css("background-color", "white");
+            }
+
+
+            function nuevaPartida(){                
                 $("#resultado input").val("").css("background-color","white");;
                 $("#palabraVista input").val("");
                 $("#palabraVista input").first().focus();
+                empezar();
             } 
+
             function comprobar(){
                 var palabraOculta = [];
                 var palabraVista = [];
@@ -69,7 +93,8 @@
                 })
 
                 $("div#palabraVista input").each(function(){
-                        palabraVista.push($(this).val());
+                        var letra = ($(this).val()).toUpperCase();
+                        palabraVista.push(letra);
                         console.log(palabraVista);
                 })
 
