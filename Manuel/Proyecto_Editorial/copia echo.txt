@@ -18,3 +18,33 @@
 echo "
             <h2 style='margin-left:14px; text-align:text-center'>Sin historial. Parece que no lees mucho....</h2>
         ";      
+
+
+
+
+
+otro echo de prueba:
+
+<article>
+                    <a href='#' class='image'><img src='$ruta' alt='' /></a>
+                    <div style='height:60px; width:80%; text-align:center; overflow: hidden;'>
+                        <h4 style='font-family:cursive'>$nombreLibro</h4>
+                    </div>
+                    <p style='margin:0; font-family:auto;'>Fecha Préstamo</p>
+                    <p style='margin:0; font-family:auto; font-size:auto;'>$fechaPrestamo</p>
+                    <p style='margin:0; font-family:auto;'>Fecha Devolución</p>
+                    <p style='margin:0; font-family:auto; font-size:auto; color:red'>$fechaDevolucion</p>                                
+                </article>    
+
+
+
+<article>
+	<a href='#' class='image'><img src='./images/Libro_01.jpg' alt='' /></a>
+	<div style='height:60px; width:80%; text-align:center; overflow: hidden;'>
+	<h4 style='font-family:cursive'>nombreLibro</h4>
+	</div>
+		<p style='margin:0; font-family:auto;'>Fecha Préstamo</p>
+		<p style='margin:0; font-family:auto; font-size:auto;'>12-04-2023</p>
+		<p style='margin:0; font-family:auto;'>Fecha Devolución</p>
+		<p style='margin:0; font-family:auto; font-size:auto; color:red'>25-04-2023</p>                                
+</article>                

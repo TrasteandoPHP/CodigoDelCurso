@@ -5,7 +5,7 @@
 */
 
 (function($) {
-
+	
 	var	$window = $(window),
 		$head = $('head'),
 		$body = $('body');
@@ -48,7 +48,8 @@
 
 			});
 
-	// Fixes.
+
+// Fixes.
 
 		// Object fit images.
 			if (!browser.canUse('object-fit')
@@ -68,11 +69,14 @@
 							.css('background-position', $img.css('object-position') ? $img.css('object-position') : 'center');
 
 				});
+			
 
 	// Sidebar.
 		var $sidebar = $('#sidebar'),
 			$sidebar_inner = $sidebar.children('.inner');
+			$sidebar.addClass('inactive');
 
+/*	
 		// Inactive by default on <= large.
 			breakpoints.on('<=large', function() {
 				$sidebar.addClass('inactive');
@@ -81,7 +85,7 @@
 			breakpoints.on('>large', function() {
 				$sidebar.removeClass('inactive');
 			});
-
+*/
 		// Hack: Workaround for Chrome/Android scrollbar position bug.
 			if (browser.os == 'android'
 			&&	browser.name == 'chrome')
