@@ -1,0 +1,283 @@
+
+<?php
+	session_start();
+	if(isset($_SESSION['bookbusters']))
+	{
+		$codusuario = $_SESSION['bookbusters'];
+	}
+
+	$conexion = new mysqli ("10.10.10.199","busters","1234","biblioteca");
+	$sql= "SELECT * FROM usuarios Where cod_usu=$codusuario";
+	$eje=$conexion->query($sql);
+	if ($reg = $eje->fetch_array())
+
+	{
+		$nom = $reg["nom_usu"];
+		$ap1 = $reg["ap1_usu"];
+		$ap2 = $reg["ap2_usu"];
+		$ema = $reg["email_usu"];
+		$pas = $reg["pass_usu"];
+		$act = $reg["activo_usu"];
+		$img = $reg["img_usu"];
+		$fal =$reg["falta_usu"];
+
+	
+
+	}
+	else
+	{
+		echo "Usuario inexistente";
+	}
+
+
+
+
+
+
+
+?>
+
+
+
+
+
+
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>PERFIL DE USUARIO</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="./../assets/css/main.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	</head>
+	<body class="is-preload">
+
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.php" class="logo"><img style="width: 20%;" src="./../images/logo.png"></a>
+									<ul class="icons">
+										<li><a href="index.php" class=" fa fa-home"><span class="label"></span></a></li>
+										<li><a href="notificaciones.php" class=" fa fa-bell"><span class="label"></span></a></li>
+										<li><a href="prestamos.php" class=" fa fa-book"><span class="label"></span></a></li>
+										<li><a href="index_favoritos.php" class=" fa fa-heart"><span class="label"></span></a></li>
+										<li><a href="perfil.php" class=" fa fa-user"><span class="label"></span></a></li>
+										<li><a href="juegos.php" class=" fa fa-dice"><span class="label"></span></a></li>
+										<li><a href="exit.php" class="fa-solid fa-arrow-right-from-bracket"><span class="label"></span></a></li>
+									</ul>
+								</header>
+
+							<!-- Banner -->
+								<section id="banner">
+									<div class="content">
+										<header>
+											<h1> <?php echo   "$nom";?><br />
+											</h1>
+											<p>Tu Información en:</p>
+										</header>
+										<h1 style=color:blue>BOOKBUSTERS</h1>
+										<ul class="actions">
+											<!-- <li><a href="#" class="button big">learn more</a></li> -->
+										</ul>
+									</div>
+									<span class="image object">
+										<img src="./avatares/foto.png" alt="" />
+									</span>
+								</section>
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Datos Personales</h2>
+									</header>
+									<div class="features">
+										<article>
+											<span> <i class="icon solid fa-solid fa-user"></i></i></span>
+											<div class="content">
+												<h3>Primer Apellido: </h3>
+												<p style=color:blue><?php echo "$ap1";?></p>
+											</div>
+										</article>
+										<article>
+											<span> <i class="icon solid fa-solid fa-calendar" style="color: #1b1c54;"></i></span>
+											<div class="content">
+												<h3><?php ?></h3>
+												<p style=color:blue>Fecha de Alta: <?php  echo "$fal"?></p>
+											</div>
+										</article>
+
+										
+										<article>
+											<span> <i class="icon solid fa-solid fa-user"></i></span>
+											<div class="content">
+												<h3>Segundo Apellido:</h3>
+												<p style=color:blue><?php echo "$ap2";?></p>
+											</div>
+										</article>
+										<article>
+											<span> <i class=" icon solid fa-regular fa-envelope"></i> </span>
+											<div class="content">
+												<h3>Correo electrónico:</h3>
+												<p style=color:blue><?php echo "$ema";?></p>
+											</div>
+										</article>
+										
+									</div>
+								</section>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>LIBROS RESERVADOS</h2>
+									</header>
+
+									<div class="posts">
+										<?php
+										$sql1= "SELECT * from prestamos WHERE cod_usu ='$codusuario'";
+										$lib=$conexion->query($sql1);
+										foreach ($lib as $reg ) 
+										{
+											$codlib= $reg['cod_lib'];
+											$libro="SELECT * FROM libros WHERE cod_lib = '$codlib'";
+											$ejelib=$conexion ->query($libro);
+											$libreg= $ejelib->fetch_array();
+											$nombre=$libreg['titulo_lib'];
+											$imagen=$libreg['imagen_lib'];
+
+											$ruta = "./../images/portadas/$codlib/$imagen";
+									
+
+
+										?>
+										<article>
+											<a href="#" class="image"><img src="<?php echo $ruta?>" alt="" /></a>
+											<h3><?php echo $nombre?></h3>
+											<p>10 </p>
+											<ul class="actions">
+												<li><a href="#" class="button">Inicio</a></li>
+											</ul>
+										</article>
+										<?php
+											}
+										?>
+									</div>
+								</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Search -->
+								<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section>
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<!--<h2>Menu</h2>-->
+									<!--</header>-->
+									<!--<ul>-->
+										<!--<li><a href="index.html">Homepage</a></li>-->
+										<!--<li><a href="generic.html">Generic</a></li>-->
+										<!--<li><a href="elements.html">Perfil</a></li>-->
+										<!--<li>-->
+											<!--<span class="opener">Submenu</span>-->
+											<!--<ul>-->
+											<!--	<li><a href="#"></a></li>-->
+											<!--	<li><a href="#"></a></li>-->
+											<!--	<li><a href="#"></a></li>-->
+											<!--	<li><a href="#"></a></li>-->
+											<!--</ul>-->
+										<!--</li>-->
+										<!--<li><a href="#"></a></li>-->
+										<!--<li><a href="#"></a></li>-->
+										<!--<li>-->
+											<!--<span class="opener">Another Submenu</span>-->
+											<!--<ul>-->
+												<!--<li><a href="#"></a></li>-->
+												<!--<li><a href="#"></a></li>-->
+											<!--<li><a href="#"></a></li>-->
+											<!--	<li><a href="#"></a></li>-->
+											<!--</ul>-->
+										<!--</li>-->
+										<!--<li><a href="#"></a></li>-->
+										<!--<li><a href="#"></a></li>-->
+										<!--<li><a href="#">Amet Lacinia</a></li>-->
+									<!--</ul>-->
+								<!--</nav>-->
+
+							<!-- Section -->
+								<!--<section>
+									<header class="major">
+										<h2>Ultimas Reservas</h2>
+									</header>
+									<div class="mini-posts">
+										<article>
+											<a href="#" class="image"><img src="images/captura.jpg" alt="" /></a>
+											<p>Has Recomendado este libro</p>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/captura2.jpg" alt="" /></a>
+											<p>Has Recomendado este libro</p>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/Captura6.jpg" alt="" /></a>
+											<p>Has recomendado este libro</p>
+										</article>
+									</div>
+									<ul class="actions">
+										<li><a href="#" class="button">Inicio</a></li>
+									</ul>
+								</section> -->
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Contáctanos</h2>
+									</header>
+									<p>Estamos abiertos en horario lectivo de la Escuela de Finanzas EFF Bussines School de Oleiros</p>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="#">information@booksbuster.tld</a></li>
+										<li class="icon solid fa-phone">(981) 87 86 34</li>
+										<li class="icon solid fa-home">Dirección: Rúa Salvador de Madariaga, 50, 15173 Oleiros, A Coruña<br />
+										</li>
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; Untitled. Todos los derechos reservados. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Diseño: <a href="https://html5up.net">Luis y Dino</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="./../assets/js/jquery.min.js"></script>
+			<script src="./../assets/js/browser.min.js"></script>
+			<script src="./../assets/js/breakpoints.min.js"></script>
+			<script src="./../assets/js/util.js"></script>
+			<script src="./../assets/js/main.js"></script>
+
+	</body>
+</html>

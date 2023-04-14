@@ -1,0 +1,13 @@
+$para = "manuel@medellin.ef";
+$asunto = "Hola, como estás?";
+$mensaje = "<h1>Mensaje de Prueba</h1>
+            <br>
+            <p>Estamos encantados</p>
+            <img src='https://assets.puzzlefactory.pl/puzzle/349/536/original.webp' style='width:20%'>
+";
+
+$header = "MIME-version:1.0  \r\n";
+$header .= "Content-type:text/html; charset=UTF-8 \r\n";
+$header .= "From: informacion@medellin.ef";
+
+mail($para, $asunto, $mensaje, $header);

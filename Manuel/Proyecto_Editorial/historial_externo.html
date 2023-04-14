@@ -78,9 +78,9 @@
 
 			<script>
 				$(function(){
-					nom_usuario = 1;
+					
                     $.post(
-                        "./php/historial.php",{nombre:nom_usuario},function(echoPHP){
+                        "./php/historial.php",{},function(echoPHP){
                            
 							$("#libros").html(echoPHP);
                         }

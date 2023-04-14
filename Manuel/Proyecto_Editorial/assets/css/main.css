@@ -1741,7 +1741,7 @@ button,
     -moz-flex-grow: 0;
     -webkit-flex-grow: 0;
     -ms-flex-grow: 0;
-    flex-grow: 0;
+    flex-grow: 1; /* Modificado para permitir que crezcan los mensajes de sesión */ 
     -moz-flex-shrink: 1;
     -webkit-flex-shrink: 1;
     -ms-flex-shrink: 1;
