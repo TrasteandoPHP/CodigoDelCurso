@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <title>Ejercicio</title>
+    </head>
+    <body style="height:70vh;">
+        <div style="display:flex; justify-content: center; height:30vh; margin-top:200px;">
+            <div style="display:flex; justify-content:center; align-items:center; margin-top:20px; height:250px; width:700px; background-color:burlywood; border-radius: 8px;">
+                <div style="margin-right: 20px;">
+                    <form>
+                        <input type="text" id="num1" name="num1" placeholder="Número 1" style="height:30px; width:170px; text-align:center; font-size: 24px; border:solid; border-radius:4px;" required><br><br>
+                        <input type="text" id="num2" name="num2" placeholder="Número 2" style="height:30px; width:170px; text-align:center; font-size: 24px; border:solid; border-radius:4px;" required><br><br>                
+                    </form>
+                    <input style="height:40px; width:180px; border-radius:4px; border-radius:4px; background-color:green; border-color:green; cursor:pointer;" onclick=comprobar(num1,num2) type="button" value="Comprobar"><br>                
+                </div>
+                <br>
+                <div style="background-color: grey; border-radius:8px; height:150px">
+                    <h1 style="text-align:center; padding-top:30px; width:400px; "></h1>
+                </div> 
+            </div>      
+        </div>
+          
+        
+        <script>
+            function comprobar(num1, num2){
+                num1 = $("#num1").val();
+                num2 = $("#num2").val();
+                $.post("./comprobar.php", {numero1:num1,numero2:num2}, function(echoPHP){
+                    $("h1").text(echoPHP)
+                })
+            }
+        </script>       
+    </body>
+</html>
