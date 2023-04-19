@@ -18,7 +18,7 @@
                     <input style="height:40px; width:180px; border-radius:4px; border-radius:4px; background-color:green; border-color:green; cursor:pointer;" onclick=comprobar(num1,num2) type="button" value="Comprobar"><br>                
                 </div>
                 <br>
-                <div style="background-color: grey; border-radius:8px; height:150px">
+                <div style="background-color:darkorange; border-radius:8px; height:150px">
                     <h1 style="text-align:center; padding-top:30px; width:400px; "></h1>
                 </div> 
             </div>      
@@ -26,6 +26,22 @@
           
         
         <script>
+
+            $(function(){
+                $numero1 = Math.floor(Math.random()*100);
+                $("#num1").val($numero1)
+                $numero2 = Math.floor(Math.random()*100);
+                $("#num2").val($numero2);
+
+                num1 = $("#num1").val();
+                num2 = $("#num2").val();
+                $.post("./comprobar.php", {numero1:num1,numero2:num2}, function(echoPHP){
+                    $("h1").text(echoPHP)
+                })
+
+            })
+
+
             function comprobar(num1, num2){
                 num1 = $("#num1").val();
                 num2 = $("#num2").val();
