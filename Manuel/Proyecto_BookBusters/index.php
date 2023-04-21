@@ -66,7 +66,7 @@
 											//cuando existan favoritos, cambiaremos el enlace a la tabla libros, por el de la tabla favoritos
 											
                                             // $sql="SELECT * FROM libros ORDER BY RAND() LIMIT 8";
-											$sql="SELECT *,count(cod_lib) as cuenta FROM libros INNER JOIN prestamos  using(cod_lib) group By cod_lib ORDER BY cod_lib DESC limit 8";
+											$sql="SELECT *,count(cod_lib) as cuenta FROM libros INNER JOIN prestamos using(cod_lib) group By cod_lib ORDER BY cod_lib DESC limit 8";
                                             $ejecutar=$con->query($sql);
 
                                             foreach($ejecutar as $registro)

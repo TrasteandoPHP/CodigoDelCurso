@@ -36,7 +36,7 @@
 			<?php
 			include("./php/funciones.php");
 			//$rec=recoge();
-			$sql="SELECT *,count(cod_lib) as cuenta FROM libros INNER JOIN prestamos  using(cod_lib) group By cod_lib ORDER BY cod_lib limit 6";
+			$sql="SELECT *,count(cod_lib) as cuenta FROM libros INNER JOIN prestamos using(cod_lib) group By cod_lib ORDER BY cod_lib limit 6";
 			$ejec=conex()->query($sql);
 				foreach($ejec as $reg){
 					$temptit=$reg["titulo_lib"];
