@@ -22,7 +22,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<!-- <a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a> -->
+									<a href="index.php" class="logo"><img style="width: 20%;" src="./images/logo.png"></a>
 									<ul class="icons">
 										<li><a style="font-size:xx-large" href="index.php" class="fa fa-home" aria-hidden="true"><span class="label"></span></a></li>
 										<li><a style="font-size:xx-large" href="registro.html" class="fa fa-user-plus" aria-hidden="true"><span class="label"></span></a></li>
@@ -66,7 +66,7 @@
 											//cuando existan favoritos, cambiaremos el enlace a la tabla libros, por el de la tabla favoritos
 											
                                             // $sql="SELECT * FROM libros ORDER BY RAND() LIMIT 8";
-											$sql="SELECT *,count(cod_lib) as cuenta FROM libros INNER JOIN prestamos using(cod_lib) group By cod_lib ORDER BY cod_lib DESC limit 8";
+											$sql="SELECT *,count(cod_lib) as cuenta FROM libros INNER JOIN prestamos  using(cod_lib) group By cod_lib ORDER BY cod_lib DESC limit 8";
                                             $ejecutar=$con->query($sql);
 
                                             foreach($ejecutar as $registro)

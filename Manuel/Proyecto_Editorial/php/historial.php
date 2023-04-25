@@ -7,8 +7,8 @@
         $usuario = $_SESSION["bookbusters"];
         echo $usuario;
                 
-        $conexion = new mysqli("10.10.10.114","daniel","1234","biblioteca2");
-        //$conexion = new mysqli("localhost","busters","1234","biblioteca");
+        //$conexion = new mysqli("10.10.10.114","daniel","1234","biblioteca2");
+        $conexion = new mysqli("localhost","busters","1234","biblioteca");
 
         $sqlConsultaLibrosLeidos = "SELECT * FROM prestamos INNER JOIN libros USING(cod_lib) WHERE cod_usu='$usuario'";    
         $ejecutarSqlConsultaLibrosLeidos = $conexion->query($sqlConsultaLibrosLeidos);

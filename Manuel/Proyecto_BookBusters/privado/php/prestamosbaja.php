@@ -1,4 +1,6 @@
-  <?php
+<?php
+  session_start();
+  if(isset($_SESSION["bookbusters"])) {
     $codlibro = $_POST["codigolibro"];
     $coduser = $_POST["usuario"];
     
@@ -29,13 +31,37 @@
       $regb = $exebo->fetch_array();
       $book = $regb["titulo_lib"];
 
-      $para = "primero@manolo.gg";
+      $para = "alfonso@medellin.ef";
+      //$para = el correo de administrador de la pagina
       $asunto = "Reserva Anulada";
       $mensaje = "<p>La reserva del  libro $book fue anulada por $nom $ap1 $ap2</p>
-                  <p>$ema</p>";
+                  <p>$ema</p>
+                  <img src='http://10.10.10.199/bookbusters/images/Bookbusters (3).png'>";
       $header = "MIME-Version: 1.0 \r\n";
       $header .= "Content-type:text/html;charset=UTF-8 \r\n";
-      $header .= "From: informacion@manolo.gg";
+      $header .= "From: informacion@medellin.ef";
+      //correo generio para el envio desde la pagina
       mail($para, $asunto, $mensaje, $header);
-    }    
-  ?>
+
+      //$para = "alfonso@medellin.ef";
+      $para = $ema;
+      $asunto = "Reserva Anulada";
+      $mensaje = "<p>Anulaste la reserva del libro $book.</p>
+                <img src='http://10.10.10.199/bookbusters/images/Bookbusters (3).png'>";
+      $header = "MIME-Version: 1.0 \r\n";
+      $header .= "Content-type:text/html;charset=UTF-8 \r\n";
+      $header .= "From: informacion@medellin.ef";
+      //correo generico para envio desde la pagina
+      mail($para, $asunto, $mensaje, $header);
+    }
+  }
+  else
+  {
+    echo "
+      <script>
+        alert('Area restringida');
+        window.location.href='../login.html';
+      </script>
+    ";
+  }     
+?>

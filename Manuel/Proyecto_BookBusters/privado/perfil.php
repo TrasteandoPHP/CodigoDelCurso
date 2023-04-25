@@ -4,7 +4,7 @@
 	if(isset($_SESSION['bookbusters']))
 	{
 		$codusuario = $_SESSION['bookbusters'];
-	}
+	
 
 	$conexion = new mysqli ("10.10.10.199","busters","1234","biblioteca");
 	$sql= "SELECT * FROM usuarios Where cod_usu=$codusuario";
@@ -21,27 +21,12 @@
 		$img = $reg["img_usu"];
 		$fal =$reg["falta_usu"];
 
-	
-
 	}
 	else
 	{
 		echo "Usuario inexistente";
 	}
-
-
-
-
-
-
-
 ?>
-
-
-
-
-
-
 <!DOCTYPE HTML>
 <!--
 	Editorial by HTML5 UP
@@ -94,7 +79,7 @@
 										</ul>
 									</div>
 									<span class="image object">
-										<img src="./avatares/foto.png" alt="" />
+										<img src="./../images/budiña.jpg" alt="" />
 									</span>
 								</section>
 							<!-- Section -->
@@ -114,7 +99,7 @@
 											<span> <i class="icon solid fa-solid fa-calendar" style="color: #1b1c54;"></i></span>
 											<div class="content">
 												<h3><?php ?></h3>
-												<p style=color:blue>Fecha de Alta: <?php  echo "$fal"?></p>
+												<p style=color:green>Fecha de Alta: <?php  echo "$fal"?></p>
 											</div>
 										</article>
 
@@ -136,6 +121,15 @@
 										
 									</div>
 								</section>
+										<article>
+											<h3 style= color:blue>Quiero cambiar mi contraseña</h3>
+											<form action="modificar.php" method="POST">
+												<input type="password" name="contrasena" placeholder="nueva contraseña" required>
+												<input type="submit" value="Confirmar">
+
+											</form>
+
+										</article>
 
 							<!-- Section -->
 								<section>
@@ -192,73 +186,28 @@
 							<!-- Menu -->
 								<nav id="menu">
 									<header class="major">
-										<!--<h2>Menu</h2>-->
-									<!--</header>-->
-									<!--<ul>-->
-										<!--<li><a href="index.html">Homepage</a></li>-->
-										<!--<li><a href="generic.html">Generic</a></li>-->
-										<!--<li><a href="elements.html">Perfil</a></li>-->
-										<!--<li>-->
-											<!--<span class="opener">Submenu</span>-->
-											<!--<ul>-->
-											<!--	<li><a href="#"></a></li>-->
-											<!--	<li><a href="#"></a></li>-->
-											<!--	<li><a href="#"></a></li>-->
-											<!--	<li><a href="#"></a></li>-->
-											<!--</ul>-->
-										<!--</li>-->
-										<!--<li><a href="#"></a></li>-->
-										<!--<li><a href="#"></a></li>-->
-										<!--<li>-->
-											<!--<span class="opener">Another Submenu</span>-->
-											<!--<ul>-->
-												<!--<li><a href="#"></a></li>-->
-												<!--<li><a href="#"></a></li>-->
-											<!--<li><a href="#"></a></li>-->
-											<!--	<li><a href="#"></a></li>-->
-											<!--</ul>-->
-										<!--</li>-->
-										<!--<li><a href="#"></a></li>-->
-										<!--<li><a href="#"></a></li>-->
-										<!--<li><a href="#">Amet Lacinia</a></li>-->
-									<!--</ul>-->
-								<!--</nav>-->
-
-							<!-- Section -->
-								<!--<section>
-									<header class="major">
-										<h2>Ultimas Reservas</h2>
+									<h2>Menu</h2>
 									</header>
-									<div class="mini-posts">
-										<article>
-											<a href="#" class="image"><img src="images/captura.jpg" alt="" /></a>
-											<p>Has Recomendado este libro</p>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/captura2.jpg" alt="" /></a>
-											<p>Has Recomendado este libro</p>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/Captura6.jpg" alt="" /></a>
-											<p>Has recomendado este libro</p>
-										</article>
-									</div>
-									<ul class="actions">
-										<li><a href="#" class="button">Inicio</a></li>
+									<ul>
+										<li><a href="index.php">Inicio</a></li>
+										<li><a href="historial.html">Historial</a></li>
+										<li><a href="index_favoritos.php">Favoritos</a></li>
+										<li><a href="perfil.php">Perfil</a></li>
+										<li><a href="#">Juegos</a></li>
+										<li><a href="exit.php">Salir</a></li>
 									</ul>
-								</section> -->
-
-							<!-- Section -->
+								</nav>
 								<section>
 									<header class="major">
 										<h2>Contáctanos</h2>
 									</header>
 									<p>Estamos abiertos en horario lectivo de la Escuela de Finanzas EFF Bussines School de Oleiros</p>
 									<ul class="contact">
-										<li class="icon solid fa-envelope"><a href="#">information@booksbuster.tld</a></li>
+										<li class="icon solid fa-envelope"><a href="C:\Program Files\Mozilla Thunderbird\thunderbird.exe">alfonso@medellin.ef</a></li>
 										<li class="icon solid fa-phone">(981) 87 86 34</li>
-										<li class="icon solid fa-home">Dirección: Rúa Salvador de Madariaga, 50, 15173 Oleiros, A Coruña<br />
-										</li>
+										<li class="icon solid fa-home">Dirección: Rúa Salvador de Madariaga, 50, 15173 Oleiros, A Coruña</li>
+										<li class="icon solid fa-book"><a href="terminosuso.php">Terminos de uso</a></li>	
+										<li class="icon solid fa-newspaper"><a href="polpriv.php">Politica de Privacidad</a></li>																
 									</ul>
 								</section>
 
@@ -281,3 +230,15 @@
 
 	</body>
 </html>
+<?php
+}
+else
+{
+	echo "
+		<script>
+			alert('Area restringida');
+			window.location.href='../login.html';
+		</script>
+	";
+}
+?>

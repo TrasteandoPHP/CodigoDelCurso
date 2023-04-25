@@ -8,20 +8,29 @@ if (isset($_POST["mail"]))
     $sql = "SELECT * FROM administradores WHERE email_adm = '$ema'";
 
     $tup = $con->query($sql)->fetch_array();
-    $pas_hash = $tup["pass_adm"];
 
     if ($tup) {
+        $pas_hash = $tup["pass_adm"];
         if (password_verify($pas, $pas_hash)) {
             $cod = $tup["cod_adm"];
             session_start();
             $_SESSION["admin"] = $cod;
             header("location: ../index_administrador.php");
         }
-    } else {
+        else {
+            ?>
+                    <script>
+                        alert("Las credenciales introducidas son incorrectas");
+                        window.location.href="../login_administrador.html";
+                    </script>
+                <?php
+        }
+    }
+    else {
         ?>
                 <script>
                     alert("Las credenciales introducidas son incorrectas");
-                    window.location.href="./login_administrador.html";
+                    window.location.href="../login_administrador.html";
                 </script>
             <?php
     }

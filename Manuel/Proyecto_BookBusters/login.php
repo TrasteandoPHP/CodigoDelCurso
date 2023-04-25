@@ -42,7 +42,7 @@
 			?>
 
 				<script>
-					alert("contraseña erronea");
+					alert("usuario o contraseña errónea");
 					window.location.href='login.html';
 						
 				</script>	

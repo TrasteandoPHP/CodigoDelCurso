@@ -8,7 +8,7 @@
 
     if($con->query($sql))
     {
-        $consultar = "SELECT * FROM usuarios ORDER BY cod_usu DESC LIMIT 1";
+        $consultar = "SELECT * FROM usuarios WHERE email_usu='$mail'";
 		$ejecutar = $con->query($consultar);
 		$registro = $ejecutar->fetch_array();
 		$cod = $registro["cod_usu"];

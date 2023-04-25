@@ -20,31 +20,73 @@
         if($ejecutarSqlConsultaLibrosLeidos->fetch_array()){
             foreach ($ejecutarSqlConsultaLibrosLeidos as $registro) {
                 $nombreImagen = $registro["imagen_lib"];
-                $ruta = "./images/".$nombreImagen;
+                $codigoLibro = $registro["cod_lib"];
+                $ruta = "./../images/portadas/".$codigoLibro."/".$nombreImagen;
                 $nombreLibro = $registro["titulo_lib"];
                 $codigoUsuario = $registro["cod_usu"];
 
-                $fechaInicial = $registro["fentrega_pres"];
-                $fechaInicial = explode("-",$fechaInicial);                        
-                $fechaPrestamo = $fechaInicial[2]."-".$fechaInicial[1]."-".$fechaInicial[0];        
+                $fechaReserva = $registro["freserva_pres"];
+                $fechaReserva = explode("-",$fechaReserva);                        
+                $fechaReserva = $fechaReserva[2]."-".$fechaReserva[1]."-".$fechaReserva[0]; 
 
-                $fechaEntrega = $registro["fprevista_pres"];
+                $fechaEntrega = $registro["fentrega_pres"];
                 $fechaEntrega = explode("-",$fechaEntrega);                        
-                $fechaDevolucion = $fechaEntrega[2]."-".$fechaEntrega[1]."-".$fechaEntrega[0];
-                
+                $fechaEntrega = $fechaEntrega[2]."-".$fechaEntrega[1]."-".$fechaEntrega[0];
+
+				$fechaActual = date('Y-m-d');
+				$fechaActual = explode("-",$fechaActual);                        
+                $fechaActual = $fechaActual[2]."-".$fechaActual[1]."-".$fechaActual[0];
+				
+				$fechaHoy = new DateTime($fechaActual);
+				
+				$fechaPrevista = $registro["fprevista_pres"];
+                $fechaPrevista = explode("-",$fechaPrevista);                        
+                $fechaPrevista = $fechaPrevista[2]."-".$fechaPrevista[1]."-".$fechaPrevista[0];
+				
+				$fechaDevolucionPrevista = new DateTime($fechaPrevista);
+
+                $fechaDevolucion = $registro["fdevolucion_pres"];
+                $fechaDevolucion = explode("-",$fechaDevolucion);                        
+                $fechaDevolucion = $fechaDevolucion[2]."-".$fechaDevolucion[1]."-".$fechaDevolucion[0];
+				
+				$fechaDevolucionDatetime = new DateTime($fechaDevolucion);
+				$fechaVaciaDateTime = new DateTime('0000-00-00');			
+				
+				
+				if($fechaDevolucionDatetime==$fechaVaciaDateTime){
+					
+					if($fechaHoy<=$fechaDevolucionPrevista){
+						// Se devuelve la fecha prevista de devolución con color verde, porque el libro no ha sido devuelto, pero quedan días para llegar a fecha de devolución prevista.
+						$pintarFechaPrevista = "<p style='margin:0; font-family:auto; font-size:auto; color:green'>$fechaPrevista</p>";
+					} else {
+						// Se devuelve la fecha prevista de devolución con color rojo, porque el libro no ha sido devuelto, y se sobrepasado la fecha de devolución prevista.
+						$pintarFechaPrevista = "<p style='margin:0; font-family:auto; font-size:auto; color:red'>$fechaPrevista</p>";
+					}
+					
+				} else {
+						// Se devuelve la fecha prevista de devolución sin color, porque el libro ya ha sido devuelto.
+						$pintarFechaPrevista = "<p style='margin:0; font-family:auto; font-size:auto;'>$fechaPrevista</p>";
+									
+				}
+				
 				// Se devuelve el historial de libros para mostrar en el historial.html
-                echo "
-                    <article style='display:flex;flex-direction:column;align-items:center;'>
-                        <a href='#' class='image'style='text-align:-webkit-center'><img src='$ruta' height='350px' alt=''/></a>
-                        <div style='height:60px; width:80%; text-align:center; overflow: hidden;'>
-                            <h4>$nombreLibro</h4>
-                        </div>
-                        <p style='margin:0; font-family:auto;'>Fecha Préstamo</p>
-                        <p style='margin:0; font-family:auto; font-size:auto;'>$fechaPrestamo</p>
-                        <p style='margin:0; font-family:auto;'>Fecha Devolución</p>
-                        <p style='margin:0; font-family:auto; font-size:auto; color:red'>$fechaDevolucion</p>                                
-                    </article>                 
-                ";                       
+				echo "
+							<article style='display:flex;flex-direction:column;align-items:center;'>
+								<a href='#' class='image'style='text-align:-webkit-center'><img src='$ruta' height='350px' alt=''/></a>
+								<div style='height:60px; width:80%; text-align:center; overflow: hidden;'>
+									<h4>$nombreLibro</h4>
+								</div>
+								<p style='margin:0; font-family:auto;'>Fecha Reserva</p>
+								<p style='margin:0; font-family:auto; font-size:auto;'>$fechaReserva</p>
+								<p style='margin:0; font-family:auto;'>Fecha Entrega</p>
+								<p style='margin:0; font-family:auto; font-size:auto;'>$fechaEntrega</p>
+								<p style='margin:0; font-family:auto;'>Fecha Prevista Devolución</p>
+								$pintarFechaPrevista
+								<p style='margin:0; font-family:auto;'>Fecha Devolución</p>
+								<p style='margin:0; font-family:auto; font-size:auto;'>$fechaDevolucion</p>                                
+							</article>                 
+						";         
+				
             }
                             
         } else {

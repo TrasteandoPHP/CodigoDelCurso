@@ -1,3 +1,9 @@
+<?php
+	session_start();
+	if(isset($_SESSION['bookbusters']))
+	{
+	$codusuario = $_SESSION['bookbusters'];
+	?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -9,7 +15,7 @@
 <link rel="stylesheet" href="assets/css/estilos.css">
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="./assets/css/main.css" />
+<link rel="stylesheet" href="../assets/css/main.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 	<body class="is-preload">
@@ -35,16 +41,13 @@
 			<div class="carousel__lista">
 			<?php
 			include("./php/funciones.php");
-			//$rec=recoge();
-			$sql="SELECT *,count(cod_lib) as cuenta FROM libros INNER JOIN prestamos using(cod_lib) group By cod_lib ORDER BY cod_lib limit 6";
-			$ejec=conex()->query($sql);
-				foreach($ejec as $reg){
+			$rec=recoge();
+					foreach($rec as $reg){
 					$temptit=$reg["titulo_lib"];
 					$tempimg=$reg["imagen_lib"];
 					$tempcod=$reg["cod_lib"];
 					$tempimg=$tempcod."/".$tempimg;
-			//echo $tempimg;
-			echo "<div class='carousel__elemento'><img src='./../images/portadas/".$tempimg."' alt='' style='width:80%;border:none;border-radius:5px;'><p>";
+			echo "<div class='carousel__elemento'><img src='./../images/portadas/".$tempimg."' alt='' style='width:50%;border:none;border-radius:5px;'><p>";
 			echo $temptit."</p></div>
 					";
 				}
@@ -68,24 +71,32 @@
 <?php
 			$recibe=consulta("libros");
 foreach($recibe as $registro){
+	if($registro["disponible_lib"] == 0){}else{}
 
 
 echo'
 	<article >
 		<a href="#" class="image"><img src="./../images/'.$registro["imagen_lib"].'" alt="" /></a>
 		<h3>'.$registro["titulo_lib"].'</h3>
-		<a >
-		<i id="'.$registro["cod_lib"].'"  class="fa-solid fa-heart" onclick="addFavCor(this.id)"></i>
-		</a>
-		<a><i class="fa fa-star"></i>
-		</a>
+		<div style="display:flex; justify-content:space-between">
+			<div>
+				<a><i id="'.$registro["cod_lib"].'"  class="fa-solid fa-heart" onclick="addFavCor(this.id)"></i></a>
+			</div>
+			<div>
+				'.estrella($registro["cod_lib"]).'
+			</div>			
+		</div>
 		<ul class="actions">
 			<li><a href="verlibro.php?codlib='.$registro["cod_lib"].'" class="button">Ver</a></li>
-			
+			<li style="float:right;margin-left:50%;margin-top:10px;colour:green"><i class="fa fa-face-smile fa-beat fa-xl" ></i></li>			
 		</ul>
+		
+
 	</article>
 ';
+
 }
+
 ?>
 </div>
 				</section>
@@ -110,12 +121,25 @@ echo'
 									<ul>
 										<li><a href="index.php">Inicio</a></li>
 										<li><a href="historial.html">Historial</a></li>
-										<li><a href="favoritos.html">Favoritos</a></li>
-										<li><a href="#">Perfil</a></li>
+										<li><a href="index_favoritos.html">Favoritos</a></li>
+										<li><a href="perfil.php">Perfil</a></li>
 										<li><a href="#">Juegos</a></li>
-										<li><a href="#">Salir</a></li>
+										<li><a href="exit.php">Salir</a></li>
 									</ul>
 								</nav>
+								<section>
+									<header class="major">
+										<h2>Contáctanos</h2>
+									</header>
+									<p>Estamos abiertos en horario lectivo de la Escuela de Finanzas EFF Bussines School de Oleiros</p>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="C:\Program Files\Mozilla Thunderbird\thunderbird.exe">alfonso@medellin.ef</a></li>
+										<li class="icon solid fa-phone">(981) 87 86 34</li>
+										<li class="icon solid fa-home">Dirección: Rúa Salvador de Madariaga, 50, 15173 Oleiros, A Coruña</li>
+										<li class="icon solid fa-book"><a href="terminosuso.php">Terminos de uso</a></li>	
+										<li class="icon solid fa-newspaper"><a href="polpriv.php">Politica de Privacidad</a></li>
+									</ul>
+								</section>
 								<footer id="footer">
 									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
 								</footer>
@@ -135,3 +159,15 @@ echo'
 
 	</body>
 </html>
+<?php
+}
+else
+{
+	echo "
+		<script>
+			alert('Area restringida');
+			window.location.href='../login.html';
+		</script>
+	";
+}
+?>

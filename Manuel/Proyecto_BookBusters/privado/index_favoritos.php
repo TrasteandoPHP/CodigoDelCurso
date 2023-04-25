@@ -102,45 +102,35 @@
 								</section>
 
 							<!-- Menu -->
-								<nav id="menu">
+							<nav id="menu">
 									<header class="major">
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="index.html">Homepage</a></li>
-										<li><a href="generic.html">Generic</a></li>
-										<li><a href="elements.html">Elements</a></li>
-										<li>
-											<span class="opener">Submenu</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Etiam Dolore</a></li>
-										<li><a href="#">Adipiscing</a></li>
-										<li>
-											<span class="opener">Another Submenu</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Maximus Erat</a></li>
-										<li><a href="#">Sapien Mauris</a></li>
-										<li><a href="#">Amet Lacinia</a></li>
+										<li><a href="./index.php">Inicio</a></li>
+										<li><a href="./historial.html">Historial</a></li>
+										<li><a href="./index_favoritos.php">Favoritos</a></li>
+										<li><a href="./perfil.php">Perfil</a></li>
+										<li><a href="#">Juegos</a></li>									
+										<li><a href="./exit.php" style='color:red'>Salir</a></li>									
 									</ul>
 								</nav>
-
-							
+								<section>
+									<header class="major">
+										<h2>Contáctanos</h2>
+									</header>
+									<p>Estamos abiertos en horario lectivo de la Escuela de Finanzas EFF Bussines School de Oleiros</p>
+									<ul class="contact">
+									<li class="icon solid fa-envelope"><a href="C:\Program Files\Mozilla Thunderbird\thunderbird.exe">alfonso@medellin.ef</a></li>
+										<li class="icon solid fa-phone">(981) 87 86 34</li>
+										<li class="icon solid fa-home">Dirección: Rúa Salvador de Madariaga, 50, 15173 Oleiros, A Coruña</li>
+										<li class="icon solid fa-book"><a href="terminosuso.php">Terminos de uso</a></li>	
+										<li class="icon solid fa-newspaper"><a href="polpriv.php">Politica de Privacidad</a></li>	
+									</ul>
+								</section>						
 
 						</div>
 					</div>
-
 			</div>
 
 		<!-- Scripts -->
@@ -160,7 +150,7 @@ else
 	echo "
 		<script>
 			alert('Area restringida');
-			window.location.href='../index.html';
+			window.location.href='../login.html';
 		</script>
 	";
 }
