@@ -5,9 +5,10 @@
     if(isset($_SESSION["bookbusters"])){
         // Recogemos el código de usuario de los datos recibidos en la sesión.
         $usuario = $_SESSION["bookbusters"];
-        
+        //$usuario = 8;
 		// Creamos una conexión	
         $conexion = new mysqli("localhost","busters","1234","biblioteca");
+		//$conexion = new mysqli("10.10.10.199","busters","1234","biblioteca");
 		
 		// Buscamos el nombre del usuario a través del código de usuario
 		$sqlConsultaNombreUsuario = "SELECT nom_usu FROM usuarios WHERE cod_usu='$usuario'";
@@ -57,15 +58,15 @@
 					
 					if($fechaHoy<=$fechaDevolucionPrevista){
 						// Se devuelve la fecha prevista de devolución con color verde, porque el libro no ha sido devuelto, pero quedan días para llegar a fecha de devolución prevista.
-						$pintarFechaPrevista = "<p style='margin:0; font-family:auto; font-size:auto; color:green'>$fechaPrevista</p>";
+						$pintarFechaPrevista = "<td style='font-family:auto; font-size:auto; color:green'>$fechaPrevista</td>";
 					} else {
 						// Se devuelve la fecha prevista de devolución con color rojo, porque el libro no ha sido devuelto, y se sobrepasado la fecha de devolución prevista.
-						$pintarFechaPrevista = "<p style='margin:0; font-family:auto; font-size:auto; color:red'>$fechaPrevista</p>";
+						$pintarFechaPrevista = "<td style='font-family:auto; font-size:auto; color:red'>$fechaPrevista</td>";
 					}
 					
 				} else {
 						// Se devuelve la fecha prevista de devolución sin color, porque el libro ya ha sido devuelto.
-						$pintarFechaPrevista = "<p style='margin:0; font-family:auto; font-size:auto;'>$fechaPrevista</p>";
+						$pintarFechaPrevista = "<td style='font-family:auto; font-size:auto;'>$fechaPrevista</td>";
 									
 				}
 				
@@ -73,17 +74,42 @@
 				echo "
 							<article style='display:flex;flex-direction:column;align-items:center;'>
 								<a href='#' class='image'style='text-align:-webkit-center'><img src='$ruta' height='350px' alt=''/></a>
-								<div style='height:60px; width:80%; text-align:center; overflow: hidden;'>
+								<div style='width:100%; display:flex; flex-direction:column; align-items:center;'>
 									<h4>$nombreLibro</h4>
+									
 								</div>
-								<p style='margin:0; font-family:auto;'>Fecha Reserva</p>
-								<p style='margin:0; font-family:auto; font-size:auto;'>$fechaReserva</p>
-								<p style='margin:0; font-family:auto;'>Fecha Entrega</p>
-								<p style='margin:0; font-family:auto; font-size:auto;'>$fechaEntrega</p>
-								<p style='margin:0; font-family:auto;'>Fecha Prevista Devolución</p>
-								$pintarFechaPrevista
-								<p style='margin:0; font-family:auto;'>Fecha Devolución</p>
-								<p style='margin:0; font-family:auto; font-size:auto;'>$fechaDevolucion</p>                                
+								<table style='width:80%; text-align:center;'>
+										<tr>
+											<th style='font-family:auto; text-align:center; padding-top:10px;'>Fecha Reserva</th>
+										</tr>
+										<tr>
+											<td style='font-family:auto; font-size:auto;'>$fechaReserva</td>
+										</tr>
+										<tr>
+											<th style='font-family:auto; text-align:center; padding-top:10px;'>Fecha Entrega</th>
+										</tr>
+										<tr>
+											<td style='font-family:auto; font-size:auto;'>$fechaEntrega</td>
+										</tr>
+										<tr>
+											<th style='font-family:auto; text-align:center; padding-top:10px;'>Fecha Prevista</th>
+										</tr>
+										<tr>
+											$pintarFechaPrevista
+										</tr>
+										<tr>
+											<th style='font-family:auto; text-align:center; padding-top:10px;'>Fecha Devolución</th>
+										</tr>
+										<tr>
+											<td style='font-family:auto; font-size:auto;'>$fechaDevolucion</td>
+										</tr>								
+									</table>
+									<button onclick='devolverLibro()'>Solicitar Devolución</button>
+									<div>
+									<textarea style='margin-top:10px;'></textarea>
+									<button style='margin-top:10px;'>Enviar</button>
+									
+									</div> 								                               
 							</article>                 
 						";         
 				
@@ -116,7 +142,7 @@
             <message>
                 <h2>No tienes permisos para estar aquí.  Por favor, inicia sesión.</h2>
                 <br><br><br>
-		        <button onclick='window.location.href=`./../login.html`'>Volver</button>
+		        <button onclick='window.location.href=`./../login.php`'>Volver</button>
             </message>
         ";
 	}

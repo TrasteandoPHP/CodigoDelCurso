@@ -8,7 +8,9 @@
         if($accion == "e"){
             $textoEncriptado = openssl_encrypt($texto, $modo, $llave);
             return $textoEncriptado;
+            //return base64_encode($textoEncriptado);
         } else {
+            //$texto = base64_decode($texto);
             $textoDesencriptado = openssl_decrypt($texto, $modo, $llave);
             return $textoDesencriptado;
         }
@@ -39,5 +41,8 @@
         echo "";
         echo "------------------------------------------------------------";
     }
+
+    
+
     
 ?>
