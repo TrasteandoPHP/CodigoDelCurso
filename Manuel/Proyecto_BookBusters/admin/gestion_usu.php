@@ -187,6 +187,30 @@ if (isset($_SESSION["admin"])) {
 					}
 				);
 			}
+
+			function enlace_activar(id) {
+				var codigo = id.split("_")[1];
+
+				$.post(
+					"./php/enlace_activar.php", {
+						c: codigo
+					},
+					function(recoger) {
+						alert(recoger)
+					}
+				);
+			}
+			function cambio_contusu(e){
+				$.post(
+					"./../contraolvidada.php",
+					{email:e},
+					function(vuelta){
+						alert("Eviado mail de cambio de contraseña.");
+					}
+				);
+			}
+
+			
 		</script>
 	</body>
 

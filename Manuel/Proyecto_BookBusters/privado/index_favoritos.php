@@ -1,13 +1,8 @@
 <?php
 	session_start();
-	if(isset($_SESSION["bookbusters"])) {
+	if(isset($_SESSION["bookbusters"])){
     ?>
-<!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+
 <html>
 	<head>
 		<title>Bookbusters - Favoritos</title>
@@ -30,13 +25,13 @@
 								<header id="header">
 									<a href="index.php" class="logo"><img style="width: 20%;" src="./../images/logo.png"></a>
 									<ul class="icons">
-										<li><a href="index.php" class=" fa fa-home"><span class="label"></span></a></li>
-										<li><a href="notificaciones.php" class=" fa fa-bell"><span class="label"></span></a></li>
-										<li><a href="prestamos.php" class=" fa fa-book"><span class="label"></span></a></li>
-										<li><a href="index_favoritos.php" class=" fa fa-heart"><span class="label"></span></a></li>
-										<li><a href="perfil.php" class=" fa fa-user"><span class="label"></span></a></li>
-										<li><a href="juegos.php" class=" fa fa-dice"><span class="label"></span></a></li>
-										<li><a href="exit.php" class="fa-solid fa-arrow-right-from-bracket"><span class="label"></span></a></li>
+										<li><a href="index.php" class=" fa fa-home" title="Ir a índice" ><span class="label"></span></a></li>										
+										<li><a href="#" class=" fa fa-bell" title="Ir a notificaciones"><span class="label"></span></a></li>
+										<li><a href="historial.html" class=" fa fa-book" title="Ir a historial"><span class="label"></span></a></li>
+										<li><a href="index_favoritos.php" class=" fa fa-heart" title="Ir a favoritos"><span class="label"></span></a></li>
+										<li><a href="perfil.php" class=" fa fa-user" title="Ir a perfil"><span class="label"></span></a></li>
+										<li><a href="#" class=" fa fa-dice" title="Ir a juegos"><span class="label"></span></a></abbr></li>
+										<li><a href="exit.php" class="fa-solid fa-arrow-right-from-bracket" title="Salir sesión"><span class="label"></span></a></li>
 									</ul>
 								</header>
 
@@ -62,24 +57,24 @@
         $titulo=$reg_fav["titulo_lib"];
         $resumen=$reg_fav["resumen_lib"];
         //usamos imagen de prueba mientras no haya en la BD
-        $portada="libro.jpg";
+        $portada=$reg_fav["imagen_lib"];
 
         //}
         ?>
-														<article>
-															<!-- añadimos las variables del libro a mostrar -->
-															<a href="./verlibro.php?codlib='<?php echo $codigo_libro ?>'" class="image"><img src="../images/portadas/<?php echo $codigo_libro?>/<?php echo $portada?>" alt="" /></a>
-															<h3><?php echo $titulo ?></h3>
-															<p><?php echo $resumen?></p>
-															<ul class="actions">
-																<li><a href="#" class="button">Prestamo</a></li>
-																<li>
-																	<i id="<?php echo $codigo_libro?>" onmouseover="hover_cor_in(this.id)"  onmouseleave="hover_cor_out(this.id)" onclick="addFavCor(this.id)" class="fa-regular fa-heart" style="font-size:40px;color:#f56a6a;text-align:center"></i>
-																</li>
-															</ul>
-														</article>
+						<article>
+						<!-- añadimos las variables del libro a mostrar -->
+						<a href="./verlibro.php?codlib=<?php echo $codigo_libro ?>" class="image"><img src="../images/portadas/<?php echo $codigo_libro?>/<?php echo $portada?>" alt="" /></a>
+						<h3><?php echo $titulo ?></h3>
+						<p><?php echo $resumen?></p>
+						<ul class="actions">
+							<li><a href="./verlibro.php?codlib=<?php echo $codigo_libro ?>" class="button">Prestamo</a></li>
+							<li>
+								<i id="<?php echo $codigo_libro?>" onmouseover="hover_cor_in(this.id)"  onmouseleave="hover_cor_out(this.id)" onclick="addFavCor(this.id)" class="fa-solid fa-heart" style="font-size:40px;color:#f56a6a;text-align:center"></i>
+							</li>
+						</ul>
+						</article>
 														
-														<?php
+		<?php
     }
     ?>
 										

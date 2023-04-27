@@ -1,5 +1,7 @@
 <?php
 
+    //Datos provenientes de registro.php
+
     $mail=base64_decode($_GET["mail"]);
 
     $con=new mysqli("10.10.10.199","busters","1234","biblioteca");
@@ -15,12 +17,9 @@
         
         // $cod = $con->insert_id;
 
-        mkdir("./images/avatares/$cod",0777);	
-       
+        //mkdir("./images/avatares/$cod",0777);	no vamos a crear una carpeta cada vez que se registre el usuario
         
         // usuario activado, le enviamos otro correo de confirmacion
-
-        
 
         
 	$para = "$mail";
@@ -41,7 +40,6 @@
 
     header("location:http://10.10.10.199/bookbusters/login.html");
 
-         
 
     }
     else

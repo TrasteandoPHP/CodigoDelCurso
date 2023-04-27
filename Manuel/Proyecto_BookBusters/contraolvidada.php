@@ -6,7 +6,7 @@
     $codunico=uniqid(); //hay que grabarlo en usuarios 
 
     $con=new mysqli("10.10.10.199","busters","1234","biblioteca");
-   
+
 
     $sql="SELECT * FROM usuarios WHERE email_usu='$ema'";
     $ejecutar=$con->query($sql);

@@ -27,13 +27,13 @@ if(isset($_SESSION['bookbusters']))
 								<header id="header">
 									<a href="index.php" class="logo"><img style="width: 20%;" src="./../images/logo.png"></a>
 									<ul class="icons">
-										<li><a href="index.php" class=" fa fa-home"><span class="label"></span></a></li>
-										<li><a href="notificaciones.php" class=" fa fa-bell"><span class="label"></span></a></li>
-										<li><a href="prestamos.php" class=" fa fa-book"><span class="label"></span></a></li>
-										<li><a href="index_favoritos.php" class=" fa fa-heart"><span class="label"></span></a></li>
-										<li><a href="perfil.php" class=" fa fa-user"><span class="label"></span></a></li>
-										<li><a href="juegos.php" class=" fa fa-dice"><span class="label"></span></a></li>
-										<li><a href="exit.php" class="fa-solid fa-arrow-right-from-bracket"><span class="label"></span></a></li>
+									<li><abbr title="Ir a índice"><a href="index.php" class=" fa fa-home"><span class="label"></span></a></abbr></li>										
+										<li><abbr title="Ir a notificaciones"><a href="notificaciones.php" class=" fa fa-bell"><span class="label"></span></a></abbr></li>
+										<li><abbr title="Ir a historial"><a href="historial.html" class=" fa fa-book"><span class="label"></span></a></abbr></li>
+										<li><abbr title="Ir a favoritos"><a href="index_favoritos.php" class=" fa fa-heart"><span class="label"></span></a></abbr></li>
+										<li><abbr title="Ir a perfil"><a href="perfil.php" class=" fa fa-user"><span class="label"></span></a></abbr></li>
+										<li><abbr title="Ir a juegos"><a href="juegos.php" class=" fa fa-dice"><span class="label"></span></a></abbr></li>
+										<li><abbr title="Salir sesión"><a href="exit.php" class="fa-solid fa-arrow-right-from-bracket"><span class="label"></span></a></li>
 									</ul>
 									
 								</header>

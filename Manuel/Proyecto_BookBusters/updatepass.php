@@ -1,5 +1,7 @@
 <?php
 
+    //Datos provenientes de change.php
+
     $codusu=$_POST["codusu"];    
     $pass=$_POST["pass"];
 	

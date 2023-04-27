@@ -3,6 +3,8 @@
 
 <?php
 
+//Datos provenientes de contraolvidada.php
+
 if(isset($_GET['envio']))
 {
 
@@ -48,18 +50,14 @@ $ejecutar=$con->query($sql);
 								<section id="banner" style="padding-top:30px">
 									<div class="content">
 										<center>
-												<img src="images/Bookbusters (4).png" alt="" />
+												<img src="images/Bookbusters (4).png" alt="" style="border-radius:10px" />
+                                                <br>
 											
-
-
-
-
-
 
                     <form action="updatepass.php" method="POST">
                         <input type="hidden" name="codusu" value="<?php echo $codusu; ?>">
-                        <input type="password" name="pass" placeholder="Nueva Contraseña">
-                        <input type="submit" value="enviar">
+                        <input type="password" name="pass" placeholder="Nueva Contraseña" style="width:20%;margin-top:1%;border-radius:10px" >
+                        <input type="submit" value="enviar" style="margin-top:1%">
                     </form>
 
                                     </center>
@@ -108,6 +106,8 @@ $ejecutar=$con->query($sql);
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
 	</body>
 </html>    

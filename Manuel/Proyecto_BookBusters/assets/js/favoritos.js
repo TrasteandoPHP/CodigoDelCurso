@@ -24,7 +24,6 @@ function addFavCor(c)
         "./php/addfavcor.php",
         {cod : c},
         function(out){
-            alert (out);
             if (out == "Añadido a favoritos")
             {
                 $("i#"+c).attr("class","fa-solid fa-heart");
@@ -48,12 +47,10 @@ function addFavBut(c)
             
             if (out == "Añadido a favoritos")
             {
-                alert(out);
                 $("i#"+c).attr("class","fa-solid fa-heart");
             }
             else
             {
-                alert(out);
             }
             
         }

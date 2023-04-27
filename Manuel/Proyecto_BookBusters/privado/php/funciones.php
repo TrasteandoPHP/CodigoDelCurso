@@ -1,4 +1,22 @@
 <?php
+function encriptado($accion,$texto){
+    $modo = "AES-128-ECB";
+    $llave = "peche";
+    
+    if($accion=="e")
+    {
+    $textoencriptado= openssl_encrypt($texto,$modo,$llave);
+    $textoencriptado=base64_encode($textoencriptado);
+    return $textoencriptado;
+    }
+    else{
+        $textoencriptado=base64_decode($texto);
+        $textoencriptado= openssl_decrypt($textoencriptado,$modo,$llave);
+        return $textoencriptado;
+    }
+    }
+
+
 function recoge(){
 $sql="SELECT *,count(cod_lib) as conta FROM libros INNER JOIN prestamos using(cod_lib) group By cod_lib ORDER BY conta DESC limit 8";	
 return conex()->query($sql);

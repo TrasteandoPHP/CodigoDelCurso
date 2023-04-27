@@ -10,11 +10,10 @@ INNER JOIN
 libros
 ON
 libros.cod_lib=prestamos.cod_lib
-WHERE disponible_lib=1";
+WHERE disponible_lib=1 AND fdevolucion_pres ='0000-00-00'";
 
 if ($ej = $con->query($sql)) {
         foreach ($ej as $reg) {
-
                 $codusu = $reg["cod_usu"];
                 $Avatar = $reg["img_usu"];
                 $Nombre = $reg["nom_usu"];
@@ -32,18 +31,27 @@ if ($ej = $con->query($sql)) {
 ?>
                 <tr>
                         <td style="margin:5px, "><?php echo "<img src='./../images/Bookbusters (1).png' height='50' style='border-radius: 10px; vertical-align: middle'>" ?></td>
-                        <td><i id="confirm<?php echo $codusu ?>" onclick="confirmacion('<?php echo $email ?>')" onmouseover='icono_rojo(confirm<?php echo $codusu ?>)' onmouseleave='icono_negro(confirm<?php echo $codusu ?>)' class="icon solid fa-envelope" style="color:black"></i></td>
+                        <td>
+                        <?php
+                        if ($reg["fentrega_pres"] == "0000-00-00") //VOY POR AQUI, NECESITO ENVIAR COD_USU, PARA SABER A QUIEN ACTUALIZAR, MIRAR CODLIB QUE NO SE ESTA ENVIANDO EN LA FUNCION
+                        {
+                        ?>
+                                <i id="confirm<?php echo $codusu ?>" onclick="confirmacion('<?php echo $email ?>')" onmouseover='icono_rojo(confirm<?php echo $codusu ?>)' onmouseleave='icono_negro(confirm<?php echo $codusu ?>)' class="icon solid fa-envelope" style="color:black"></i>
+                        <?php
+                        } 
+                        ?>
+                        </td>
                         <td>
                                 <?php
-                                if ($reg["fentrega_pres"] == "0000-00-00") {
+                                $hoy = date('Y-m-d');
+                                if ($reg["fentrega_pres"] == "0000-00-00") //VOY POR AQUI, NECESITO ENVIAR COD_USU, PARA SABER A QUIEN ACTUALIZAR, MIRAR CODLIB QUE NO SE ESTA ENVIANDO EN LA FUNCION
+                                {
                                 ?>
-                                <i id="departure<?php echo $codusu ?>" onclick="entrega('<?php echo $email ?>')" onmouseover='icono_rojo(departure<?php echo $codusu ?>)' onmouseleave='icono_negro(departure<?php echo $codusu ?>)' class="fa-solid fa-plane-departure"></i>
-                                        <!-- <button onclick="entrega('<?php echo $email ?>')" type="button" class="button fit small">entrega</button> -->
+                                        <i id="departure<?php echo $codusu ?>" onclick="entrega('<?php echo $codusu ?>','<?php echo $Nombre ?>','<?php echo $email ?>','<?php echo $hoy ?>')" onmouseover="icono_rojo(departure<?php echo $codusu ?>)" onmouseleave="icono_negro(departure<?php echo $codusu ?>)" class="fa-solid fa-plane-departure" style="color:black"></i>
                                 <?php
                                 } else {
                                 ?>
-                                <i id="arrival<?php echo $codusu ?>" onclick="valoracion('<?php echo $email ?>','<?php echo $codlibro ?>')" onmouseover='icono_rojo(arrival<?php echo $codusu ?>)' onmouseleave='icono_negro(arrival<?php echo $codusu ?>)' class="fa-solid fa-plane-arrival"></i>
-                                        <!-- <button onclick="valoracion('<?php echo $email ?>','<?php echo $codlibro ?>')" type="button" class="button fit small">Devolucion</button> -->
+                                        <i id="arrival<?php echo $codusu ?>" onclick="valoracion('<?php echo $codusu ?>','<?php echo $Nombre ?>','<?php echo $email ?>','<?php echo $codlibro ?>')" onmouseover="icono_rojo(arrival<?php echo $codusu ?>)" onmouseleave="icono_negro(arrival<?php echo $codusu ?>)" class="fa-solid fa-plane-arrival" style="color:black"></i>
                                 <?php
                                 }
                                 ?>
@@ -59,20 +67,16 @@ if ($ej = $con->query($sql)) {
                         <td style="display:none"><?php echo $disponibilidad ?></td>
                         <td><?php echo $Faltas ?></td>
 
-
-
-
-
         <?php
         }
 }
 
-
-
 if (isset($_POST["enviarmail"])) {
-        if (($_POST["enviarmail"]) == "enviar") {
+        if (($_POST["enviarmail"]) == "confirmacion") {
+
+                //CORREO ADMINISTRACION, A VISTO LA RESERVA DEL USUARIO Y NOTIFICA QUE MAÑANA PUEDE RETIRARLO
                 $para = $_POST["email"];
-                $asunto = "Confirmación, reserva de libros Bookbusters";
+                $asunto = "Confirmación, reserva de libro Bookbusters";
                 $mensaje = "<h1>El administrador ha gestionado tu reserva, puedes retirarlo mañana</h1>
                                         <br>
                                 <img src='http://10.10.10.199/bookbusters/images/Bookbusters (3).png'>";
@@ -80,11 +84,53 @@ if (isset($_POST["enviarmail"])) {
                 $header .= "Content-type:text/html;charset=UTF-8 \r\n";
                 $header .= "From: dani@medellin.ef";
                 mail($para, $asunto, $mensaje, $header);
-
                 echo "Confirmacion Enviada";
-        } elseif (($_POST["enviarmail"]) == "valorar") {
+        } elseif (($_POST["enviarmail"]) == "entrega") {
 
+                //CORREO ADMINISTRADOR A ENTREGADO LIBRO, ACTUALIZACION FECHAS PRESTAMOS (ENTREGA)
+
+                //ACTUALIZACION TABLA
+                $codusu = $_POST["codusu"];
+                $fecha = $_POST["fecha"];
+                $fentrega = date('Y-m-d', strtotime($fecha . ' +1 day'));
+                $fprevista = date('Y-m-d', strtotime($fecha . ' +15 day'));
+                $sql_entrega = "UPDATE prestamos
+                SET fentrega_pres='$fentrega',fprevista_pres='$fprevista'
+                WHERE prestamos.cod_usu=$codusu";
+                $con->query($sql_entrega);
+
+                //ENVIO CORREO
+                $usuario = $_POST["usuario"];
+                $para = $_POST["mail"];
+                $fprevista_invertida = strtotime($fprevista);
+                $fprevista_correo = date("d-m-Y", $fprevista_invertida);
+
+                $asunto = "Confirmación entrega, libro Bookbusters";
+                $mensaje = "<h1>Hola,$usuario.<br>Hemos registrado tu reserva, la fecha máxima para devolver es: $fprevista_correo</h1>
+                                        <br>
+                                <img src='http://10.10.10.199/bookbusters/images/Bookbusters (3).png'>";
+
+                $header = "MIME-Version: 1.0 \r\n";
+                $header .= "Content-type:text/html;charset=UTF-8 \r\n";
+                $header .= "From: dani@medellin.ef";
+                mail($para, $asunto, $mensaje, $header);
+        } else {
+
+                //ADMINISTRADOR A RECIBIDO EL LIBRO DE VUELTA, ACTUALIZACION FECHA DEVOLUCIO TABLA PRESTAMOS Y LIBROS DISPONIBLE (0)
+                include("./../../privado/php/funciones.php");
+
+                // encriptado();
+
+                $codusu = $_POST["codusu"];
+                $usuario = $_POST["usuario"];
                 $para = $_POST["email"];
+                $sql_devolucion = "UPDATE prestamos
+                INNER JOIN libros
+                ON prestamos.cod_lib=libros.cod_lib
+                SET prestamos.fdevolucion_pres='$hoy',libros.disponible_lib='0'
+                WHERE prestamos.cod_usu=$codusu";
+                $con->query($sql_devolucion);
+
                 $asunto = "Valora el libro Bookbusters leido";
                 $mensaje = <<<HTML
                 
@@ -128,11 +174,14 @@ if (isset($_POST["enviarmail"])) {
                 // PREPARACION VARIABLES DEL CORREO VALORACION
                 $codlibro = $_POST["codlibro"];
                 $coduniq = uniqid();
-                $sql_valoracion = "INSERT INTO valoraciones (cod_lib,val_uniq) VALUES ('$codlibro','$coduniq')";
+                $hoy = date('Y-m-d');
+                $sql_valoracion = "INSERT INTO valoraciones (cod_lib,val_uniq,fecha_val) VALUES ('$codlibro','$coduniq','$hoy')";
                 $ej_val = $con->query($sql_valoracion);
                 $id = $con->insert_id;
+
         }
 } else {
         echo "No hay reservas pendientes...";
 }
+
         ?>

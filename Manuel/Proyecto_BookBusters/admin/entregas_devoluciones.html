@@ -57,7 +57,7 @@
 								<tr>
 									<th>Avatar</th>
 									<th><i class="fa fa-check"></i></th>
-									<th>boton</th>
+									<th><i class="fa-solid fa-truck-fast fa-beat-fade" style="color:#ff39ba;"></i></th>
 									<th>Usuario</th>
 									<th>Libro</th>
 									<th>Email</th>
@@ -199,7 +199,7 @@
 alert(emailPHP);
 			var correo=emailPHP;
 
-				$.post("./php/busca_entregas_devoluciones.php", { enviarmail: "enviar",email:correo}, function () {
+				$.post("./php/busca_entregas_devoluciones.php", { enviarmail: "confirmacion",email:correo}, function () {
 
 					Swal.fire({
 						position: "top-center",
@@ -211,25 +211,47 @@ alert(emailPHP);
 				}
 				)
 		}
-	
-	function valoracion(email,libro) {
+		function entrega(codusu,nombre,emailPHP,fecha) {
+alert(codusu);
+alert(nombre);
+alert(emailPHP);
+alert(fecha);
+
+
+				$.post("./php/busca_entregas_devoluciones.php", { enviarmail: "entrega",codusu:codusu,usuario:nombre,mail:emailPHP,fecha:fecha}, function () {
+					
+					Swal.fire({
+						position: "top-center",
+						icon: "success",
+						title: "Entrega registrada correctamente",
+						showConfirmButton: false,
+						timer: 1500
+					})
+				}
+				)
+				location.reload();
+		}
+	function valoracion(codusu,nombre,email,libro) {
+alert(codusu);
+alert(nombre);
 alert(email);
 alert(libro);
 			var correo=email;
-				$.post("./php/busca_entregas_devoluciones.php", { enviarmail: "valorar",email:correo, codlibro:libro}, function () {
+				$.post("./php/busca_entregas_devoluciones.php", { enviarmail: "valorar",codusu:codusu,usuario:nombre,email:correo, codlibro:libro}, function () {
 
 					Swal.fire({
 						position: "top-center",
 						icon: "success",
-						title: "Confirmacion Enviada",
+						title: "Devolución registrada correctamente",
 						showConfirmButton: false,
 						timer: 1500
 					})
 				}
 				)
+				location.reload();
 		}
 	function icono_rojo(id) {
-		$(id).css("color", "red")
+		$(id).css("color", "#ff39ba")
 		$(id).css("cursor", "pointer")
 	}
 	function icono_negro(id) {

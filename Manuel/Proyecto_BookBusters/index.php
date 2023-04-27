@@ -24,9 +24,9 @@
 								<header id="header">
 									<a href="index.php" class="logo"><img style="width: 20%;" src="./images/logo.png"></a>
 									<ul class="icons">
-										<li><a style="font-size:xx-large" href="index.php" class="fa fa-home" aria-hidden="true"><span class="label"></span></a></li>
-										<li><a style="font-size:xx-large" href="registro.html" class="fa fa-user-plus" aria-hidden="true"><span class="label"></span></a></li>
-										<li><a style="font-size:xx-large" href="login.html" class="fas fa-sign-in-alt" aria-hidden="true"><span class="label"></span></a></li>	
+										<li><a style="font-size:large" href="index.php" class="fa fa-home" aria-hidden="true"><span class="label"></span></a></li>
+										<li><a style="font-size:large" href="registro.html" class="fa fa-user-plus" aria-hidden="true"><span class="label"></span></a></li>
+										<li><a style="font-size:large" href="login.html" class="fas fa-sign-in-alt" aria-hidden="true"><span class="label"></span></a></li>	
 									</ul>
 								</header>
 
@@ -43,8 +43,9 @@
 											<li><a href="#" class="button big">Learn More</a></li>
 										</ul> -->
 									</div>
-									<span class="image object">
-										<img src="images/Bookbusters (4).png" alt="" />
+									<span style=" height:25%; width:25%">
+									
+										<img src="images/Bookbusters (4)_transparente (1).png" alt="" />
 									</span>
 								</section>
 
@@ -106,9 +107,9 @@
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="index.php" style="font-size:x-large ;">Inicio</a></li>
-										<li><a href="registro.html" style="font-size:x-large ;">Registro</a></li>
-										<li><a href="login.html" style="font-size:x-large">Login</a></li>	
+										<li><a href="index.php" style="font-size:medium ;">Inicio</a></li>
+										<li><a href="registro.html" style="font-size:medium ;">Registro</a></li>
+										<li><a href="login.html" style="font-size:medium">Login</a></li>	
 									</ul>
 								</nav>
 							<!-- Footer -->

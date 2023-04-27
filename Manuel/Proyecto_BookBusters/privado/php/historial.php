@@ -49,10 +49,15 @@
                 $fechaDevolucion = $registro["fdevolucion_pres"];
                 $fechaDevolucion = explode("-",$fechaDevolucion);                        
                 $fechaDevolucion = $fechaDevolucion[2]."-".$fechaDevolucion[1]."-".$fechaDevolucion[0];
-				
+								
 				$fechaDevolucionDatetime = new DateTime($fechaDevolucion);
-				$fechaVaciaDateTime = new DateTime('0000-00-00');			
-				
+				$fechaVaciaDateTime = new DateTime('00-00-0000');				
+
+				if(($fechaDevolucionPrevista!=$fechaVaciaDateTime) && ($fechaDevolucionDatetime==$fechaVaciaDateTime)){
+					$pintarBotonDevolverLibro = "<button id='1' onclick='devolverLibro(this.id)'>Solicitar Devolución</button>";
+				} else {
+					$pintarBotonDevolverLibro = "";
+				}
 				
 				if($fechaDevolucionDatetime==$fechaVaciaDateTime){
 					
@@ -104,12 +109,11 @@
 											<td style='font-family:auto; font-size:auto;'>$fechaDevolucion</td>
 										</tr>								
 									</table>
-									<button onclick='devolverLibro()'>Solicitar Devolución</button>
+									$pintarBotonDevolverLibro
 									<div>
-									<textarea style='margin-top:10px;'></textarea>
-									<button style='margin-top:10px;'>Enviar</button>
-									
-									</div> 								                               
+										<textarea id='textoEnviar' style='margin-top:10px; display:none' ></textarea>
+										<button id='botonEnviar' style='margin-top:10px; display:none'>Enviar</button>									
+									</div>																	                               
 							</article>                 
 						";         
 				
@@ -138,11 +142,12 @@
     } else {
 		
 		// Se devuelve mensaje si el usuario no tiene sesión abierta
+		
 		echo "
             <message>
                 <h2>No tienes permisos para estar aquí.  Por favor, inicia sesión.</h2>
                 <br><br><br>
-		        <button onclick='window.location.href=`./../login.php`'>Volver</button>
+		        <button onclick='window.location.href=`./../login.html`'>Volver</button>
             </message>
         ";
 	}

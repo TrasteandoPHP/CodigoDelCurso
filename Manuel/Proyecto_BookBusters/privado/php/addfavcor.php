@@ -1,9 +1,9 @@
 <?php
-    $codLib = $_POST["cod"];
+    session_start();
+    if($_SESSION["bookbusters"]){
+        $codUsu= $_SESSION["bookbusters"];
+        $codLib = $_POST["cod"];
     
-    // PARA PROBAR
-    // cambiar cuando exista session
-    $codUsu="1"; 
     $con = new mysqli("10.10.10.199","busters","1234","biblioteca");
     $sqlQuery  = "SELECT * FROM favoritos WHERE cod_lib = '$codLib' AND cod_usu = '$codUsu'";
     $sqlInsert = "INSERT INTO favoritos (cod_usu,cod_lib) VALUES('$codUsu','$codLib')";
@@ -16,9 +16,7 @@
     else
     {
         $con->query($sqlRemove);
-        echo "Borrado de favoritos";
     }
 
-    // echo "Ya está en favoritos";
-
-?>
+    
+    }

@@ -18,16 +18,18 @@ if ($ej=$con->query($sql))
                 
                         <tr class="datos" id="campo_<?php echo $cod ?>">
                                 <td>
-                                        <a href="./detalle_gestion_usu.php?cod=<?php echo $cod ?>"><?php echo $nom?></a>
+                                        <a href="./php/historial_usu_adm.html?cod=<?php echo $cod ?>"><?php echo $nom?></a>
                                 </td>
                                 <td>
-                                        <a href="./detalle_gestion_usu.php?cod=<?php echo $cod ?>"><?php echo $aps?></a></td>
-                                <td><a href="./detalle_gestion_usu.php?cod=<?php echo $cod ?>"><?php echo $email?></a></td>
-                                <td><a href="./detalle_gestion_usu.php?cod=<?php echo $cod ?>"><?php echo $act?></a></td>
-                                <td><a href="./detalle_gestion_usu.php?cod=<?php echo $cod ?>"><?php echo $fal?></a></td>
+                                        <a href="./php/historial_usu_adm.html?cod=<?php echo $cod ?>"><?php echo $aps?></a></td>
+                                <td><a href="./php/historial_usu_adm.html?cod=<?php echo $cod ?>"><?php echo $email?></a></td>
+                                <td><a href="./php/historial_usu_adm.html?cod=<?php echo $cod ?>"><?php echo $act?></a></td>
+                                <td><a href="./php/historial_usu_adm.html?cod=<?php echo $cod ?>"><?php echo $fal?></a></td>
                                 <td>
                                         <i id = "dele_<?php echo $cod ?>" class="fa-solid fa-trash-can bs-danger" style="cursor:pointer;" onclick = "borrar_usuario(this.id)" onmouseover="pintar(this.id)" onmouseleave="despintar(this.id)"></i>
                                         <i id = "modif_<?php echo $cod ?>" class="fa-solid fa-user-pen" style="cursor:pointer;" onclick="modif_usu(this.id)" onmouseover="pintar(this.id)" onmouseleave="despintar(this.id)"></i>
+                                        <i id = "activ_<?php echo $cod ?>" class="fa-solid fa-paper-plane" style="cursor:pointer;" onclick="enlace_activar(this.id)" onmouseover="pintar(this.id)" onmouseleave="despintar(this.id)"></i>
+                                        <i id = "mail_<?php echo $cod ?>" class="fa-solid fa-lock" style="cursor:pointer;" onclick="cambio_contusu('<?php echo $email?>')" onmouseover="pintar(this.id)" onmouseleave="despintar(this.id)"></i>
                                 </td>
                         </tr>
                 
@@ -44,7 +46,7 @@ if ($ej=$con->query($sql))
                                 </div>
                         </td>
                         <td>
-                                <input id="mail_<?php echo $cod ?>" type="email" name="mail" value="<?php echo $email ?>">
+                                <input id="mail_<?php echo $cod ?>" type="email" name="mail" value="<?php echo $email ?>" readonly>
                         </td>
                         <td><?php echo $act?></td>
                         <td><?php echo $fal?></td>
@@ -61,4 +63,5 @@ else{
         echo "No hay reservas pendientes...";
 }
 ?>
+<script src="https://kit.fontawesome.com/7b8eabe9ec.js" crossorigin="anonymous"></script>
 

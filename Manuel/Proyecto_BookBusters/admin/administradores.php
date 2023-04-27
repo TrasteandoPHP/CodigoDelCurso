@@ -149,6 +149,7 @@ if (isset($_SESSION["admin"])) {
 
 			function borrar_administrador(id) {
 				cod = id.split("_")[1];
+				if(confirm("¿Esta seguro de borrar este Administrador?")){
 				$.post(
 					"./php/borrar_adm.php", {
 						codigo: cod
@@ -160,6 +161,10 @@ if (isset($_SESSION["admin"])) {
 						}
 					}
 				);
+				}
+				else{
+					location.reload();
+				}
 			}
 
 			function desplegar_input() {
