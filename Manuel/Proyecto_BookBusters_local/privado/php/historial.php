@@ -54,7 +54,7 @@
 				$fechaVaciaDateTime = new DateTime('00-00-0000');				
 
 				if(($fechaDevolucionPrevista!=$fechaVaciaDateTime) && ($fechaDevolucionDatetime==$fechaVaciaDateTime)){
-					$pintarBotonDevolverLibro = "<button id='libro$codigoLibro' onclick='devolverLibro(this.id)'>Solicitar Devolución</button>";
+					$pintarBotonDevolverLibro = "<button id='libro$codigoLibro' onclick='devolverLibro(this.id)'>Concertar Devolución</button>";
 				} else {
 					$pintarBotonDevolverLibro = "";
 				}
@@ -112,7 +112,7 @@
 									$pintarBotonDevolverLibro
 									<div id='libro$codigoLibro' style='display:none'>
 										<textarea style='margin-top:10px;'></textarea>
-										<button onclick='enviarCorreo()'style='margin-top:10px;'>Enviar</button>									
+										<button onclick='enviarCorreo($codigoLibro)'style='margin-top:10px;'>Enviar</button>									
 									</div>																	                               
 							</article>                 
 						";         

@@ -135,8 +135,11 @@
 				function enviarCorreo(id){
 
 					alert("Correo enviado...");
-					window.location.href = "./historial.html";
-					$("button#"+id).text("Devolución Solicitada");
+					$("button#libro"+id).text("Devolución Concertada");
+					$("button#libro"+id).css('border','none');
+					$("div#libro"+id).hide();
+					//window.location.href = "./historial.html";
+					
 					
 				}
 			</script>
