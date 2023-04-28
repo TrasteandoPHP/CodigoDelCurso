@@ -38,10 +38,30 @@
 		<title>PERFIL DE USUARIO</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="./../assets/css/main.css" />
+		<link rel="stylesheet" href="./../assets/css/main.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	</head>
 	<body class="is-preload">
+
+		<script>
+			function notif(cod)
+			{
+				$.post
+				(
+					"./php/notifica_icon.php",
+					{
+						cod_usu : cod
+					},
+					function vuelta(notif){
+						if(notif!="")
+						{
+							$("#notificaciones").attr("class","fa fa-bell fa-bounce");
+						}
+					}
+				);
+			}
+		</script>
 
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -55,15 +75,22 @@
 									<a href="index.php" class="logo"><img style="width: 20%;" src="./../images/logo.png"></a>
 									<ul class="icons">
 										<li><a href="index.php" class=" fa fa-home" title="Ir a índice"><span class="label"></span></a></li>										
-										<li><a href="#" class=" fa fa-bell" title="Ir a notificaciones"><span class="label"></span></a></li>
+										<li><a id="notificaciones" href="notificaciones.php" class=" fa fa-bell" title="Ir a notificaciones"><span class="label"></span></a></li>
 										<li><a href="historial.html" class=" fa fa-book" title="Ir a historial"><span class="label"></span></a></li>
 										<li><a href="index_favoritos.php" class=" fa fa-heart" title="Ir a favoritos"><span class="label"></span></a></li>
 										<li><a href="perfil.php" class=" fa fa-user" title="Ir a perfil"><span class="label"></span></a></li>
-										<li><a href="#" class=" fa fa-dice" title="Ir a juegos"><span class="label"></span></a></li>
+										<li><a href="./Ahorcadojuego/index.html" class=" fa fa-dice" title="Ir a juegos"><span class="label"></span></a></li>
 										<li><a href="exit.php" class="fa-solid fa-arrow-right-from-bracket" title="Salir sesión"><span class="label"></span></a></li>
 									</ul>
 								</header>
 						<?php
+
+							// usamos cod_usu=1 de ejemplo a la espera de que haya session
+							$cod_usu = $_SESSION["bookbusters"];
+
+							// miramos si hay notificaciones----------------------------------------------COMPROBACION NOTIFICACION 
+							echo "<script>notif('$cod_usu')</script>";
+
 							if($img == "")
 							{
 								$img1 = "avatares/Bookbusters.png";
@@ -250,8 +277,7 @@
 			<script type="text/javascript">
 				function seleccion(iden)
 				{
-					// alert(iden);
-					var img = $("iden").src();
+					var img = $("#"+iden).attr("src");
 					$.post(
 						"php/cambiaimg.php",
 						{pic:img},

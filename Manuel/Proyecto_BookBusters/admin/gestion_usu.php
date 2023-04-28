@@ -118,6 +118,7 @@ if (isset($_SESSION["admin"])) {
 		<script src="../assets/js/breakpoints.min.js"></script>
 		<script src="../assets/js/util.js"></script>
 		<script src="../assets/js/main.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 
@@ -131,19 +132,48 @@ if (isset($_SESSION["admin"])) {
 
 			function borrar_usuario(id) {
 				cod = id.split("_")[1];
-				if (confirm("Está seguro de borrar el usuario")) {
-					$.post(
+
+				// Funcion de alert de confirmacion
+				Swal.fire({
+					title: 'Está seguro de borrar el usuario?',
+					showDenyButton: false,
+					showCancelButton: true,
+					confirmButtonText: 'SI',
+					denyButtonText: `Don't save`,
+				}).then((result) => {
+					/* Read more about isConfirmed, isDenied below */
+					if (result.isConfirmed) {
+						Swal.fire('Borrado!', '', 'success')
+						// borradoooooo
+						$.post(
 						"./php/borrar_usu.php", {
 							codigo: cod
 						},
 						function(out) {
-							alert(out);
 							if (out != "Ha ocurrido un error en el borrado") {
 								$("#campo_" + cod).hide();
 							}
 						}
 					);
-				}
+
+					} else if (result.isDenied) {
+						Swal.fire('Changes are not saved', '', 'info')
+					}
+				})
+
+				// if (confirm("Está seguro de borrar el usuario")) {
+				// 	$.post(
+				// 		"./php/borrar_usu.php", {
+				// 			codigo: cod
+				// 		},
+				// 		function(out) {
+				// 			alert(out);
+				// 			if (out != "Ha ocurrido un error en el borrado") {
+				// 				$("#campo_" + cod).hide();
+				// 			}
+				// 		}
+				// 	);
+				// }
 			}
 
 			function pintar(id) {
@@ -200,17 +230,17 @@ if (isset($_SESSION["admin"])) {
 					}
 				);
 			}
-			function cambio_contusu(e){
+
+			function cambio_contusu(e) {
 				$.post(
-					"./../contraolvidada.php",
-					{email:e},
-					function(vuelta){
+					"./../contraolvidada.php", {
+						email: e
+					},
+					function(vuelta) {
 						alert("Eviado mail de cambio de contraseña.");
 					}
 				);
 			}
-
-			
 		</script>
 	</body>
 

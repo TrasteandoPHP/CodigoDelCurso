@@ -1,7 +1,6 @@
 <?php
 	session_start();
 	if(isset($_SESSION["bookbusters"])) {
-        
     ?>
 <!DOCTYPE HTML>
 <!--
@@ -14,7 +13,7 @@
 		<title>Detalle_libro</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <script src="https://kit.fontawesome.com/7b8eabe9ec.js" crossorigin="anonymous"></script>
 	</head>
@@ -31,13 +30,13 @@
 							<header id="header">
                                     <a href="index.php" class="logo"><img style="width: 20%;" src="./../images/logo.png"></a>
 									<ul class="icons">
-                                    <li><abbr title="Ir a índice"><a href="index.php" class=" fa fa-home"><span class="label"></span></a></abbr></li>										
-										<li><abbr title="Ir a notificaciones"><a href="notificaciones.php" class=" fa fa-bell"><span class="label"></span></a></abbr></li>
-										<li><abbr title="Ir a historial"><a href="historial.html" class=" fa fa-book"><span class="label"></span></a></abbr></li>
-										<li><abbr title="Ir a favoritos"><a href="index_favoritos.php" class=" fa fa-heart"><span class="label"></span></a></abbr></li>
-										<li><abbr title="Ir a perfil"><a href="perfil.php" class=" fa fa-user"><span class="label"></span></a></abbr></li>
-										<li><abbr title="Ir a juegos"><a href="juegos.php" class=" fa fa-dice"><span class="label"></span></a></abbr></li>
-										<li><abbr title="Salir sesión"><a href="exit.php" class="fa-solid fa-arrow-right-from-bracket"><span class="label"></span></a></li>
+                                        <li><a href="index.php" class=" fa fa-home"><span class="label"></span></a></li>
+										<li><a href="notificaciones.php" class=" fa fa-bell"><span class="label"></span></a></li>
+										<li><a href="prestamos.php" class=" fa fa-book"><span class="label"></span></a></li>
+										<li><a href="index_favoritos.php" class=" fa fa-heart"><span class="label"></span></a></li>
+										<li><a href="perfil.php" class=" fa fa-user"><span class="label"></span></a></li>
+										<li><a href="juegos.php" class=" fa fa-dice"><span class="label"></span></a></li>
+										<li><a href="exit.php" class="fa-solid fa-arrow-right-from-bracket"><span class="label"></span></a></li>
 									</ul>
 								</header>
 
@@ -63,18 +62,21 @@
 
     if($regdevolucion = $conexion->query($sqlconsultaprestamo)->fetch_array())
     {
+        //El usuario tiene algún libro prestado sin devolver, por lo que hasta que lo devuelva no puede solicitar nuevo préstamo
+        //SQL para obtener el nombre del libro pendiente de devolver y la fecha límite de devolución
+        // $sqldevolucion="SELECT * FROM prestamos INNER JOIN libros ON prestamos.cod_lib=libros.cod_lib WHERE cod_usu='$codusuario' AND fentrega_pres!='0000-00-00' AND fdevolucion_pres='0000-00-00'";
+        // $ejesqldevolucion=$conexion->query($sqldevolucion);
+        // $regdevolucion=$ejesqldevolucion->fetch_array(); 
         $codlibdevolucion=$regdevolucion["cod_lib"];
         $titulodevolucion=$regdevolucion["titulo_lib"];
         $fpredevo=explode("-",$regdevolucion["fprevista_pres"]);
         $fechaprevistadevolucion="$fpredevo[2]/$fpredevo[1]/$fpredevo[0]";
 
 ?>        
-        <center>
         <label for="" style="color:red">Tienes prestado otro libro pendiente de devolver. Titulo: <?php echo $titulodevolucion;?>, fecha prevista devolución: <?php echo $fechaprevistadevolucion;?></label>
-        <br>
+        <br><br>
         <abbr title="Para poder solicitar préstamo de un libro se debe devolver el o los libros prestados anteriormente. Si deseas ver el historial de préstamos haz clic">        
         <button onclick="window.location.href='./historial.html'" style="color:red;">TIENES ALGÚN LIBRO PRESTADO SIN DEVOLVER</button></abbr>
-        </center>
 <?php
     }
     else
@@ -95,13 +97,11 @@
             $freserva=explode("-",$regreserva["freserva_pres"]);
             $fechareserva="$freserva[2]/$freserva[1]/$freserva[0]";
 ?>
-            <center>
             <input type="hidden" id="codigootrolibro" value="<?php echo $codlibreserva; ?>">
             <label for="" style="color:red">Tienes reservado préstamo de otro libro pendiente recoger. Titulo: <?php echo $tituloreserva?>, fecha reserva: <?php echo $fechareserva?>. Si lo deseas puedes anular esa reserva.</label>
-            <br>
+            <br><br>
             <abbr title="Tienes reservado préstamo de otro libro pendiente de recoger. No se puede realizar esta reserva a no ser que anules la anterior reserva">
-            <button onclick="anularotrareservaprestamo()">ANULAR RESERVA PRÉSTAMO OTRO LIBRO</button></abbr>
-            </center>
+            <button onclick="anularotrareservaprestamo()">ANULAR RESERVA PRÉSTAMO OTRO LIBRO</button></abbr>  
             
 <?php
         }
@@ -116,11 +116,9 @@
             {
                 //Libro disponible (campo disponible_lib=0 de la tabla libros)       
 ?>
-                <center>
                 <label for="" style="color:green">Si deseas reservar préstamo de este libro haz clic en "SOLICITAR PRÉSTAMO LIBRO"</label>
-                <br>
-                <button onclick="reservaprestamo()">SOLICITAR PRÉSTAMO LIBRO</button>
-                </center>        
+                <br><br>
+                <button onclick="reservaprestamo()">SOLICITAR PRÉSTAMO LIBRO</button>          
 <?php
             }
             else
@@ -137,24 +135,20 @@
                 {
                     //El libro ya había sido reservado por el usuario y no ha sido entregado, no ha sido recogido. Se permite anular la reserva.
 ?>
-                    <center>
                     <label for="" style="color:red">Tienes reservado préstamo de este libro pendiente de recoger. Si lo deseas puedes anular esta reserva.</label>
-                    <br>
+                    <br><br>
                     <abbr title="Tienes reservado el préstamo de este libro que está pendiente de ser recogido (la reserva la acabas de realizar o ya la la habías realizado anteriormente). Si lo deseas puedes anular esta reserva">
                     <button onclick="anularreservaprestamo()">ANULAR RESERVA PRÉSTAMO LIBRO</button></abbr>
-                    </center>
 <?php
                 }
                 else
                 {
                     //El libro no está disponible, no ha sido reservado por el usuario, no se ha devuelto
 ?>            
-                    <center>
                     <label for="" style="color:red">Este libro ya está prestado o está reservado por otro usuario. Puedes solicitar reserva préstamo de otro libro haciendo clic en "LIBRO NO DISPONIBLE" o ir a Indice</label>
-                    <br>
+                    <br><br>
                     <abbr title="Ir a Indice para seleccionar libro disponible">
-                    <button onclick="window.location.href='./index.php'">LIBRO NO DISPONIBLE</button></abbr>
-                    </center>
+                    <button onclick="window.location.href='./index.php'">LIBRO NO DISPONIBLE</button></abbr>    
 <?php
                 }        
 
@@ -168,8 +162,8 @@
     {
         //El usuario ya tiene este libro como favorito. Se da como opción quitar de la lista de favoritos del usuario.
 ?>
-        <center><abbr title="libro en favoritos (haz clic para dar de baja de favortios)">
-            <button><i class="fa fa-heart-circle-minus fa-2xl" id="favoritobaja" onclick="quitarfavoritos()" style="color:red;"></i></button></abbr></center>
+        <abbr title="libro en favoritos (haz clic para dar de baja de favortios)">
+            <i class="fa fa-heart-circle-minus fa-2xl" id="favoritobaja" onclick="quitarfavoritos()" style="color:red;"></i></abbr>
         <hr>       
 <?php
     }
@@ -177,14 +171,11 @@
     {
         //El usuario no tiene este libro como favorito y lo puede añadir a la lista de favoritos del usuario.
 ?>
-        <center><abbr title="añadir a favoritos">
-            <button><i class="fa fa-heart-circle-plus fa-2xl" id="favoritoalta" onclick="favorito()" style="color:grey"></i></button></abbr></center>
+        <abbr title="añadir a favoritos"><i class="fa fa-heart-circle-plus fa-2xl" id="favoritoalta" onclick="favorito()"></i></abbr>
         <hr>        
 <?php
     }
-    include("./php/funciones.php");
-    $star = estrella($codlibro);
-    echo '<center>'.$star.'</center>';
+
     //SQL consulta datos del libro tabla libros 
     $sqllibro="SELECT * FROM libros WHERE cod_lib='$codlibro'";
     $ejesqllibro=$conexion->query($sqllibro);
@@ -219,6 +210,8 @@
 	</div>
 
 
+
+
 	<div id="imglibro" style="float:left;margin-right:5%;">
         <img src="../images/portadas/<?php echo $codlibro; ?>/<?php echo $imgagenlibro; ?>" style="max-width:80%" alt="">     
     </div>
@@ -235,27 +228,14 @@
         <label>Idioma</label><p><?php echo $idiomalibro; ?></p>    
     </div>
     <div id="datos3">
-    <label>Resumen</label><p style="text-align:justify"><?php echo $resumenlibro; ?></p>
+    <label>Resumen</label><p><?php echo $resumenlibro; ?></p>
     </div>
-            <?php
-            $opinion = "select * from valoraciones where cod_lib = $codlibro and texto_val != '' ";
 
-            $exeop = $conexion->query($opinion);
-            ?>
-            <table border = 1 style="text-align:center">
-                <tr>
-                    <td><b>Valoraciones</b></td>
-                </tr>
-            <?php
-            foreach($exeop as $regop)
-            {
-                $valoracion = $regop["texto_val"];
-                echo "<tr>";
-                echo "<td>$valoracion</td>";
-                echo "</tr>";
-            }
-            ?>
-            </table>
+
+
+
+
+
 						</section>
 				</div>
 		</div>
@@ -279,7 +259,7 @@
 									<ul>
 										<li><a href="index.php">Inicio</a></li>
 										<li><a href="historial.html">Historial</a></li>
-										<li><a href="index_favoritos.php">Favoritos</a></li>
+										<li><a href="index_favoritos.phhp">Favoritos</a></li>
 										<li><a href="perfil.php">Perfil</a></li>
 										<li><a href="#">Juegos</a></li>
 										<li><a href="exit.php">Salir</a></li>
@@ -294,8 +274,8 @@
                                     <li class="icon solid fa-envelope"><a href="C:\Program Files\Mozilla Thunderbird\thunderbird.exe">alfonso@medellin.ef</a></li>
 										<li class="icon solid fa-phone">(981) 87 86 34</li>
 										<li class="icon solid fa-home">Dirección: Rúa Salvador de Madariaga, 50, 15173 Oleiros, A Coruña</li>
-										<li class="icon solid fa-book"><a href="terminosuso.php">Terminos de uso</a></li>	
-										<li class="icon solid fa-newspaper"><a href="polpriv.php">Politica de Privacidad</a></li>
+										<li class="icon solid fa-book">Terminos de uso</li>	
+										<li class="icon solid fa-newspaper"><a href="pp.php">Politica de Privacidad</li>
 								</section>
 								<footer id="footer">
 									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
@@ -311,7 +291,6 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-            <script src="../assets/js/favoritos.js"></script> 
             <script>
     //Función para dar de alta solicitud reserva préstamo libro en tabla prestamos y actualizar tabla libros
         //Se recibe de dos input's ocultos el código de libro y el código de usuario, enviándose al correspondiente
@@ -328,7 +307,6 @@
                 window.location.href='reservado.php?codlib='+codlib;                
             }
         );
-        
     }
 
     //Función para anular reserva préstamo libro en tabla prestamos y actualizar tabla libros

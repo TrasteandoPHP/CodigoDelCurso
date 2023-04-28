@@ -62,29 +62,47 @@ if($eva){
 return $imprime;
 }
 
-function valorar($id,$codlib){
-    $sql="SELECT * FROM valoraciones WHERE cod_val='$id' AND act_val='0'";
-    $ver=conex()->query($sql);
-    if($ver->fetch_array())
-    {
-$a="comentar $codlib";
 
+function valorar($codlib,$id,$coduni,$p){
+    $sql="SELECT * FROM valoraciones WHERE val_uniq='$coduni' AND act_val='0'";
+    $reg=conex()->query($sql);
+    if($valor=$reg->fetch_array())
+    {
+$hoy=$valor["fecha_val"]; 
+ $h=new DateTime(date("Y-m-d"));
+ $h2=new DateTime($hoy);
+ $c= $h->diff($h2);
+ if($c->days>3 or ($p<1 or $p>5))
+ {
+    $p=1;
+    header('location:http://10.10.10.199/bookbusters/index.php');}
+$sqlup="UPDATE valoraciones SET cod_lib='$codlib',puntos_val='$p',val_uniq=NOW() WHERE cod_val='$id'";
+if(conex()->query($sqlup)){
+    //unset();
+    header ("Cache-Control: no-cache, must-revalidate");
+    conex()->close();
+}
+else
+{
+    echo "mal";
+}
+ //echo $c->days;
+ 
+$a="bien";
     }
     else
+
     {
-$a= "link fue usado";
+$a= "usado";
+
+
+
     }
 return $a;
 
 
 
 }
-function pinta()
-{
-echo "";
 
-
-
-}
 
 ?>

@@ -43,7 +43,9 @@
 					<header class="main">
 						<h2>Gestión de Usuario</h2>
 						<div>
-							<abbr title="Volver"><i class="fa-solid fa-circle-arrow-left" style="font-size: 2.5em;cursor:pointer;" onclick="window.location.href='./index_administrador.php'"></i>	</abbr>
+							<abbr title="Volver"><i class="fa-solid fa-circle-arrow-left"
+									style="font-size: 2.5em;cursor:pointer;"
+									onclick="window.location.href='./index_administrador.php'"></i> </abbr>
 						</div>
 					</header>
 
@@ -67,31 +69,24 @@
 									<th>Devolución</th>
 									<th style="display: none;">F.altas</th>
 									<th>F.Alta</th>
-
 								</tr>
 							</thead>
 							<tbody>
 							</tbody>
 						</table>
-
 					</div>
-
 				</section>
-
 			</div>
 		</div>
-
 		<!-- Sidebar -->
 		<div id="sidebar">
 			<div class="inner">
-
 				<!-- Search -->
 				<section id="search" class="alt">
 					<form method="post" action="#">
 						<input type="text" name="query" id="query" placeholder="Search" />
 					</form>
 				</section>
-
 				<!-- Menu -->
 				<nav id="menu">
 					<header class="major">
@@ -126,7 +121,6 @@
 						<li><a href="#">Amet Lacinia</a></li>
 					</ul>
 				</nav>
-
 				<!-- Section -->
 				<section>
 					<header class="major">
@@ -196,60 +190,60 @@
 	})
 
 	function confirmacion(emailPHP) {
-alert(emailPHP);
-			var correo=emailPHP;
+		alert(emailPHP);
+		var correo = emailPHP;
 
-				$.post("./php/busca_entregas_devoluciones.php", { enviarmail: "confirmacion",email:correo}, function () {
+		$.post("./php/busca_entregas_devoluciones.php", { enviarmail: "confirmacion", email: correo }, function () {
 
-					Swal.fire({
-						position: "top-center",
-						icon: "success",
-						title: "Confirmacion Enviada",
-						showConfirmButton: false,
-						timer: 1500
-					})
-				}
-				)
+			Swal.fire({
+				position: "top-center",
+				icon: "success",
+				title: "Confirmacion Enviada",
+				showConfirmButton: false,
+				timer: 1500
+			})
 		}
-		function entrega(codusu,nombre,emailPHP,fecha) {
-alert(codusu);
-alert(nombre);
-alert(emailPHP);
-alert(fecha);
+		)
+	}
+	function entrega(codusu, nombre, emailPHP, fecha) {
+		alert(codusu);
+		alert(nombre);
+		alert(emailPHP);
+		alert(fecha);
 
 
-				$.post("./php/busca_entregas_devoluciones.php", { enviarmail: "entrega",codusu:codusu,usuario:nombre,mail:emailPHP,fecha:fecha}, function () {
-					
-					Swal.fire({
-						position: "top-center",
-						icon: "success",
-						title: "Entrega registrada correctamente",
-						showConfirmButton: false,
-						timer: 1500
-					})
-				}
-				)
-				location.reload();
+		$.post("./php/busca_entregas_devoluciones.php", { enviarmail: "entrega", codusu: codusu, usuario: nombre, mail: emailPHP, fecha: fecha }, function () {
+
+			Swal.fire({
+				position: "top-center",
+				icon: "success",
+				title: "Entrega registrada correctamente",
+				showConfirmButton: false,
+				timer: 1500
+			})
 		}
-	function valoracion(codusu,nombre,email,libro) {
-alert(codusu);
-alert(nombre);
-alert(email);
-alert(libro);
-			var correo=email;
-				$.post("./php/busca_entregas_devoluciones.php", { enviarmail: "valorar",codusu:codusu,usuario:nombre,email:correo, codlibro:libro}, function () {
+		)
+		location.reload();
+	}
+	function valoracion(codusu, nombre, email, libro) {
+		alert(codusu);
+		alert(nombre);
+		alert(email);
+		alert(libro);
+		var correo = email;
+		$.post("./php/busca_entregas_devoluciones.php", { enviarmail: "valorar", codusu: codusu, usuario: nombre, email: correo, codlibro: libro }, function () {
 
-					Swal.fire({
-						position: "top-center",
-						icon: "success",
-						title: "Devolución registrada correctamente",
-						showConfirmButton: false,
-						timer: 1500
-					})
-				}
-				)
-				location.reload();
+			Swal.fire({
+				position: "top-center",
+				icon: "success",
+				title: "Devolución registrada correctamente",
+				showConfirmButton: false,
+				timer: 1500
+			})
 		}
+		)
+		location.reload();
+	}
 	function icono_rojo(id) {
 		$(id).css("color", "#ff39ba")
 		$(id).css("cursor", "pointer")
@@ -259,4 +253,5 @@ alert(libro);
 	}
 </script>
 </body>
+
 </html>

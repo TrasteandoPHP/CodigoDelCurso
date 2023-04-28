@@ -81,7 +81,7 @@
 																								$cont++;
 																							if($regnot['leida_not']==0)
 																							{
-																								$icono = "<i class='fa fa-eye-slash'></i>";
+																								$icono = "<i id='ojo_".$regnot["cod_not"]."' class='fa fa-eye-slash' onclick='leido(this.id)'></i>";
 																							}
 																							else
 																							{
@@ -178,6 +178,21 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+
+			<script>
+				function leido(codnotf){
+					$.post(
+						"./php/notifica_y_cambio.php",
+						{cod_not : codnotf.split("_")[1]},
+						function(out){
+							if(parseInt(out)){
+								$("#"+codnotf).attr("class","fa fa-eye");
+							}
+						}
+					);
+				}
+			</script>
 
 	</body>
 </html>

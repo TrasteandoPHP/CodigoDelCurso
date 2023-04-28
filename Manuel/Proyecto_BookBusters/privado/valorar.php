@@ -1,156 +1,99 @@
 <?php
+if(isset($_GET["m"]))
+{
 require_once("./php/funciones.php");
-$p=valorar("26","1");
-echo $p;
-$p=2;
-
-
-
+	$var=$_GET["m"];
+	$cod=$_GET["u"];
+	$p=$_GET["valoracion"];
+		$des=encriptado("d",$var);
+		$var=explode("$$",$des);
+		$ver=valorar($var[0],$var[1],$cod,$p);
+		$id=encriptado("e",$var[1]);
+if($ver=="usado")
+{conex()->close();
+echo "<script>
+alert('vinculo usuado');
+window.location.href= 'http://10.10.10.199/bookbusters/index.php';
+	</script>";
+	unset($var);
+}
+else{
+	header("Cache-Control: no-cache, no-store, must-revalidate");
+	header("Expires: 0");
 ?>
-
 <!DOCTYPE HTML>
-
 <html>
 	<head>
 		<title>BOOKBUSTER</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	</head>
 	<body class="is-preload">
-
-		<!-- Wrapper -->
-			<div id="wrapper">
-
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
-
-							<!-- Header -->
-								<header id="header">
-									<a href="index.html" class="logo"><strong>BOOKBUSTERS</strong> by Curso-OOP</a>
-									<ul class="icons">
-										<li><a href="#" class="icon solid fa-home"><span class="label">Twitter</span></a></li>
-									</ul>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+							<a href="http://10.10.10.199/bookbusters/index.php" class="logo"><strong>BOOKBUSTERS</strong> by Curso-OOP</a>
+								<ul class="icons">
+							<li><a href="http://10.10.10.199/bookbusters/index.php" class="icon solid fa-home"><span class="label">Twitter</span></a></li>
+								</ul>
 								</header>
-							<!-- Content -->
-								<section>
-									<header class="main">
-										<h1>Valoración</h1>
-									</header>
-									<hr class="major" />
-
-									<!-- Elements -->
-										<h2 id="elements"></h2>
+									<section>
+								<h1 style="font-family:'Times New Roman', Times, serif;">Valoración</h1>
+								<h4 style="font-family: 'Tahoma';">Gracias por tu valoración agradecemos que nos dejes un comentario </h4>
 										<div class="row gtr-200">
 											<div class="col-6 col-12-medium">
-												<!-- Form -->
-													<h3>Gracias por tu valoración agradecemos que nos dejes un comentario </h3>
-
-													<form method="post" action="#">
-														<div class="row gtr-uniform">
-															<!-- Break -->
-															
-															<!-- Break -->
-															<div class="col-4 col-12-small">
-																<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-																<label for="demo-priority-low">Low</label>
-															</div>
-															<div class="col-4 col-12-small">
-																<div class="chorizo">
-																	<a id="estrellar"></a>
-																	
-																</div>
-
-															</div>
-															<div class="col-4 col-12-small"></div>
-															<div></div>
-															<!-- Break -->
-															<div class="col-12">
-																<textarea name="comentario" id="demo-message" placeholder="Escriba su comentario" rows="6"></textarea>
-															</div>
-															<!-- Break -->
-															<div class="col-12">
-																<ul class="actions">
-																	<li><input type="submit" value="Valorar" class="primary" /></li>
-																
-																</ul>
-															</div>
+												<form method="post" action="valorarup.php">
+													<div class="row gtr-uniform">
+														<div class="col-4 col-12-medium">
+														<p style="font-size: xxx-large;color:#ff39ba;" id="estrellar"></p>
+														</div>
+														<div class="col-12">
+														<input type="hidden" value=<?=$id;?> name="c" class="primary" />	
+														</div>
+														<div class="col-12">
+														<textarea style="border-color:#ff39ba;font-size: large;" name="comen" id="demo-message" placeholder="Escriba su comentario" rows="6"></textarea>
+														</div>
+														<div class="col-12">
+														<input type="submit" value="Valorar" class="primary" />	
+														</div>
 														</div>
 													</form>
-
-												
-												<!-- Box -->
-												
-
-											
-
 											</div>
 										</div>
-
 								</section>
-
 						</div>
 					</div>
-
-				<!-- Sidebar -->
-					
-			</div>
-
-		<!-- Scripts -->
+				</div>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 			<script>
-
 $(Document).ready(function(){
-//Aquí va todo el código
-alert("hola");
-
 estrellar('<?= $p;?>');
-
-
 });
-
 function estrellar(n){
 	pinta="&#9733;";
-
 for(x=1;x<=n;x++)
 {
 	$("#estrellar").append(pinta);
-
 }
 }
-
-
-
-
-			</script>
-
+	</script>
 	</body>
 </html>
+<?php
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
+else{
+	echo "<script>
+	alert('vinculo usado');
+	window.location.href= 'http://10.10.10.199/bookbusters/index.php';
+	</script>";
+}
+?>

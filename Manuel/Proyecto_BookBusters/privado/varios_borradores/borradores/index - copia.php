@@ -16,41 +16,22 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="../assets/css/main.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 	<body class="is-preload">
-			<script>
-					function notif(cod)
-					{
-						$.post
-						(
-							"./php/notifica_icon.php",
-							{
-								cod_usu : cod
-							},
-							function vuelta(notif){
-								if(notif!="")
-								{
-									$("#notificaciones").attr("class","fa fa-bell fa-bounce");
-								}
-							}
-						);
-					}
-			</script>
 			<div id="wrapper">
 					<div id="main">
 						<div class="inner">
 								<header id="header">
 									<a href="index.php" class="logo"><img style="width: 20%;" src="./../images/logo.png"></a>
 									<ul class="icons">
-										<li><a href="index.php" class=" fa fa-home" title="Ir a índice"><span class="label"></span></a></abbr></li>										
-										<li><a id="notificaciones" href="notificaciones.php" class=" fa fa-bell" title="Ir a notificaciones"><span class="label"></span></a></abbr></li>
-										<li><a href="historial.html" class=" fa fa-book" title="Ir a historial"><span class="label"></span></a></abbr></li>
-										<li><a href="index_favoritos.php" class=" fa fa-heart" title="Ir a favoritos"><span class="label"></span></a></abbr></li>
-										<li><a href="perfil.php" class=" fa fa-user" title="Ir a perfil"><span class="label"></span></a></abbr></li>
-										<li><a href="#" class=" fa fa-dice" title="Ir a juegos"><span class="label"></span></a></abbr></li>
-										<li><a href="exit.php" class="fa-solid fa-arrow-right-from-bracket" title="Salir sesión"><span class="label"></span></a></li>
+										<li><a href="index.php" class=" fa fa-home"><span class="label"></span></a></li>
+										<li><a href="notificaciones.php" class=" fa fa-bell"><span class="label"></span></a></li>
+										<li><a href="prestamos.php" class=" fa fa-book"><span class="label"></span></a></li>
+										<li><a href="index_favoritos.php" class=" fa fa-heart"><span class="label"></span></a></li>
+										<li><a href="perfil.php" class=" fa fa-user"><span class="label"></span></a></li>
+										<li><a href="juegos.php" class=" fa fa-dice"><span class="label"></span></a></li>
+										<li><a href="exit.php" class="fa-solid fa-arrow-right-from-bracket"><span class="label"></span></a></li>
 									</ul>
 								</header>
 <section>
@@ -59,12 +40,6 @@
 			<h2>TOP LIBROS</h2>
 			<div class="carousel__lista">
 			<?php
-			    // usamos cod_usu=1 de ejemplo a la espera de que haya session
-				$cod_usu = $_SESSION["bookbusters"];
-
-				// miramos si hay notificaciones----------------------------------------------COMPROBACION NOTIFICACION 
-				echo "<script>notif('$cod_usu')</script>";
-
 			include("./php/funciones.php");
 			$rec=recoge();
 					foreach($rec as $reg){
@@ -72,7 +47,7 @@
 					$tempimg=$reg["imagen_lib"];
 					$tempcod=$reg["cod_lib"];
 					$tempimg=$tempcod."/".$tempimg;
-			echo "<div class='carousel__elemento'><img src='./../images/portadas/".$tempimg."' alt='' style='width:40%;border:none;border-radius:5px;'><p>";
+			echo "<div class='carousel__elemento'><img src='./../images/portadas/".$tempimg."' alt='' style='width:50%;border:none;border-radius:5px;'><p>";
 			echo $temptit."</p></div>
 					";
 				}
@@ -96,68 +71,27 @@
 <?php
 			$recibe=consulta("libros");
 foreach($recibe as $registro){
-	$codigodellibromia = $registro["cod_lib"];
-	$mirarfavoritos = consulta("favoritos WHERE cod_usu='$codusuario' AND cod_lib='$codigodellibromia'");
-	if($mirarfavoritos->fetch_array())
-	{
-		$apintarcorazon = '<a><font color="red"><i id="'.$registro["cod_lib"].'"  class="fa-solid fa-heart" onclick="addFavCor(this.id)"></i></font></a>';
-	}
-	else
-	{
-		$apintarcorazon = '<a><i id="'.$registro["cod_lib"].'"  class="fa-regular fa-heart" onclick="addFavCor(this.id)"></i></a>';
-	}
-	// sacamos codigo de libro
-	// tenemos el codigo de usuario
-	// consultadmos a favoritos por libro y usuario
-	// crar variable con el corazon
-	if($registro["disponible_lib"] == 0)
-	{
-		//Libro disponbile
-		echo'
-			<article style="display:flex;flex-direction:column;align-items:center;">
-				<a href="verlibro.php?codlib='.$registro["cod_lib"].'" class="image"><img src="./../images/'.$registro["imagen_lib"].'" alt="" /></a>
-				<h3>'.$registro["titulo_lib"].'</h3>
-				<div style="display:flex; justify-content:space-between">
-					<div>
-						'.$apintarcorazon.'
-					</div>
-					<div>
-						'.estrella($registro["cod_lib"]).'
-					</div>			
-				</div>
-				<ul class="actions">
-					<li><a href="verlibro.php?codlib='.$registro["cod_lib"].'" class="button">Ver</a></li>
-					<li style="float:right;margin-left:50%;margin-top:10px;color:lime"><abbr title="Libro disponible">
-					<i class="fa fa-book-open fa-beat fa-xl" ></i></abbr></li>			
-				</ul>		
 
-			</article>
-		';
-	}
-	else
-	{
-		//Libro no disponible
-		echo'
-			<article style="display:flex;flex-direction:column;align-items:center;">
-				<a href="verlibro.php?codlib='.$registro["cod_lib"].'" class="image"><img src="./../images/'.$registro["imagen_lib"].'" alt="" /></a>
-				<h3>'.$registro["titulo_lib"].'</h3>
-				<div style="display:flex; justify-content:space-between">
-					<div>
-						'.$apintarcorazon.'
-					</div>
-					<div>
-						'.estrella($registro["cod_lib"]).'
-					</div>			
-				</div>
-				<ul class="actions">
-					<li><a href="verlibro.php?codlib='.$registro["cod_lib"].'" class="button">Ver</a></li>
-					<li style="float:right;margin-left:50%;margin-top:10px;color:red"><abbr title="Libro NO disponible">
-					<i class="fa fa-book-open-reader fa-xl"></i></abbr></li>			
-				</ul>		
 
-			</article>
-		';
-	}
+echo'
+	<article >
+		<a href="#" class="image"><img src="./../images/'.$registro["imagen_lib"].'" alt="" /></a>
+		<h3>'.$registro["titulo_lib"].'</h3>
+		<div style="display:flex; justify-content:space-between">
+			<div>
+				<a><i id="'.$registro["cod_lib"].'"  class="fa-solid fa-heart" onclick="addFavCor(this.id)"></i></a>
+			</div>
+			<div>
+				'.estrella($registro["cod_lib"]).'
+			</div>			
+		</div>
+		<ul class="actions">
+			<li><a href="verlibro.php?codlib='.$registro["cod_lib"].'" class="button">Ver</a></li>
+			
+		</ul>
+	</article>
+';
+
 }
 
 ?>
@@ -182,12 +116,12 @@ foreach($recibe as $registro){
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="./index.php">Inicio</a></li>
-										<li><a href="./historial.html">Historial</a></li>
-										<li><a href="./index_favoritos.php">Favoritos</a></li>
-										<li><a href="./perfil.php">Perfil</a></li>
-										<li><a href="#">Juegos</a></li>									
-										<li><a href="./exit.php" style='color:red'>Salir</a></li>									
+										<li><a href="index.php">Inicio</a></li>
+										<li><a href="historial.html">Historial</a></li>
+										<li><a href="index_favoritos.html">Favoritos</a></li>
+										<li><a href="perfil.php">Perfil</a></li>
+										<li><a href="#">Juegos</a></li>
+										<li><a href="exit.php">Salir</a></li>
 									</ul>
 								</nav>
 								<section>
@@ -203,13 +137,9 @@ foreach($recibe as $registro){
 										<li class="icon solid fa-newspaper"><a href="polpriv.php">Politica de Privacidad</a></li>
 									</ul>
 								</section>
-
-							
-							<!-- Footer -->
 								<footer id="footer">
 									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
 								</footer>
-
 						</div>
 					</div>
 			</div>
@@ -219,12 +149,10 @@ foreach($recibe as $registro){
 			<script src="./assets/js/breakpoints.min.js"></script>
 			<script src="./assets/js/util.js"></script>
 			<script src="./assets/js/main.js"></script>
-			<script src="./../assets/js/favoritos.js"></script>
+			<script src="./assets/js/favoritos.js"></script>
 			<script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
 	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 	<script src="./assets/js/app.js"></script>
-
-
 
 	</body>
 </html>

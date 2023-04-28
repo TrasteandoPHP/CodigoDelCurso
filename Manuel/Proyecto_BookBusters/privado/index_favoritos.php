@@ -13,6 +13,24 @@
     	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	</head>
 	<body class="is-preload">
+	<script>
+		function notif(cod)
+		{
+			$.post
+			(
+				"./php/notifica_icon.php",
+				{
+					cod_usu : cod
+				},
+				function vuelta(notif){
+					if(notif!="")
+					{
+						$("#notificaciones").attr("class","fa fa-bell fa-bounce");
+					}
+				}
+			);
+		}
+	</script>
 
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -26,7 +44,7 @@
 									<a href="index.php" class="logo"><img style="width: 20%;" src="./../images/logo.png"></a>
 									<ul class="icons">
 										<li><a href="index.php" class=" fa fa-home" title="Ir a índice" ><span class="label"></span></a></li>										
-										<li><a href="#" class=" fa fa-bell" title="Ir a notificaciones"><span class="label"></span></a></li>
+										<li><a href="notificaciones.php" id="notificaciones" class=" fa fa-bell" title="Ir a notificaciones"><span class="label"></span></a></li>
 										<li><a href="historial.html" class=" fa fa-book" title="Ir a historial"><span class="label"></span></a></li>
 										<li><a href="index_favoritos.php" class=" fa fa-heart" title="Ir a favoritos"><span class="label"></span></a></li>
 										<li><a href="perfil.php" class=" fa fa-user" title="Ir a perfil"><span class="label"></span></a></li>
@@ -46,6 +64,10 @@
                                                 $conexion=new mysqli("10.10.10.199", "busters", "1234", "biblioteca");
     // usamos cod_usu=1 de ejemplo a la espera de que haya session
 	$cod_usu = $_SESSION["bookbusters"];
+
+	// miramos si hay notificaciones----------------------------------------------COMPROBACION NOTIFICACION 
+	echo "<script>notif('$cod_usu')</script>";
+
     $sql_fav="SELECT * FROM favoritos INNER JOIN libros USING (cod_lib) WHERE cod_usu='$cod_usu' ORDER BY libros.titulo_lib ASC";
     $ejec_fav=$conexion->query($sql_fav);
     foreach ($ejec_fav as $reg_fav) {
@@ -137,6 +159,7 @@
 			<script src="../assets/js/favoritos.js"></script> 
 
 	</body>
+	
 </html>
 <?php
 }

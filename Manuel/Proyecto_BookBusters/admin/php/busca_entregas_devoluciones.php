@@ -28,18 +28,23 @@ if ($ej = $con->query($sql)) {
                 $Fecha_Devolucion_Prestamo = $reg["fdevolucion_pres"];
                 $disponibilidad = $reg["disponible_lib"];
                 $Faltas = $reg["falta_usu"];
+                $avatar = $reg["img_usu"];
+                
 ?>
                 <tr>
-                        <td style="margin:5px, "><?php echo "<img src='./../images/Bookbusters (1).png' height='50' style='border-radius: 10px; vertical-align: middle'>" ?></td>
+                        <td style="margin:5px, "><?php echo "<img src='$avatar' height='50' style='border-radius: 10px; vertical-align: middle'>" ?></td>
                         <td>
-                        <?php
-                        if ($reg["fentrega_pres"] == "0000-00-00") //VOY POR AQUI, NECESITO ENVIAR COD_USU, PARA SABER A QUIEN ACTUALIZAR, MIRAR CODLIB QUE NO SE ESTA ENVIANDO EN LA FUNCION
-                        {
-                        ?>
-                                <i id="confirm<?php echo $codusu ?>" onclick="confirmacion('<?php echo $email ?>')" onmouseover='icono_rojo(confirm<?php echo $codusu ?>)' onmouseleave='icono_negro(confirm<?php echo $codusu ?>)' class="icon solid fa-envelope" style="color:black"></i>
-                        <?php
-                        } 
-                        ?>
+                                <?php
+                                if ($reg["fentrega_pres"] == "0000-00-00") {
+                                ?>
+                                        <i id="confirm<?php echo $codusu ?>" onclick="confirmacion('<?php echo $email ?>')" onmouseover='icono_rojo(confirm<?php echo $codusu ?>)' onmouseleave='icono_negro(confirm<?php echo $codusu ?>)' class="icon solid fa-envelope" style="color:black"></i>
+                                <?php
+                                } else {
+                                ?>
+                                        <i class="fas fa-check-double"></i>
+                                <?php
+                                }
+                                ?>
                         </td>
                         <td>
                                 <?php
@@ -79,7 +84,7 @@ if (isset($_POST["enviarmail"])) {
                 $asunto = "Confirmación, reserva de libro Bookbusters";
                 $mensaje = "<h1>El administrador ha gestionado tu reserva, puedes retirarlo mañana</h1>
                                         <br>
-                                <img src='http://10.10.10.199/bookbusters/images/Bookbusters (3).png'>";
+                                <img src='http://10.10.10.199/bookbusters/privado/avatares/Bookbusterscapa.png'>";
                 $header = "MIME-Version: 1.0 \r\n";
                 $header .= "Content-type:text/html;charset=UTF-8 \r\n";
                 $header .= "From: dani@medellin.ef";
@@ -108,7 +113,7 @@ if (isset($_POST["enviarmail"])) {
                 $asunto = "Confirmación entrega, libro Bookbusters";
                 $mensaje = "<h1>Hola,$usuario.<br>Hemos registrado tu reserva, la fecha máxima para devolver es: $fprevista_correo</h1>
                                         <br>
-                                <img src='http://10.10.10.199/bookbusters/images/Bookbusters (3).png'>";
+                                <img src='http://10.10.10.199/bookbusters/privado/avatares/Bookbusterscapa.png'>";
 
                 $header = "MIME-Version: 1.0 \r\n";
                 $header .= "Content-type:text/html;charset=UTF-8 \r\n";
@@ -116,14 +121,11 @@ if (isset($_POST["enviarmail"])) {
                 mail($para, $asunto, $mensaje, $header);
         } else {
 
-                //ADMINISTRADOR A RECIBIDO EL LIBRO DE VUELTA, ACTUALIZACION FECHA DEVOLUCIO TABLA PRESTAMOS Y LIBROS DISPONIBLE (0)
+                //ADMINISTRADOR A RECIBIDO EL LIBRO DE VUELTA
                 include("./../../privado/php/funciones.php");
 
-                // encriptado();
-
+                //ACTUALIZACION FECHA DEVOLUCION TABLA PRESTAMOS Y LIBROS DISPONIBLE (0)
                 $codusu = $_POST["codusu"];
-                $usuario = $_POST["usuario"];
-                $para = $_POST["email"];
                 $sql_devolucion = "UPDATE prestamos
                 INNER JOIN libros
                 ON prestamos.cod_lib=libros.cod_lib
@@ -131,6 +133,23 @@ if (isset($_POST["enviarmail"])) {
                 WHERE prestamos.cod_usu=$codusu";
                 $con->query($sql_devolucion);
 
+                // PREPARACION VARIABLES DEL CORREO VALORACION (URL ENCRIPADA)
+                //Se crea un registro sin valorar, eso ocurrira luego cuando el usuario elija una ESTRELLA con un UPDATE
+                $coduniq = uniqid();//CODIGO DE AUTENTICACION
+                $codlibro = $_POST["codlibro"];
+                $hoy = date('Y-m-d');
+
+
+                $sql_valoracion = "INSERT INTO valoraciones (cod_lib,val_uniq,fecha_val) VALUES ('$codlibro','$coduniq','$hoy')";
+                $ej_val = $con->query($sql_valoracion);
+
+                $id = $con->insert_id;
+                $texto_a_encrip= $codlibro."$$".$id;
+                $encrip = encriptado("e",$texto_a_encrip);
+
+                //PREPARACION DE CORREO
+                $usuario = $_POST["usuario"];
+                $para = $_POST["email"];
                 $asunto = "Valora el libro Bookbusters leido";
                 $mensaje = <<<HTML
                 
@@ -158,11 +177,11 @@ if (isset($_POST["enviarmail"])) {
                 <h1>Valoración de libro</h1>
                 <p>Por favor, valora nuestro libro:</p>
                 <div class="estrellas">
-                        <a href="http://10.10.10.199/bookbusters/admin/php/valoracion.php?valoracion=1&usu=$codusu&lib=$codlibro" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-                        <a href="http://10.10.10.199/bookbusters/admin/php/valoracion.php?valoracion=2&usu=$codusu&lib=$codlibro" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-                        <a href="http://10.10.10.199/bookbusters/admin/php/valoracion.php?valoracion=3&usu=$codusu&lib=$codlibro" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-                        <a href="http://10.10.10.199/bookbusters/admin/php/valoracion.php?valoracion=4&usu=$codusu&lib=$codlibro" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-                        <a href="http://10.10.10.199/bookbusters/admin/php/valoracion.php?valoracion=5&usu=$codusu&lib=$codlibro" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+                        <a href="http://10.10.10.199/bookbusters/privado/valorar.php?valoracion=1&m=$encrip&u=$coduniq" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+                        <a href="http://10.10.10.199/bookbusters/privado/valorar.php?valoracion=2&m=$encrip&u=$coduniq" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+                        <a href="http://10.10.10.199/bookbusters/privado/valorar.php?valoracion=3&m=$encrip&u=$coduniq" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+                        <a href="http://10.10.10.199/bookbusters/privado/valorar.php?valoracion=4&m=$encrip&u=$coduniq" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+                        <a href="http://10.10.10.199/bookbusters/privado/valorar.php?valoracion=5&m=$encrip&u=$coduniq" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
                 </div>
                 HTML;
 
@@ -170,15 +189,6 @@ if (isset($_POST["enviarmail"])) {
                 $header .= "Content-type:text/html;charset=UTF-8 \r\n";
                 $header .= "From: dani@medellin.ef";
                 mail($para, $asunto, $mensaje, $header);
-
-                // PREPARACION VARIABLES DEL CORREO VALORACION
-                $codlibro = $_POST["codlibro"];
-                $coduniq = uniqid();
-                $hoy = date('Y-m-d');
-                $sql_valoracion = "INSERT INTO valoraciones (cod_lib,val_uniq,fecha_val) VALUES ('$codlibro','$coduniq','$hoy')";
-                $ej_val = $con->query($sql_valoracion);
-                $id = $con->insert_id;
-
         }
 } else {
         echo "No hay reservas pendientes...";

@@ -108,12 +108,7 @@
 										<tr>
 											<td style='font-family:auto; font-size:auto;'>$fechaDevolucion</td>
 										</tr>								
-									</table>
-									$pintarBotonDevolverLibro
-									<div>
-										<textarea id='textoEnviar' style='margin-top:10px; display:none' ></textarea>
-										<button id='botonEnviar' style='margin-top:10px; display:none'>Enviar</button>									
-									</div>																	                               
+									</table>																									                               
 							</article>                 
 						";         
 				

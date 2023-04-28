@@ -23,9 +23,9 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a href="../index.php" class="logo"><img style="width: 20%;" src="./../images/logo.png"></a>
+									<a href="../index_administrador.php" class="logo"><img style="width: 20%;" src="./../images/logo.png"></a>
 									<ul class="icons">
-										<li><a href="../index.php" class=" fa fa-home"><span class="label"></span></a></li>
+										<li><a href="../index_administrador.php" class=" fa fa-home"><span class="label"></span></a></li>
 										<li><a href="#" class=" fa fa-dice"><span class="label"></span></a></li>
 										<li><a href="./login_administrador.html" class="fa-solid fa-arrow-right-from-bracket"><span class="label"></span></a></li>
 									</ul>
@@ -79,8 +79,8 @@
 											</a>
 										</article>
 										<article>
-											<a href=""><span class="icon solid fa-book"></span></a>
-											<a href="">
+											<a href="./libros.php"><span class="icon solid fa-book"></span></a>
+											<a href="./libros.php">
 												<div class="content">
 												<h3>LIBROS</h3>
 												

@@ -16,28 +16,9 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="../assets/css/main.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 	<body class="is-preload">
-			<script>
-					function notif(cod)
-					{
-						$.post
-						(
-							"./php/notifica_icon.php",
-							{
-								cod_usu : cod
-							},
-							function vuelta(notif){
-								if(notif!="")
-								{
-									$("#notificaciones").attr("class","fa fa-bell fa-bounce");
-								}
-							}
-						);
-					}
-			</script>
 			<div id="wrapper">
 					<div id="main">
 						<div class="inner">
@@ -45,7 +26,7 @@
 									<a href="index.php" class="logo"><img style="width: 20%;" src="./../images/logo.png"></a>
 									<ul class="icons">
 										<li><a href="index.php" class=" fa fa-home" title="Ir a índice"><span class="label"></span></a></abbr></li>										
-										<li><a id="notificaciones" href="notificaciones.php" class=" fa fa-bell" title="Ir a notificaciones"><span class="label"></span></a></abbr></li>
+										<li><a href="#" class=" fa fa-bell" title="Ir a notificaciones"><span class="label"></span></a></abbr></li>
 										<li><a href="historial.html" class=" fa fa-book" title="Ir a historial"><span class="label"></span></a></abbr></li>
 										<li><a href="index_favoritos.php" class=" fa fa-heart" title="Ir a favoritos"><span class="label"></span></a></abbr></li>
 										<li><a href="perfil.php" class=" fa fa-user" title="Ir a perfil"><span class="label"></span></a></abbr></li>
@@ -59,12 +40,6 @@
 			<h2>TOP LIBROS</h2>
 			<div class="carousel__lista">
 			<?php
-			    // usamos cod_usu=1 de ejemplo a la espera de que haya session
-				$cod_usu = $_SESSION["bookbusters"];
-
-				// miramos si hay notificaciones----------------------------------------------COMPROBACION NOTIFICACION 
-				echo "<script>notif('$cod_usu')</script>";
-
 			include("./php/funciones.php");
 			$rec=recoge();
 					foreach($rec as $reg){
@@ -106,8 +81,8 @@ foreach($recibe as $registro){
 	{
 		$apintarcorazon = '<a><i id="'.$registro["cod_lib"].'"  class="fa-regular fa-heart" onclick="addFavCor(this.id)"></i></a>';
 	}
-	// sacamos codigo de libro
-	// tenemos el codigo de usuario
+	//sacamos codigo de libro
+	//tenemos el codigo de usuario
 	// consultadmos a favoritos por libro y usuario
 	// crar variable con el corazon
 	if($registro["disponible_lib"] == 0)
@@ -138,12 +113,12 @@ foreach($recibe as $registro){
 	{
 		//Libro no disponible
 		echo'
-			<article style="display:flex;flex-direction:column;align-items:center;">
+			<article style="display:flex;flex-direction:column;align-items:center;"">
 				<a href="verlibro.php?codlib='.$registro["cod_lib"].'" class="image"><img src="./../images/'.$registro["imagen_lib"].'" alt="" /></a>
 				<h3>'.$registro["titulo_lib"].'</h3>
 				<div style="display:flex; justify-content:space-between">
 					<div>
-						'.$apintarcorazon.'
+					'.$apintarcorazon.'
 					</div>
 					<div>
 						'.estrella($registro["cod_lib"]).'

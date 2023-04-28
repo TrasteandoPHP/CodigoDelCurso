@@ -109,9 +109,10 @@
 									<ul>
 										<li><a href="index.php" style="font-size:medium ;">Inicio</a></li>
 										<li><a href="registro.html" style="font-size:medium ;">Registro</a></li>
-										<li><a href="login.html" style="font-size:medium">Login</a></li>	
+										<li><a href="login.html" style="font-size:medium">Login</a></li>
 									</ul>
 								</nav>
+								<a href="./admin/login_administrador.html" class="fa fa-lock" style="font-size:30px"></a>
 							<!-- Footer -->
 								<footer id="footer">
 									<p class="copyright">&copy; Bookbuster</p>
