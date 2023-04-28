@@ -105,12 +105,12 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="./../assets/js/jquery.min.js"></script>
-			
-			<script src="./../assets/js/browser.min.js"></script>
-			<script src="./../assets/js/breakpoints.min.js"></script>
-			<script src="./../assets/js/util.js"></script>
-			<script src="./../assets/js/main.js"></script>
+			<script src="./assets/js/jquery.min.js"></script>
+			<script src="./assets/js/jquery.quicksearch.js"></script>
+			<script src="./assets/js/browser.min.js"></script>
+			<script src="./assets/js/breakpoints.min.js"></script>
+			<script src="./assets/js/util.js"></script>
+			<script src="./assets/js/main.js"></script>
 
 			<script>
 				$(function(){									
@@ -123,8 +123,14 @@
                 })
 
 				function filtrar(){
-					textoFiltro = $('#filtro').val();
-					$('#textoEscrito').text(textoFiltro);					
+					textoFiltrado = $('#filtro').val();
+					$('#textoEscrito').text(textoFiltrado);
+					$("article div h4").each(function(){
+						if ($(this).text() == textoFiltrado){
+							alert("Texto encontrado");
+						}
+					})					
+
 				}
 
 				function devolverLibro(id){

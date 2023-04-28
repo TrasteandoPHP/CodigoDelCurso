@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+</head>
+<body>
+
+<h1>Welcome to My Homepage</h1>
+
+<p>My name is Donald.</p>
+<p class="intro">I live in Duckburg.</p>
+<p class="intro">I love Duckburg.</p>
+<p>My best friend is Mickey.</p>
+
+<input onkeyup="filtrar()" type="text" id="filtro" placeholder="Buscar...."/>
+<p id='textoEscrito'></p>
+
+
+<h4>libro</h4>
+
+<script>    
+
+    function filtrar(){
+       textoFiltrado = $('#filtro').val();
+       var g=$('#textoEscrito').text(textoFiltrado);
+      // alert(textoFiltrado);
+      // var alerta = $("h4").text().includes(g);
+       if(($("h4").text()).includes(textoFiltrado)){
+       
+      	 $("h4").css("background-color", "yellow")
+       }  else {
+        alert("No hay ese caracter");
+       }     
+       
+    }
+
+</script>
+
+</body>
+</html>
