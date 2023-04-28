@@ -1,3 +1,8 @@
+<?php
+	session_start();
+	if(isset($_SESSION["bookbusters"])){
+?>
+
 <!DOCTYPE HTML>
 <!--
 	Editorial by HTML5 UP
@@ -106,7 +111,6 @@
 
 		<!-- Scripts -->
 			<script src="./../assets/js/jquery.min.js"></script>
-			
 			<script src="./../assets/js/browser.min.js"></script>
 			<script src="./../assets/js/breakpoints.min.js"></script>
 			<script src="./../assets/js/util.js"></script>
@@ -124,7 +128,8 @@
 
 				function filtrar(){
 					textoFiltro = $('#filtro').val();
-					$('#textoEscrito').text(textoFiltro);					
+					$('#textoEscrito').text(textoFiltro);	
+									
 				}
 
 				function devolverLibro(id){
@@ -137,7 +142,7 @@
 
 					alert("Correo enviado...");
 					$("button#libro"+id).text("Devolución Concertada");
-					$("button#libro"+id).css('border','none');
+					//$("button#libro"+id).css('border','none');
 					$("div#libro"+id).hide();
 					//window.location.href = "./historial.html";
 					
@@ -147,3 +152,16 @@
 
 	</body>
 </html>
+
+<?php
+}
+else
+{
+	echo "
+		<script>
+			alert('Area restringida');
+			window.location.href='../login.html';
+		</script>
+	";
+}
+?>
