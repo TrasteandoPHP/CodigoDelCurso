@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="./lib/jQuery-3.6.3.min.js"></script>
+        <title>Filtrado con jQuery</title>
+    </head>
+    <body>
+        <input id="texto" type="text">
+        <article><h4>libro</h4></article>
+        <article><h4>libreta</h4></article>
+        <article><h4>lapiz</h4></article>
+        <article><h4>lampara</h4></article>         
+
+        <script>        
+            $('#texto').on('input', function() {
+                var filtro = $(this).val().toLowerCase(); // obtener el valor del input
+
+                $('h4').filter(function() { // buscar los elementos h4 que contengan el filtro
+                    return $(this).text().toLowerCase().includes(filtro);
+                }).show(); // mostrar los elementos que coinciden con el filtro
+
+                $('h4').filter(function() {
+                    return !$(this).text().toLowerCase().includes(filtro);
+                }).hide(); // ocultar los elementos que no coinciden con el filtro
+            });
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+

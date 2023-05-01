@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="./lib/jQuery-3.6.3.min.js"></script>
+        <title>Filtrado con jQuery</title>
+    </head>
+    <body>
+        <input id="texto" type="text">
+        <article><h4>libro</h4></article>
+        <article><h4>libreta</h4></article>
+        <article><h4>lapiz</h4></article>
+        <article><h4>lampara</h4></article> 
+
+        <script>
+            $(document).ready(function() {
+                // Obtener el valor del input de búsqueda
+                $("#texto").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                
+                // Filtrar los artículos por el valor del input
+                $("article").filter(function() {
+                    // Obtener el contenido del encabezado h4
+                    var title = $(this).find("h4").text().toLowerCase();
+                    
+                    // Mostrar u ocultar el artículo según si se encuentra el valor del input
+                    $(this).toggle(title.indexOf(value) > -1);
+                });
+                });
+            });
+        </script>    
+
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+  
