@@ -43,7 +43,7 @@
 									<!-- Search -->
 								<section id="search" class="alt">
 									<form style="width:25%">
-										<input type="text" name="filtro" id="filtro" placeholder="Buscar...."/>
+										<input onkeyup="filtrar()" type="text" name="filtro" id="filtro" placeholder="Buscar...."/>
 										<p id='textoEscrito'></p>
 									</form>
 								</section>
@@ -113,18 +113,6 @@
 			<script src="./assets/js/main.js"></script>
 
 			<script>
-				$('#filtro').on('input', function() {
-                	var filtro = $(this).val().toLowerCase();
-                	$('article h4').filter(function() {	
-                    	return $(this).text().toLowerCase().includes(filtro);
-                	}).parents("article").show();
-
-                	$('article h4').filter(function() {
-                    	return !$(this).text().toLowerCase().includes(filtro);
-                	}).parents("article").hide();
-           		});
-
-
 				$(function(){									
                     $.post(
                         "./php/historial.php",{},function(echoPHP){
@@ -134,17 +122,33 @@
                     )                    
                 })
 
-				// function devolverLibro(id){					
-				// 	$("div#"+id).show();					
-				// }
+				function filtrar(){
+					textoFiltrado = $('#filtro').val();
+					$('#textoEscrito').text(textoFiltrado);
+					$("article div h4").each(function(){
+						if ($(this).text() == textoFiltrado){
+							alert("Texto encontrado");
+						}
+					})					
 
-				// function enviarCorreo(id){
-				// 	alert("Correo enviado...");
-				// 	$("button#libro"+id).text("Devolución Concertada");
-				// 	$("button#libro"+id).css('border','none');
-				// 	$("div#libro"+id).hide();
-				// 	//window.location.href = "./historial.html";					
-				// }
+				}
+
+				function devolverLibro(id){
+					
+					$("div#"+id).show();
+					
+				}
+
+				function enviarCorreo(id){
+
+					alert("Correo enviado...");
+					$("button#libro"+id).text("Devolución Concertada");
+					$("button#libro"+id).css('border','none');
+					$("div#libro"+id).hide();
+					//window.location.href = "./historial.html";
+					
+					
+				}
 			</script>
 
 	</body>

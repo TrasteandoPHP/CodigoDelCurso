@@ -9,20 +9,32 @@
     </head>
     <body>
         <input id="texto" type="text">
-        <article><h4>libro</h4></article>
-        <article><h4>libreta</h4></article>
-        <article><h4>lapiz</h4></article>
-        <article><h4>lampara</h4></article>         
+        <article>
+            <img src="./images/Bookbusters(mcp).png" width="2%" alt="" style="float:left">
+            <h4 style="margin-top: 14px;">libro</h4>
+        </article>
+        <article>
+            <img src="./images/Bookbusters(mcp).png" width="2%" alt="" style="float:left">
+            <h4>libreta</h4>
+        </article>
+        <article>
+            <img src="./images/Bookbusters(mcp).png" width="2%" alt="" style="float:left">
+            <h4>lapiz</h4>
+        </article>
+        <article>
+            <img src="./images/Bookbusters(mcp).png" width="2%" alt="" style="float:left">
+            <h4>lampara</h4>
+        </article>         
 
         <script>        
             $('#texto').on('input', function() {
                 var filtro = $(this).val().toLowerCase(); // obtener el valor del input
 
-                $('h4').filter(function() { // buscar los elementos h4 que contengan el filtro
+                $('article').filter(function() { // buscar los elementos h4 que contengan el filtro
                     return $(this).text().toLowerCase().includes(filtro);
                 }).show(); // mostrar los elementos que coinciden con el filtro
 
-                $('h4').filter(function() {
+                $('article').filter(function() {
                     return !$(this).text().toLowerCase().includes(filtro);
                 }).hide(); // ocultar los elementos que no coinciden con el filtro
             });

@@ -77,7 +77,8 @@
 				
 				// Se devuelve el historial de libros para mostrar en el historial.html
 				echo "
-							<article style='display:flex;flex-direction:column;align-items:center;'>
+							<article style='display:flex;flex-direction:column;align-items:center;' >
+								
 								<a href='#' class='image'style='text-align:-webkit-center'><img src='$ruta' height='350px' alt=''/></a>
 								<div style='width:100%; display:flex; flex-direction:column; align-items:center;'>
 									<h4>$nombreLibro</h4>
