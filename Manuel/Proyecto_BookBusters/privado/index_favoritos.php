@@ -85,7 +85,7 @@
         ?>
 						<article>
 						<!-- añadimos las variables del libro a mostrar -->
-						<a href="./verlibro.php?codlib=<?php echo $codigo_libro ?>" class="image"><img src="../images/portadas/<?php echo $codigo_libro?>/<?php echo $portada?>" alt="" /></a>
+						<a href="./verlibro.php?codlib=<?php echo $codigo_libro ?>" class="image"><img src="../images/portadas/<?php echo $codigo_libro?>/<?php echo $portada?>" alt="" style="height:550px"/></a>
 						<h3><?php echo $titulo ?></h3>
 						<p><?php echo $resumen?></p>
 						<ul class="actions">

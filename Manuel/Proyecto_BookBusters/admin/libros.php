@@ -96,7 +96,9 @@ if (isset($_SESSION["admin"])) {
 													else
 													{
 														$icono = '<font color="red"><i class="fa-solid fa-circle"></i>';	
-													}	
+													}
+													
+													$codlib=$reglib["cod_lib"];
 											?>
 											<tr>
 												<td><?php echo $contador;?></td>
@@ -105,8 +107,8 @@ if (isset($_SESSION["admin"])) {
                         						<td><?php echo $reglib["titulo_lib"];?></td>
                         						<td><?php echo $icono;?></td>
                         						<td>
-                        							<i  class="fa-solid fa-edit" style="cursor:pointer;" onclick="" onmouseover="pintar(this.id)" ></i>
-                                        			<i  class="fa-solid fa-trash-can bs-danger" style="cursor:pointer;" onclick = "" ></i>
+                        							<i  class="fa-solid fa-edit" style="cursor:pointer;" onclick="window.location.href='./modificalibros.php?codigo=<?php echo $codlib?>'" onmouseover="pintar(this.id)" ></i>
+                                        			<i  class="fa-solid fa-trash-can bs-danger" style="cursor:pointer;" onclick = "ir('¿Seguro que quieres borrar el libro?','./borralibros.php?codigo=<?php echo $codlib?>')" ></i>
                             					</td>
                         					</tr>	
                         			<?php
@@ -165,7 +167,13 @@ if (isset($_SESSION["admin"])) {
 
 
 		<script>
-
+			function ir(mensaje,URL)
+			{
+				if (confirm(mensaje))
+				{
+					window.location.href=URL;
+				}
+			}
 		</script>
 	</body>
 

@@ -4,21 +4,19 @@
 	if(isset($_SESSION['bookbusters']))
 	{
 	$codusuario = $_SESSION['bookbusters'];
-	include("./php/funciones.php");
 	?>
 <!DOCTYPE HTML>
 <html>
-	
-<head>
-		<title>Bookbusters - Favoritos</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		
-		<link rel="stylesheet" href="../assets/css/main.css" />
-    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-		<style>
-		
+	<style>
+		html, body {
+		margin: 0;
+		padding: 0;
+		}
+
+		.pic-ctn {
+		width: 100vw;
+		height: 500px;
+		}
 
 		@keyframes display {
 		0% {
@@ -45,19 +43,17 @@
 
 		.pic-ctn {
 		position: relative;
-		
-		height: 300px;
+		width: 100vw;
+		height: 500px;
 		margin-top: 10vh;
 		}
 
 		.pic-ctn > img {
-		
 		position: absolute;
 		top: 0;
 		left: calc(42% - 100px);
 		opacity: 0;
 		animation: display 24s infinite;
-		
 		}
 
 		img:nth-child(2) {
@@ -83,52 +79,58 @@
 		}
 
 	</style>
+	<head>
+		<title>BookBuster</title>
+		<script src="https://kit.fontawesome.com/7b8eabe9ec.js" crossorigin="anonymous"></script>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap" rel="stylesheet"> 
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
+		<link rel="stylesheet" href="../assets/css/estilos.css">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	</head>
 	<body class="is-preload">
-	<script>
-		function notif(cod)
-		{
-			$.post
-			(
-				"./php/notifica_icon.php",
-				{
-					cod_usu : cod
-				},
-				function vuelta(notif){
-					if(notif!="")
+			<script>
+					function notif(cod)
 					{
-						$("#notificaciones").attr("class","fa fa-bell fa-bounce");
+						$.post
+						(
+							"./php/notifica_icon.php",
+							{
+								cod_usu : cod
+							},
+							function vuelta(notif){
+								if(notif!="")
+								{
+									$("#notificaciones").attr("class","fa fa-bell fa-bounce");
+								}
+							}
+						);
 					}
-				}
-			);
-		}
-	</script>
+			</script>
+			<div id="wrapper">
+					<div id="main">
+						<div class="inner">
+								<header id="header">
+									<a href="index.php" class="logo"><img style="width: 20%;" src="./../images/logo.png"></a>
+									<ul class="icons">
+										<li><a href="index.php" class=" fa fa-home" title="Ir a índice"><span class="label"></span></a></abbr></li>										
+										<li><a id="notificaciones" href="notificaciones.php" class=" fa fa-bell" title="Ir a notificaciones"><span class="label"></span></a></abbr></li>
+										<li><a href="historial.html" class=" fa fa-book" title="Ir a historial"><span class="label"></span></a></abbr></li>
+										<li><a href="index_favoritos.php" class=" fa fa-heart" title="Ir a favoritos"><span class="label"></span></a></abbr></li>
+										<li><a href="perfil.php" class=" fa fa-user" title="Ir a perfil"><span class="label"></span></a></abbr></li>
+										<li><a href="#" class=" fa fa-dice" title="Ir a juegos"><span class="label"></span></a></abbr></li>
+										<li><a href="exit.php" class="fa-solid fa-arrow-right-from-bracket" title="Salir sesión"><span class="label"></span></a></li>
+									</ul>
+								</header>
 
-<div id="wrapper">
-
-<!-- Main -->
-	<div id="main">
-		<div class="inner">
-
-			<!-- Header -->
-				<header id="header">
-					<a href="index.php" class="logo"><img style="width: 20%;" src="./../images/logo.png"></a>
-					<ul class="icons">
-						<li><a href="index.php" class=" fa fa-home" title="Ir a índice" ><span class="label"></span></a></li>										
-						<li><a href="notificaciones.php" id="notificaciones" class=" fa fa-bell" title="Ir a notificaciones"><span class="label"></span></a></li>
-						<li><a href="historial.html" class=" fa fa-book" title="Ir a historial"><span class="label"></span></a></li>
-						<li><a href="index_favoritos.php" class=" fa fa-heart" title="Ir a favoritos"><span class="label"></span></a></li>
-						<li><a href="perfil.php" class=" fa fa-user" title="Ir a perfil"><span class="label"></span></a></li>
-						<li><a href="#" class=" fa fa-dice" title="Ir a juegos"><span class="label"></span></a></abbr></li>
-						<li><a href="exit.php" class="fa-solid fa-arrow-right-from-bracket" title="Salir sesión"><span class="label"></span></a></li>
-					</ul>
-				</header>
-
-				<center><h2>TOP LIBROS</h2></center>
-	<div class="inner">
+<center><h2>TOP LIBROS</h2></center>
 	<div class="pic-ctn">		
 		<?php
-			
+			include("./php/funciones.php");
 			$rec=recoge();
 			foreach($rec as $reg)
 			{
@@ -137,20 +139,18 @@
 				$tempcod=$reg["cod_lib"];
 				$tempimg=$tempcod."/".$tempimg;
 				//echo $tempimg;
-				echo "<img src='./../images/portadas/".$tempimg."' alt='' style='width:15%;height:auto;border:none;border-radius:5px;padding-bottom:100px'>";
+				echo "<img src='./../images/portadas/".$tempimg."' alt='' style='width:15%;height:500px;border:none;border-radius:5px;padding-bottom:100px'>";
 				
 			}
 			conex()->close();
 		?>	
   </div>
-	</div>
-	
 
 <section>
-									<header class="major">
-										<center><h2>Biblioteca</h2></center>
-									</header>
-									<div class="posts">
+<center><header class="major">
+			<h2>Biblioteca</h2>
+		</header></center>
+			<div class="posts">
 <?php
 			$recibe=consulta("libros");
 foreach($recibe as $registro){
@@ -224,9 +224,7 @@ foreach($recibe as $registro){
 						</div>
 					</div>
 				<!-- Sidebar -->
-					
-				
-				<div id="sidebar">
+					<div id="sidebar" class="inactive">
 						<div class="inner">
 
 							<!-- Search -->
@@ -237,7 +235,7 @@ foreach($recibe as $registro){
 								</section>
 
 							<!-- Menu -->
-							<nav id="menu">
+								<nav id="menu">
 									<header class="major">
 										<h2>Menu</h2>
 									</header>
@@ -256,17 +254,22 @@ foreach($recibe as $registro){
 									</header>
 									<p>Estamos abiertos en horario lectivo de la Escuela de Finanzas EFF Bussines School de Oleiros</p>
 									<ul class="contact">
-									<li class="icon solid fa-envelope"><a href="C:\Program Files\Mozilla Thunderbird\thunderbird.exe">alfonso@medellin.ef</a></li>
+										<li class="icon solid fa-envelope"><a href="C:\Program Files\Mozilla Thunderbird\thunderbird.exe">alfonso@medellin.ef</a></li>
 										<li class="icon solid fa-phone">(981) 87 86 34</li>
 										<li class="icon solid fa-home">Dirección: Rúa Salvador de Madariaga, 50, 15173 Oleiros, A Coruña</li>
 										<li class="icon solid fa-book"><a href="terminosuso.php">Terminos de uso</a></li>	
-										<li class="icon solid fa-newspaper"><a href="polpriv.php">Politica de Privacidad</a></li>	
+										<li class="icon solid fa-newspaper"><a href="polpriv.php">Politica de Privacidad</a></li>
 									</ul>
-								</section>						
+								</section>
+
+							
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
 
 						</div>
 					</div>
-
 			</div>
 		<!-- Scripts -->
 			<script src="../assets/js/jquery.min.js"></script>

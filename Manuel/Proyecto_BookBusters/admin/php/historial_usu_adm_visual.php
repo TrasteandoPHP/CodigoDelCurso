@@ -1,3 +1,10 @@
+<?php
+	session_start();
+	if (isset($_SESSION["admin"]))
+	{
+		$cod_usu = $_GET["cod"];
+?>
+
 <!DOCTYPE HTML>
 <!--
 	Editorial by HTML5 UP
@@ -9,8 +16,9 @@
 		<title>Historial</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="./../assets/css/main.css"/>
+		<link rel="stylesheet" href="./../../assets/css/main.css"/>
 		<script src="https://kit.fontawesome.com/7b8eabe9ec.js" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	</head>
 	<body class="is-preload">
 
@@ -22,28 +30,29 @@
 						<div class="inner">	
 						
 							<!-- Header -->
-								<header id="header">
-									<a href="index.php" class="logo"><img style="width: 20%;" src="./../images/logo.png"></a>
-									<ul class="icons">
-										<li><a href="index.php" class=" fa fa-home" title="Ir a índice"><span class="label"></span></a></abbr></li>										
-										<li><a id="notificaciones" href="notificaciones.php" class=" fa fa-bell" title="Ir a notificaciones"><span class="label"></span></a></abbr></li>
-										<li><a href="historial.html" class=" fa fa-book" title="Ir a historial"><span class="label"></span></a></abbr></li>
-										<li><a href="index_favoritos.php" class=" fa fa-heart" title="Ir a favoritos"><span class="label"></span></a></abbr></li>
-										<li><a href="perfil.php" class=" fa fa-user" title="Ir a perfil"><span class="label"></span></a></abbr></li>
-										<li><a href="#" class=" fa fa-dice" title="Ir a juegos"><span class="label"></span></a></abbr></li>
-										<li><a href="exit.php" class="fa-solid fa-arrow-right-from-bracket" title="Salir sesión"><span class="label"></span></a></li>
-									</ul>
-								</header>
+							<header id="header">
+								<a href="../../index.php" class="logo"><img style="width: 20%;" src="./../../images/logo.png"></a>
+								<ul class="icons">
+									<li><a href="../index_administrador.php" class=" fa fa-home"><span class="label"></span></a></li>
+									<li><a href="#" class=" fa fa-dice"><span class="label"></span></a></li>
+									<li><a href="../login_administrador.html" class="fa-solid fa-arrow-right-from-bracket"><span class="label"></span></a></li>
+								</ul>
+							</header>
 								
 							<!-- Section -->
 								<section style='padding: 4em 0 4em 0;'>
 									<header class="major">
-										<h2>Historial</h2>
+										<h2 id="nombre">Historial de </h2>
+									</header>
+									<header class="main">
+										<div>
+											<abbr title="Volver"><i class="fa-solid fa-circle-arrow-left" style="font-size: 2.5em;cursor:pointer;" onclick="window.location.href='../gestion_usu.php'"></i> </abbr>
+										</div>
 									</header>
 									<!-- Search -->
 								<section id="search" class="alt">
 									<form style="width:25%">
-										<input type="text" name="filtro" id="filtro" placeholder="Buscar...."/>
+										<input onkeyup="filtrar()" type="text" name="filtro" id="filtro" placeholder="Buscar...."/>
 										<p id='textoEscrito'></p>
 									</form>
 								</section>
@@ -105,46 +114,45 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="./../assets/js/jquery.min.js"></script>
-			<script src="./../assets/js/browser.min.js"></script>
-			<script src="./../assets/js/breakpoints.min.js"></script>
-			<script src="./../assets/js/util.js"></script>
-			<script src="./../assets/js/main.js"></script>
+			<script src="./../../assets/js/jquery.min.js"></script>
+			<script src="./../../assets/js/browser.min.js"></script>
+			<script src="./../../assets/js/breakpoints.min.js"></script>
+			<script src="./../../assets/js/util.js"></script>
+			<script src="./../../assets/js/main.js"></script>
 
 			<script>
-				$(function(){									
+				$(function(){
                     $.post(
-                        "./php/historial.php",{},function(echoPHP){
-
+                        "./historial_usu_adm_busca.php",
+						{cod : <?php echo $cod_usu?>},
+						function(echoPHP){
 							$("#libros").html(echoPHP);
                         }
                     )
                 })
 				
-				$(function(){									
-                    $.post(
-                        "./php/notifica_historial.php",{},function(control){
+				// $(function(){									
+                //     $.post(
+                //         "./php/notifica_historial.php",{},function(control){
 
-							if (control != "")
-							{
-								$("#notificaciones").attr("class","fa fa-bell fa-bounce");
-							}
-                        }
-                    )
-                })
+				// 			if (control != "")
+				// 			{
+								
+				// 				$("#notificaciones").attr("class","fa fa-bell fa-bounce");
+				// 			}
+                //         }
+                //     )
+                // })
 
-				$('#filtro').on('input', function() {
-                	var filtro = $(this).val().toLowerCase();
-                	$('article h4').filter(function() {	
-                    	return $(this).text().toLowerCase().includes(filtro);
-                	}).parents("article").show();
-
-                	$('article h4').filter(function() {
-                    	return !$(this).text().toLowerCase().includes(filtro);
-                	}).parents("article").hide();
-           		});
+				function filtrar(){
+					textoFiltro = $('#filtro').val();
+					$('#textoEscrito').text(textoFiltro);					
+				}
 				
 			</script>
 
 	</body>
 </html>
+<?php
+	}
+?>

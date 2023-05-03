@@ -23,7 +23,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a href="../index_administrador.php" class="logo"><img style="width: 20%;" src="./../images/logo.png"></a>
+									<a href="../index.php" class="logo"><img style="width: 20%;" src="./../images/logo.png"></a>
 									<ul class="icons">
 										<li><a href="../index_administrador.php" class=" fa fa-home"><span class="label"></span></a></li>
 										<li><a href="#" class=" fa fa-dice"><span class="label"></span></a></li>

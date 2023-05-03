@@ -79,7 +79,7 @@
 
                                     ?>
 												<article>
-														<a href="#" class="image"><img src="<?php echo $imagenmuestra ; ?>"></a>
+														<a href="#" class="image"><img src="<?php echo $imagenmuestra ; ?>" height="500px"></a>
 														<h3>Accede</h3>    											
 													<ul class="actions">
 														<li><a href="login.html" class="button">Login</a></li>

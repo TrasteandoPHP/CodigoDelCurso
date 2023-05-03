@@ -31,7 +31,7 @@
 							<header id="header">
                                     <a href="index.php" class="logo"><img style="width: 20%;" src="./../images/logo.png"></a>
 									<ul class="icons">
-                                        <li><a href="index.php" class=" fa fa-home" title="Ir a inicio"><span class="label"></span></a></li>										
+                                        <li><a href="index.php" class=" fa fa-home" title="Ir a Índice"><span class="label"></span></a></li>										
 										<li><a href="notificaciones.php" class=" fa fa-bell" title="Ir a notificaciones"><span class="label"></span></a></li>
 										<li><a href="historial.html" class=" fa fa-book" title="Ir a historial"><span class="label"></span></a></li>
 										<li><a href="index_favoritos.php" class=" fa fa-heart" title="Ir a favoritos"><span class="label"></span></a></li>
@@ -70,10 +70,10 @@
 
 ?>        
         <center>
-        <label for="" style="color:red;">Tienes prestado otro libro pendiente de devolver. Titulo: <?php echo $titulodevolucion;?>, fecha prevista devolución: <?php echo $fechaprevistadevolucion;?></label>
+        <label for="" style="color:red">Tienes prestado otro libro pendiente de devolver. Titulo: <?php echo $titulodevolucion;?>, fecha prevista devolución: <?php echo $fechaprevistadevolucion;?></label>
         <!-- <br> -->
         <abbr title="Para poder solicitar préstamo de un libro se debe devolver el libro prestado anteriormente. Si deseas ver el historial de préstamos haz clic">        
-        <button onclick="window.location.href='./historial.html'" style="color:red;margin-top:0%;">TIENES ALGÚN LIBRO PRESTADO SIN DEVOLVER</button></abbr>
+        <button onclick="window.location.href='./historial.html'" style="color:red;">TIENES ALGÚN LIBRO PRESTADO SIN DEVOLVER</button></abbr>
         </center>
 <?php
     }
@@ -97,10 +97,10 @@
 ?>
             <center>
             <input type="hidden" id="codigootrolibro" value="<?php echo $codlibreserva; ?>">
-            <label for="" style="color:red;">Tienes reservado préstamo de otro libro pendiente recoger. Titulo: <?php echo $tituloreserva?>, fecha reserva: <?php echo $fechareserva?>. Si lo deseas puedes anular esa reserva.</label>
+            <label for="" style="color:red">Tienes reservado préstamo de otro libro pendiente recoger. Titulo: <?php echo $tituloreserva?>, fecha reserva: <?php echo $fechareserva?>. Si lo deseas puedes anular esa reserva.</label>
             <!-- <br> -->
             <abbr title="Tienes reservado préstamo de otro libro pendiente de recoger. No se puede realizar esta reserva a no ser que anules la anterior reserva">
-            <button onclick="anularotrareservaprestamo()" style="margin-top:0%;">ANULAR RESERVA PRÉSTAMO OTRO LIBRO</button></abbr>
+            <button onclick="anularotrareservaprestamo()">ANULAR RESERVA PRÉSTAMO OTRO LIBRO</button></abbr>
             </center>
             
 <?php
@@ -117,9 +117,9 @@
                 //Libro disponible (campo disponible_lib=0 de la tabla libros)       
 ?>
                 <center>
-                <label for="" style="color:green;">Si deseas reservar préstamo de este libro haz clic en "SOLICITAR PRÉSTAMO LIBRO"</label>
+                <label for="" style="color:green">Si deseas reservar préstamo de este libro haz clic en "SOLICITAR PRÉSTAMO LIBRO"</label>
                 <!-- <br> -->
-                <button onclick="reservaprestamo()" title="Haz clic para solicitar préstamo del libro. Una vez realizada la reserva, el administrador te enviará dos correos informando que ha se completado la reserva e informando de cuando se realizará la entrega del libro." style="margin-top:0%;">SOLICITAR PRÉSTAMO LIBRO</button>
+                <button onclick="reservaprestamo()" title="Haz clic para solicitar préstamo del libro. Una vez realizada la reserva, el administrador te enviará dos correos informando que ha se completado la reserva e informando de cuando se realizará la entrega del libro.">SOLICITAR PRÉSTAMO LIBRO</button>
                 </center>        
 <?php
             }
@@ -138,10 +138,10 @@
                     //El libro ya había sido reservado por el usuario y no ha sido entregado, no ha sido recogido. Se permite anular la reserva.
 ?>
                     <center>
-                    <label for="" style="color:red;">Tienes reservado préstamo de este libro pendiente de recoger. Si lo deseas puedes anular esta reserva.</label>
+                    <label for="" style="color:red">Tienes reservado préstamo de este libro pendiente de recoger. Si lo deseas puedes anular esta reserva.</label>
                     <!-- <br> -->
                     <abbr title="Tienes reservado el préstamo de este libro que está pendiente de ser recogido (la reserva la acabas de realizar o ya la la habías realizado anteriormente). Si lo deseas puedes anular esta reserva">
-                    <button onclick="anularreservaprestamo()" style="margin-top:0%;">ANULAR RESERVA PRÉSTAMO LIBRO</button></abbr>
+                    <button onclick="anularreservaprestamo()">ANULAR RESERVA PRÉSTAMO LIBRO</button></abbr>
                     </center>
 <?php
                 }
@@ -150,9 +150,9 @@
                     //El libro no está disponible, no ha sido reservado por el usuario, no se ha devuelto
 ?>            
                     <center>
-                    <label for="" style="color:red;">Este libro ya está prestado o está reservado por otro usuario. Puedes solicitar reserva préstamo de otro libro haciendo clic en "LIBRO NO DISPONIBLE" o ir a inicio</label>
+                    <label for="" style="color:red">Este libro ya está prestado o está reservado por otro usuario. Puedes solicitar reserva préstamo de otro libro haciendo clic en "LIBRO NO DISPONIBLE" o ir a Indice</label>
                     <!-- <br> -->
-                    <button onclick="window.location.href='./index.php'" title="Haz clic para ir a inicio y ver los libros disponibles" style="margin-top:0%;">LIBRO NO DISPONIBLE</button>
+                    <button onclick="window.location.href='./index.php'" title="Haz clic para ir a Índice y ver los libros disponibles" >LIBRO NO DISPONIBLE</button>
                     </center>
 <?php
                 }        

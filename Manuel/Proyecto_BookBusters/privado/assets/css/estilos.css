@@ -2,14 +2,7 @@
 	box-sizing: border-box;
 }
 
-body {
-	background: #1D1D1F;
-	color: #fff;
-	font-family: 'Montserrat', sans-serif;
-	min-height: 100vh;
-	display: flex;
-	align-items: center;
-}
+
 
 
 ::-webkit-scrollbar{
@@ -17,8 +10,8 @@ body {
 }
 
 .contenedor {
-	max-width: 1200px;
-	width: 90%;
+	
+	
 	margin: auto;
 }
 
@@ -54,9 +47,7 @@ body {
 
 
 @media screen and (max-width: 800px) {
-	body {
-		padding: 40px 0;
-	}
+
 
 	.contenido-principal {
 		flex-direction: column;

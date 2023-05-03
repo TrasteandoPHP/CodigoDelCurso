@@ -7,7 +7,7 @@
 <html>
 
 <head>
-	<title>Gestión de Usuario</title>
+	<title>ENTREGAS Y DEVOLUCIONES</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="../assets/css/main.css" />
@@ -41,7 +41,9 @@
 				<!-- Content -->
 				<section>
 					<header class="main">
-						<h2>Gestión de Usuario</h2>
+						<h2>
+							ENTREGAS Y DEVOLUCIONES
+							</h2>
 						<div>
 							<abbr title="Volver"><i class="fa-solid fa-circle-arrow-left"
 									style="font-size: 2.5em;cursor:pointer;"
@@ -58,8 +60,8 @@
 							<thead>
 								<tr>
 									<th>Avatar</th>
-									<th><i class="fa fa-check"></i></th>
-									<th><i class="fa-solid fa-truck-fast fa-beat-fade" style="color:#ff39ba;"></i></th>
+									<th><i class="fa f	a-check" title="Confirmación"></i></th>
+									<th><i class="fa-solid fa-truck-fast fa-beat-fade" style="color:#ff39ba;" title="Entrega/Devolución"></i></th>
 									<th>Usuario</th>
 									<th>Libro</th>
 									<th>Email</th>
@@ -212,38 +214,47 @@
 		alert(fecha);
 
 
-		$.post("./php/busca_entregas_devoluciones.php", { enviarmail: "entrega", codusu: codusu, usuario: nombre, mail: emailPHP, fecha: fecha }, function () {
-
+		$.post("./php/busca_entregas_devoluciones.php", 
+		{ enviarmail: "entrega", codususuario: codusu, usuario: nombre, mail: emailPHP, fecha: fecha }, 
+		function(){
 			Swal.fire({
 				position: "top-center",
 				icon: "success",
 				title: "Entrega registrada correctamente",
 				showConfirmButton: false,
 				timer: 1500
-			})
+			});
+			setTimeout(function() {
+				location.reload();
+			}, 1500);
 		}
 		)
-		location.reload();
+		// window.localtion.href='entregas_devoluciones.html';
 	}
 	function valoracion(codusu, nombre, email, libro) {
-		alert(codusu);
-		alert(nombre);
-		alert(email);
-		alert(libro);
-		var correo = email;
-		$.post("./php/busca_entregas_devoluciones.php", { enviarmail: "valorar", codusu: codusu, usuario: nombre, email: correo, codlibro: libro }, function () {
-
+	alert(codusu);
+	alert(nombre);
+	alert(email);
+	alert(libro);
+	var correo = email;
+	$.post("./php/busca_entregas_devoluciones.php", 
+		{ enviarmail: "valorar", codususuario: codusu, usuario: nombre, email: correo, codlibro: libro }, 
+		function () {
+			//alert(dame);	
 			Swal.fire({
 				position: "top-center",
 				icon: "success",
 				title: "Devolución registrada correctamente",
 				showConfirmButton: false,
 				timer: 1500
-			})
+			});
+			setTimeout(function() {
+				location.reload();
+			}, 1500);
 		}
-		)
-		location.reload();
-	}
+	);
+}
+
 	function icono_rojo(id) {
 		$(id).css("color", "#ff39ba")
 		$(id).css("cursor", "pointer")

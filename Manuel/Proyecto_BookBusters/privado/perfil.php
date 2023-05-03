@@ -131,6 +131,9 @@
 										<img src="avatares/Bookbustersgafas.png" alt="Bookbustersgafas.png" id="img7" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
 										<img src="avatares/Bookbusterssombrero.png" alt="Bookbusterssombrero.png" id="img8" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
 										<img src="avatares/Bookbustersnariz.jpg" alt="Bookbustersnariz.jpg" id="img9" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
+										<img src="avatares/Bookbustersverde.png" alt="Bookbustersverde.png" id="img10" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
+										<img src="avatares/Bookbusters5.png" alt="Bookbusters5.png" id="img11" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
+
 								<!-- </section>		 -->
 							<!-- Section -->
 								<section>
@@ -250,7 +253,7 @@
 									</header>
 									<p>Estamos abiertos en horario lectivo de la Escuela de Finanzas EFF Bussines School de Oleiros</p>
 									<ul class="contact">
-										<li class="icon solid fa-envelope"><a href="C:\Program Files\Mozilla Thunderbird\thunderbird.exe">alfonso@medellin.ef</a></li>
+										<li class="icon solid fa-envelope"><a href="formulario.html" >Contacto</a></li>
 										<li class="icon solid fa-phone">(981) 87 86 34</li>
 										<li class="icon solid fa-home">Dirección: Rúa Salvador de Madariaga, 50, 15173 Oleiros, A Coruña</li>
 										<li class="icon solid fa-book"><a href="terminosuso.php">Terminos de uso</a></li>	

@@ -7,7 +7,7 @@
 	$emacod = base64_encode($_POST["email"]);
 	$pass = $_POST["pass"];
 	$activo = 0;
-	$imagen ="http://10.10.10.199/bookbusters/images/Bookbusters (1).png";
+	$imagen ="http://10.10.10.199/bookbusters/privado/avatares/Bookbusterspre.png";
 	$falta = date("Y-m-d");
 
 $pass = password_hash($pass, PASSWORD_DEFAULT);

@@ -46,7 +46,7 @@ if (isset($_SESSION["admin"])) {
 					<!-- Content -->
 					<section>
 						<header class="main">
-							<h2>Alta Libro</h2>
+							<h2>Modifica Libro</h2>
 							
 								<div class="col-12">
 								<abbr title="Volver"><i class="fa-solid fa-circle-arrow-left" style="font-size: 2.5em;cursor:pointer;" onclick="window.location.href='./libros.php'"></i> </abbr>
@@ -61,36 +61,62 @@ if (isset($_SESSION["admin"])) {
 						<!-- Elements -->
 						<div >
 
-							
+							<?php
+								$codlib=$_GET["codigo"];
+
+								$conexion=new mysqli("10.10.10.199","busters","1234","biblioteca");
+								$buslib = "SELECT * FROM libros INNER JOIN generos USING (genero_lib) WHERE cod_lib=$codlib";
+								$ejlib = $conexion->query($buslib);
+								foreach($ejlib as $registro)
+								{
+									$isbn=$registro["isbn_lib"];
+									$tit=$registro["titulo_lib"];
+									$subtit=$registro["subtitulo_lib"];
+									$autor=$registro["autor_lib"];
+									$edit=$registro["editorial_lib"];
+									$codgen=$registro["genero_lib"];
+									$nomgen=$registro["nom_gen"];
+									$res=$registro["resumen_lib"];
+									$idioma=$registro["idioma_lib"];
+									$paginas=$registro["paginas_lib"];
+									$ima=$registro["imagen_lib"];
+									$falta=$registro["falta_lib"];
+									$disp=$registro["disponible_lib"];
+
+
+								}
+
+							?>
 
 
 								
-                                <form action="altalibros.php" method="POST" enctype="multipart/form-data">
+                                <form action="./actualizalibros.php" method="POST" enctype="multipart/form-data">
                                 	<div class="row gtr-uniform">
 															<div class="col-2 col-12-xsmall">
-																<input type="text" name="isbn" placeholder="ISBN" required>
+																<input type="text" name="isbn" placeholder="ISBN" value="<?php echo $isbn?>" required>
+																<input type="hidden" name="codigo" value="<?php echo $codlib?>" >
 															</div>
 															<div class="col-5 col-12-xsmall">
-																<input type="text" name="tit" placeholder="Titulo del libro" required>									
+																<input type="text" name="tit" placeholder="Titulo del libro" value="<?php echo $tit?>" required>									
 															</div>
 															<div class="col-5 col-12-xsmall">
-																<input type="text" name="subt" placeholder="Subtitulo del libro" required>
+																<input type="text" name="subt" placeholder="Subtitulo del libro" value="<?php echo $subtit?>" required>
 															</div>
 
 
 															<div class="col-4 col-12-xsmall">
-																<input type="text" name="aut" placeholder="Autor" required>
+																<input type="text" name="aut" placeholder="Autor" value="<?php echo $autor?>" required>
 															</div>
 															<div class="col-4 col-12-xsmall">
-																<input type="text" name="edit" placeholder="Editorial" required>									
+																<input type="text" name="edit" placeholder="Editorial" value="<?php echo $edit?>" required>									
 															</div>
 															<div class="col-4 col-12-xsmall">
-																<select name="gen" required>
+																<select name="gen"  required>
 								                                    <?php
-								                                    $conexion=new mysqli("10.10.10.199","busters","1234","biblioteca");
+								                                    
 								                                    $sql="SELECT * FROM generos";
 								                                    $ejecutar=$conexion->query($sql);
-								                                    echo "<option>Selecicone el género</option>";
+								                                    echo "<option value=$codgen>$nomgen</option>";
 								                                    
 								                                    foreach($ejecutar as $registro)
 								                                    {
@@ -103,13 +129,13 @@ if (isset($_SESSION["admin"])) {
 															</div>
 
 															<div class="col-12">
-																 <textarea name="res" placeholder="Resumen del libro" required rows=6 style="resize:none"></textarea>
+																 <textarea name="res" placeholder="Resumen del libro" value="" required rows=6 style="resize:none"><?php echo $res ?></textarea>
 															</div>
 
 															
 															<!-- Break -->
 															<div class="col-4 col-12-xsmall">
-																<select name="idi" required>
+																<select name="idi" value="<?php echo $idioma?>" required>
 								                                    <option value="Español">Español</option>
 								                                    <option value="Inglés">Inglés</option>
 								                                    <option value="Francés">Francés</option>
@@ -117,15 +143,15 @@ if (isset($_SESSION["admin"])) {
 								                                </select>  
 															</div>
 															<div class="col-4 col-12-xsmall">
-																<input type="text" name="pag" placeholder="Nº Páginas" required>
+																<input type="text" name="pag" placeholder="Nº Páginas" value="<?php echo $paginas?>" required>
 															</div>
 															<div class="col-4 col-12-xsmall">
-																<input type="file" name="img" required class="form-control" style="display: none;">
+																<input type="file" name="img" value="<?php echo $ima?>" class="form-control" style="display: none;">
 																<a  href="javascript:void" onclick="$('input[type=file]').click()" class="button" style="width:100%;">Elegir portada</a>
 															</div>
 															<div class="col-12">
 																<ul class="actions">
-																	<li><input type="submit" value="Alta libro" class="primary" /></li>
+																	<li><input type="submit" value="Modifica libro"  class="primary" /></li>
 																	
 																</ul>
 															</div>

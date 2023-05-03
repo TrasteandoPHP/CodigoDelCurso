@@ -37,7 +37,7 @@ if (isset($_SESSION["admin"])) {
 					<header id="header">
 						<a href="../index.php" class="logo"><img style="width: 20%;" src="./../images/logo.png"></a>
 						<ul class="icons">
-							<li><a href="../index.php" class=" fa fa-home"><span class="label"></span></a></li>
+							<li><a href="./index_administrador.php" class=" fa fa-home"><span class="label"></span></a></li>
 							<li><a href="#" class=" fa fa-dice"><span class="label"></span></a></li>
 							<li><a href="./login_administrador.html" class="fa-solid fa-arrow-right-from-bracket"><span class="label"></span></a></li>
 						</ul>
@@ -133,13 +133,18 @@ if (isset($_SESSION["admin"])) {
 			function borrar_usuario(id) {
 				cod = id.split("_")[1];
 
+				let mySound = new Audio("../sounds/alarm.wav");
+				mySound.play();
+
 				// Funcion de alert de confirmacion
 				Swal.fire({
 					title: 'Está seguro de borrar el usuario?',
 					showDenyButton: false,
 					showCancelButton: true,
-					confirmButtonText: 'SI',
+					confirmButtonText: '<span style="color: white"><i class="fa-solid fa-skull-crossbones fa-beat-fade fa-2x"></i><span>',
+					cancelButtonText: '<span style="color: white">CANCELAR<span>',
 					denyButtonText: `Don't save`,
+					confirmButtonColor: '#ff39ba',
 				}).then((result) => {
 					/* Read more about isConfirmed, isDenied below */
 					if (result.isConfirmed) {

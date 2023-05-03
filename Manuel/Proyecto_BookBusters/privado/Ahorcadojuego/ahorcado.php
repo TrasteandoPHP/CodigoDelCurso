@@ -8,7 +8,7 @@
 	$ras=$_POST["letra6"];
 	$res=$_POST["letra7"];
 	$ris=$_POST["letra8"];
-	$conexion=new mysqli("10.10.10.199","busters","1234","ahorcado");
+	$conexion=new mysqli("10.10.10.199","busters","1234","biblioteca");
 	
 	
 

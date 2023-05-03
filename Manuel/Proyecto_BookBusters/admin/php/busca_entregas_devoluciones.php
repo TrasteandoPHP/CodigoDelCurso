@@ -10,7 +10,14 @@ INNER JOIN
 libros
 ON
 libros.cod_lib=prestamos.cod_lib
-WHERE disponible_lib=1 AND fdevolucion_pres ='0000-00-00'";
+WHERE libros.disponible_lib=1 AND prestamos.fdevolucion_pres ='0000-00-00'";
+
+function fecha_invertida($fecha)
+{
+        $fecha= strtotime($fecha);
+        $fecha_invertida = date("d-m-Y", $fecha);
+        echo $fecha_invertida;
+}
 
 if ($ej = $con->query($sql)) {
         foreach ($ej as $reg) {
@@ -65,10 +72,10 @@ if ($ej = $con->query($sql)) {
                         <td><?php echo "$Nombre $Ap1 $Ap2" ?></td>
                         <td><?php echo $libro ?></td>
                         <td><?php echo $email ?></td>
-                        <td><?php echo $Fecha_Reserva_Prevista ?></td>
-                        <td><?php echo $Fecha_Entrega_Prevista ?></td>
-                        <td><?php echo $Fecha_Prevista_Prestamo ?></td>
-                        <td><?php echo $Fecha_Devolucion_Prestamo ?></td>
+                        <td><?php fecha_invertida($Fecha_Reserva_Prevista) ?></td>
+                        <td><?php fecha_invertida($Fecha_Entrega_Prevista) ?></td>
+                        <td><?php fecha_invertida($Fecha_Prevista_Prestamo) ?></td>
+                        <td><?php fecha_invertida($Fecha_Devolucion_Prestamo) ?></td>
                         <td style="display:none"><?php echo $disponibilidad ?></td>
                         <td><?php echo $Faltas ?></td>
 
@@ -89,16 +96,15 @@ if (isset($_POST["enviarmail"])) {
                 $header .= "Content-type:text/html;charset=UTF-8 \r\n";
                 $header .= "From: dani@medellin.ef";
                 mail($para, $asunto, $mensaje, $header);
-                echo "Confirmacion Enviada";
-        } elseif (($_POST["enviarmail"]) == "entrega") {
+        } else if (($_POST["enviarmail"]) == "entrega") {
 
                 //CORREO ADMINISTRADOR A ENTREGADO LIBRO, ACTUALIZACION FECHAS PRESTAMOS (ENTREGA)
-
+                //var_dump($_POST);
                 //ACTUALIZACION TABLA
-                $codusu = $_POST["codusu"];
+                $codusu = $_POST["codususuario"];
                 $fecha = $_POST["fecha"];
-                $fentrega = date('Y-m-d', strtotime($fecha . ' +1 day'));
-                $fprevista = date('Y-m-d', strtotime($fecha . ' +15 day'));
+                $fentrega = date('Y-m-d', strtotime($fecha. ' +1 day'));
+                $fprevista = date('Y-m-d', strtotime($fecha. ' +15 day'));
                 $sql_entrega = "UPDATE prestamos
                 SET fentrega_pres='$fentrega',fprevista_pres='$fprevista'
                 WHERE prestamos.cod_usu=$codusu";
@@ -111,7 +117,7 @@ if (isset($_POST["enviarmail"])) {
                 $fprevista_correo = date("d-m-Y", $fprevista_invertida);
 
                 $asunto = "Confirmación entrega, libro Bookbusters";
-                $mensaje = "<h1>Hola,$usuario.<br>Hemos registrado tu reserva, la fecha máxima para devolver es: $fprevista_correo</h1>
+                $mensaje = "<h1>Hola,$usuario.<br>Hemos registrado tu reserva, la fecha máxima para devolver es: fprevista_correo</h1>
                                         <br>
                                 <img src='http://10.10.10.199/bookbusters/privado/avatares/Bookbusterscapa.png'>";
 
@@ -123,13 +129,15 @@ if (isset($_POST["enviarmail"])) {
 
                 //ADMINISTRADOR A RECIBIDO EL LIBRO DE VUELTA
                 include("./../../privado/php/funciones.php");
-
+                var_dump($_POST);
                 //ACTUALIZACION FECHA DEVOLUCION TABLA PRESTAMOS Y LIBROS DISPONIBLE (0)
-                $codusu = $_POST["codusu"];
+                $codusu = $_POST["codususuario"];
+                
+                $hoy = date('Y-m-d');
                 $sql_devolucion = "UPDATE prestamos
                 INNER JOIN libros
-                ON prestamos.cod_lib=libros.cod_lib
-                SET prestamos.fdevolucion_pres='$hoy',libros.disponible_lib='0'
+                USING(cod_lib)
+                SET prestamos.fdevolucion_pres='$hoy', libros.disponible_lib=0
                 WHERE prestamos.cod_usu=$codusu";
                 $con->query($sql_devolucion);
 
@@ -137,7 +145,7 @@ if (isset($_POST["enviarmail"])) {
                 //Se crea un registro sin valorar, eso ocurrira luego cuando el usuario elija una ESTRELLA con un UPDATE
                 $coduniq = uniqid();//CODIGO DE AUTENTICACION
                 $codlibro = $_POST["codlibro"];
-                $hoy = date('Y-m-d');
+                
 
 
                 $sql_valoracion = "INSERT INTO valoraciones (cod_lib,val_uniq,fecha_val) VALUES ('$codlibro','$coduniq','$hoy')";

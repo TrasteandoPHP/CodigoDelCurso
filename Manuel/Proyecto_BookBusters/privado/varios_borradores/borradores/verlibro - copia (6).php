@@ -31,13 +31,13 @@
 							<header id="header">
                                     <a href="index.php" class="logo"><img style="width: 20%;" src="./../images/logo.png"></a>
 									<ul class="icons">
-                                        <li><a href="index.php" class=" fa fa-home" title="Ir a inicio"><span class="label"></span></a></li>										
-										<li><a href="notificaciones.php" class=" fa fa-bell" title="Ir a notificaciones"><span class="label"></span></a></li>
-										<li><a href="historial.html" class=" fa fa-book" title="Ir a historial"><span class="label"></span></a></li>
-										<li><a href="index_favoritos.php" class=" fa fa-heart" title="Ir a favoritos"><span class="label"></span></a></li>
-										<li><a href="perfil.php" class=" fa fa-user" title="Ir a perfil"><span class="label"></span></a></li>
-										<li><a href="juegos.php" class=" fa fa-dice" title="Ir a juegos"><span class="label"></span></a></li>
-										<li><a href="exit.php" class="fa-solid fa-arrow-right-from-bracket" title="Salir sesión"><span class="label"></span></a></li>
+                                    <li><abbr title="Ir a índice"><a href="index.php" class=" fa fa-home"><span class="label"></span></a></abbr></li>										
+										<li><abbr title="Ir a notificaciones"><a href="notificaciones.php" class=" fa fa-bell"><span class="label"></span></a></abbr></li>
+										<li><abbr title="Ir a historial"><a href="historial.html" class=" fa fa-book"><span class="label"></span></a></abbr></li>
+										<li><abbr title="Ir a favoritos"><a href="index_favoritos.php" class=" fa fa-heart"><span class="label"></span></a></abbr></li>
+										<li><abbr title="Ir a perfil"><a href="perfil.php" class=" fa fa-user"><span class="label"></span></a></abbr></li>
+										<li><abbr title="Ir a juegos"><a href="juegos.php" class=" fa fa-dice"><span class="label"></span></a></abbr></li>
+										<li><abbr title="Salir sesión"><a href="exit.php" class="fa-solid fa-arrow-right-from-bracket"><span class="label"></span></a></li>
 									</ul>
 								</header>
 
@@ -45,14 +45,14 @@
 								
 
 							<!-- Section -->
-								<section style="padding:0.5em 0 4em 0;">
-								<div id="acciones" style="width:100%;float:left;">
+								<section>
+								<div id="acciones" style="width:100%;float:left">
 								<?php
     //Se recoge el código del libro recibido por GET de los documentos /privado/index.php y /privado/index_favoritos.php
     $codlibro=$_GET["codlib"]; 
         //Para pruebas sin tener código libro
         //$codlibro=5; 
-    //Se obtiene el código de usuario de la sesión denominada bookbusters que tiene establecida el usuario  
+    //Se obtiene el código de usuario de la sesión denominada bookbusters  
     $codusuario=$_SESSION["bookbusters"];
         //Para pruebas sin tener el código de usuario de la sesión
         //$codusuario=5;
@@ -70,10 +70,10 @@
 
 ?>        
         <center>
-        <label for="" style="color:red;">Tienes prestado otro libro pendiente de devolver. Titulo: <?php echo $titulodevolucion;?>, fecha prevista devolución: <?php echo $fechaprevistadevolucion;?></label>
-        <!-- <br> -->
-        <abbr title="Para poder solicitar préstamo de un libro se debe devolver el libro prestado anteriormente. Si deseas ver el historial de préstamos haz clic">        
-        <button onclick="window.location.href='./historial.html'" style="color:red;margin-top:0%;">TIENES ALGÚN LIBRO PRESTADO SIN DEVOLVER</button></abbr>
+        <label for="" style="color:red">Tienes prestado otro libro pendiente de devolver. Titulo: <?php echo $titulodevolucion;?>, fecha prevista devolución: <?php echo $fechaprevistadevolucion;?></label>
+        <br>
+        <abbr title="Para poder solicitar préstamo de un libro se debe devolver el o los libros prestados anteriormente. Si deseas ver el historial de préstamos haz clic">        
+        <button onclick="window.location.href='./historial.html'" style="color:red;">TIENES ALGÚN LIBRO PRESTADO SIN DEVOLVER</button></abbr>
         </center>
 <?php
     }
@@ -97,10 +97,10 @@
 ?>
             <center>
             <input type="hidden" id="codigootrolibro" value="<?php echo $codlibreserva; ?>">
-            <label for="" style="color:red;">Tienes reservado préstamo de otro libro pendiente recoger. Titulo: <?php echo $tituloreserva?>, fecha reserva: <?php echo $fechareserva?>. Si lo deseas puedes anular esa reserva.</label>
-            <!-- <br> -->
+            <label for="" style="color:red">Tienes reservado préstamo de otro libro pendiente recoger. Titulo: <?php echo $tituloreserva?>, fecha reserva: <?php echo $fechareserva?>. Si lo deseas puedes anular esa reserva.</label>
+            <br>
             <abbr title="Tienes reservado préstamo de otro libro pendiente de recoger. No se puede realizar esta reserva a no ser que anules la anterior reserva">
-            <button onclick="anularotrareservaprestamo()" style="margin-top:0%;">ANULAR RESERVA PRÉSTAMO OTRO LIBRO</button></abbr>
+            <button onclick="anularotrareservaprestamo()">ANULAR RESERVA PRÉSTAMO OTRO LIBRO</button></abbr>
             </center>
             
 <?php
@@ -117,9 +117,9 @@
                 //Libro disponible (campo disponible_lib=0 de la tabla libros)       
 ?>
                 <center>
-                <label for="" style="color:green;">Si deseas reservar préstamo de este libro haz clic en "SOLICITAR PRÉSTAMO LIBRO"</label>
-                <!-- <br> -->
-                <button onclick="reservaprestamo()" title="Haz clic para solicitar préstamo del libro. Una vez realizada la reserva, el administrador te enviará dos correos informando que ha se completado la reserva e informando de cuando se realizará la entrega del libro." style="margin-top:0%;">SOLICITAR PRÉSTAMO LIBRO</button>
+                <label for="" style="color:green">Si deseas reservar préstamo de este libro haz clic en "SOLICITAR PRÉSTAMO LIBRO"</label>
+                <br>
+                <button onclick="reservaprestamo()">SOLICITAR PRÉSTAMO LIBRO</button>
                 </center>        
 <?php
             }
@@ -138,10 +138,10 @@
                     //El libro ya había sido reservado por el usuario y no ha sido entregado, no ha sido recogido. Se permite anular la reserva.
 ?>
                     <center>
-                    <label for="" style="color:red;">Tienes reservado préstamo de este libro pendiente de recoger. Si lo deseas puedes anular esta reserva.</label>
-                    <!-- <br> -->
+                    <label for="" style="color:red">Tienes reservado préstamo de este libro pendiente de recoger. Si lo deseas puedes anular esta reserva.</label>
+                    <br>
                     <abbr title="Tienes reservado el préstamo de este libro que está pendiente de ser recogido (la reserva la acabas de realizar o ya la la habías realizado anteriormente). Si lo deseas puedes anular esta reserva">
-                    <button onclick="anularreservaprestamo()" style="margin-top:0%;">ANULAR RESERVA PRÉSTAMO LIBRO</button></abbr>
+                    <button onclick="anularreservaprestamo()">ANULAR RESERVA PRÉSTAMO LIBRO</button></abbr>
                     </center>
 <?php
                 }
@@ -150,9 +150,10 @@
                     //El libro no está disponible, no ha sido reservado por el usuario, no se ha devuelto
 ?>            
                     <center>
-                    <label for="" style="color:red;">Este libro ya está prestado o está reservado por otro usuario. Puedes solicitar reserva préstamo de otro libro haciendo clic en "LIBRO NO DISPONIBLE" o ir a inicio</label>
-                    <!-- <br> -->
-                    <button onclick="window.location.href='./index.php'" title="Haz clic para ir a inicio y ver los libros disponibles" style="margin-top:0%;">LIBRO NO DISPONIBLE</button>
+                    <label for="" style="color:red">Este libro ya está prestado o está reservado por otro usuario. Puedes solicitar reserva préstamo de otro libro haciendo clic en "LIBRO NO DISPONIBLE" o ir a Indice</label>
+                    <br>
+                    <abbr title="Ir a Indice para seleccionar libro disponible">
+                    <button onclick="window.location.href='./index.php'">LIBRO NO DISPONIBLE</button></abbr>
                     </center>
 <?php
                 }        
@@ -167,16 +168,18 @@
     {
         //El usuario ya tiene este libro como favorito. Se da como opción quitar de la lista de favoritos del usuario.
 ?>
-        <center style="margin-top:0.2%;"><button title="Libro en favoritos (haz clic para dar de baja de favortios)"><i class="fa fa-heart-circle-minus fa-2xl" id="favoritobaja" onclick="quitarfavoritos()" style="color:red;"></i></button></center>
-        <hr style="margin-top:0.5%;">       
+        <center><abbr title="libro en favoritos (haz clic para dar de baja de favortios)">
+            <button><i class="fa fa-heart-circle-minus fa-2xl" id="favoritobaja" onclick="quitarfavoritos()" style="color:red;"></i></button></abbr></center>
+        <hr>       
 <?php
     }
     else
     {
         //El usuario no tiene este libro como favorito y lo puede añadir a la lista de favoritos del usuario.
 ?>
-        <center style="margin-top:0.2%;"><button title="Haz clic para añadir libro a favoritos"><i class="fa fa-heart-circle-plus fa-2xl" id="favoritoalta" onclick="favorito()" style="color:grey"></i></button></center>
-        <hr style="margin-top:0.5%;">        
+        <center><abbr title="añadir a favoritos">
+            <button><i class="fa fa-heart-circle-plus fa-2xl" id="favoritoalta" onclick="favorito()" style="color:grey"></i></button></abbr></center>
+        <hr>        
 <?php
     }
     include("./php/funciones.php");
@@ -217,7 +220,7 @@
 
 
 	<div id="imglibro" style="float:left;margin-right:5%;">
-        <img src="../images/portadas/<?php echo $codlibro; ?>/<?php echo $imgagenlibro; ?>" style="max-width:350px;max-height:550px" alt="">     
+        <img src="../images/portadas/<?php echo $codlibro; ?>/<?php echo $imgagenlibro; ?>" style="max-width:80%" alt="">     
     </div>
     <div id="datos1" style="margin-right: 20%; float:left;">
         <label>Título</label><p><?php echo $titlibro; ?></p>

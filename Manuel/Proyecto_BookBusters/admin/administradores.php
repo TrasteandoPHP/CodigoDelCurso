@@ -136,6 +136,7 @@ if (isset($_SESSION["admin"])) {
 		<script src="../assets/js/breakpoints.min.js"></script>
 		<script src="../assets/js/util.js"></script>
 		<script src="../assets/js/main.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 
@@ -149,22 +150,38 @@ if (isset($_SESSION["admin"])) {
 
 			function borrar_administrador(id) {
 				cod = id.split("_")[1];
-				if(confirm("¿Esta seguro de borrar este Administrador?")){
-				$.post(
-					"./php/borrar_adm.php", {
-						codigo: cod
-					},
-					function(out) {
-						alert(out);
-						if (out != "Ha ocurrido un error en el borrado") {
-							$("#campo_" + cod).hide();
+				
+				let mySound = new Audio("../sounds/alarm.wav");
+				mySound.play();
+
+				Swal.fire({
+					title: 'Está seguro de borrar el usuario?',
+					showDenyButton: false,
+					showCancelButton: true,
+					confirmButtonText: '<span style="color: white"><i class="fa-solid fa-skull-crossbones fa-beat-fade fa-2x"></i><span>',
+					cancelButtonText: '<span style="color: white">CANCELAR<span>',
+					denyButtonText: `Don't save`,
+					confirmButtonColor: '#ff39ba',
+				}).then((result) => {
+					/* Read more about isConfirmed, isDenied below */
+					if (result.isConfirmed) {
+						Swal.fire('Borrado!', '', 'success')
+						// borradoooooo
+						$.post(
+						"./php/borrar_adm.php", {
+							codigo: cod
+						},
+						function(out) {
+							if (out != "Ha ocurrido un error en el borrado") {
+								$("#campo_" + cod).hide();
+							}
 						}
+					);
+
+					} else if (result.isDenied) {
+						Swal.fire('Changes are not saved', '', 'info')
 					}
-				);
-				}
-				else{
-					location.reload();
-				}
+				})
 			}
 
 			function desplegar_input() {
