@@ -152,5 +152,6 @@
             </message>
         ";
 	}
-    session_destroy();          			  
+	$conexion->close();
+            			  
 ?>
