@@ -5,10 +5,10 @@
     if(isset($_SESSION["bookbusters"])){
         // Recogemos el código de usuario de los datos recibidos en la sesión.
         $usuario = $_SESSION["bookbusters"];
-        //$usuario = 8;
+        
 		// Creamos una conexión	
-        $conexion = new mysqli("localhost","busters","1234","biblioteca");
-		//$conexion = new mysqli("10.10.10.199","busters","1234","biblioteca");
+        $conexion = new mysqli("db5012901176.hosting-data.io","dbu3726201","PpJ_mP5WdLp!3mPpDb2i@bookaab","dbs10835059");
+		
 		
 		// Buscamos el nombre del usuario a través del código de usuario
 		$sqlConsultaNombreUsuario = "SELECT nom_usu FROM usuarios WHERE cod_usu='$usuario'";
@@ -110,7 +110,7 @@
 											<td style='font-family:auto; font-size:auto;'>$fechaDevolucion</td>
 										</tr>								
 									</table>
-									$pintarBotonDevolverLibro
+									<!-- $pintarBotonDevolverLibro -->
 									<div id='libro$codigoLibro' style='display:none'>
 										<textarea style='margin-top:10px;'></textarea>
 										<button onclick='enviarCorreo($codigoLibro)'style='margin-top:10px;'>Enviar</button>									
@@ -152,5 +152,5 @@
             </message>
         ";
 	}
-              			  
+    session_destroy();          			  
 ?>
