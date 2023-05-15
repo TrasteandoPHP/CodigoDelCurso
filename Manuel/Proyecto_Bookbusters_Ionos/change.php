@@ -1,8 +1,5 @@
-
 <?php
-
 //Datos provenientes de contraolvidada.php
-
 if(isset($_GET['envio']))
 {
 
@@ -26,6 +23,7 @@ $ejecutar=$con->query($sql);
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
 	<body class="is-preload">
+	<!-- is-preload -->
 
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -38,65 +36,62 @@ $ejecutar=$con->query($sql);
 								<header id="header">
 									<a href="index.php" class="logo"><img style="width: 20%;" src="./images/logo.png"></a>
 									<ul class="icons">
-										<li><a style="font-size:xx-large" href="index.php" class="fa fa-home" aria-hidden="true"><span class="label"></span></a></li>
-										<li><a style="font-size:xx-large" href="registro.html" class="fa fa-user-plus" aria-hidden="true"><span class="label"></span></a></li>
-										<li><a style="font-size:xx-large" href="login.html" class="fas fa-sign-in-alt" aria-hidden="true"><span class="label"></span></a></li>	
+										<li><a style="font-size:large" href="index.php" class="fa fa-home" aria-hidden="true"><span class="label"></span></a></li>
+										
 									</ul>
 								</header>
 
 							<!-- Banner -->
-								<section id="banner" style="padding-top:30px">
+								<section id="banner" >
 									<div class="content">
 										<center>
-												<img src="images/Bookbusters (4).png" alt="" style="border-radius:10px" />
-                                                <br>
-											
-
-                    <form action="updatepass.php" method="POST">
-                        <input type="hidden" name="codusu" value="<?php echo $codusu; ?>">
-                        <input type="password" name="pass" placeholder="Nueva Contraseña" style="width:20%;margin-top:1%;border-radius:10px" >
-                        <input type="submit" value="enviar" style="margin-top:1%">
-                    </form>
-
-                                    </center>
+											<img src="https://bookbusters.es/images/Bookbusters (4)_transparent2.png" alt="" style="border-radius:10px" />
+                                        <br>
+                                        <h2>Escribe tu nueva contraseña</h2>
+						                    <form action="updatepass.php" method="POST">
+												<div class="row gtr-uniform">							
+													<div class="col-12 col-12-small">
+														<input type="password" name="pass" id="demo-mail" value="" placeholder="Nueva Contraseña">
+													</div>
+						                       			 <input type="hidden" name="codusu" value="<?php echo $codusu; ?>">
+						                        	<div class="col-12 col-12-small">
+														<input type="submit" value="Modificar" class="primary">	
+													</div>
+												</div>
+						                    </form>
+                                    	
+										</center>
                                     </div>
+                                </section>    
+                        	</div>
                         </div>
-                    </div>
-        <!-- Sidebar -->
-					<div id="sidebar">
+                        <div id="sidebar">
 						<div class="inner">
 
-							<!-- Search -->
+							<!-- Search
 								
 
-							<!-- Menu -->
+							<!- Menu -->
 								<nav id="menu">
 									<header class="major">
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="index.php" style="font-size:x-large ;">Inicio</a></li>
-										<li><a href="registro.html" style="font-size:x-large ;">Registro</a></li>
-										<li><a href="login.html" style="font-size:x-large">Login</a></li>
-										
+										<li><a href="index.php" style="font-size:medium ;">Inicio</a></li>
+										<li><a href="registro.html" style="font-size:medium ;">Registro</a></li>
+										<li><a href="login.html" style="font-size:medium">Login</a></li>
 									</ul>
 								</nav>
-
-							<!-- Section -->
-								
-
-							<!-- Section -->
-								
-
+								<a href="./admin/login_administrador.html" class="fa fa-lock" style="font-size:30px"></a>
 							<!-- Footer -->
 								<footer id="footer">
-									<p class="copyright">&copy; Bookbusters: </p>
+									<p class="copyright">&copy; Bookbuster</p>
 								</footer>
 
 						</div>
 					</div>
+                    </div>
 
-			</div>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
@@ -104,8 +99,7 @@ $ejecutar=$con->query($sql);
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+			
 
 	</body>
 </html>    

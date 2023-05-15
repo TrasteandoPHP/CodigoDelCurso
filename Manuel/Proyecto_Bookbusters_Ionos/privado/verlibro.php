@@ -74,9 +74,9 @@
 
 ?>        
         <center>
-        <label for="" style="color:red;">Tienes prestado otro libro pendiente de devolver. Titulo: <?php echo $titulodevolucion;?>, fecha prevista devolución: <?php echo $fechaprevistadevolucion;?></label>
+        <label for="" style="color:red;">Tienes prestado otro libro pendiente de devolver. Titulo: <?php echo $titulodevolucion;?>, fecha límite devolución: <?php echo $fechaprevistadevolucion;?></label>
         <!-- <br> -->
-        <abbr title="Para poder solicitar préstamo de un libro se debe devolver el libro prestado anteriormente. Si deseas ver el historial de préstamos haz clic">        
+        <abbr title="Para poder solicitar nuevo préstamo de un libro se debe devolver el libro prestado anteriormente (plazo máximo devolución: 15 días naturales). Si deseas ver el historial de préstamos haz clic">        
         <button onclick="window.location.href='./historial.html'" style="color:red;margin-top:0%;">TIENES ALGÚN LIBRO PRESTADO SIN DEVOLVER</button></abbr>
         </center>
 <?php
@@ -123,7 +123,7 @@
                 <center>
                 <label for="" style="color:green;">Si deseas reservar préstamo de este libro haz clic en "SOLICITAR PRÉSTAMO LIBRO"</label>
                 <!-- <br> -->
-                <abbr title="Haz clic para solicitar préstamo del libro (nota: solo se puede reservar un libro al mismo tiempo si no tienen pendientes reservas o devoluciones libros). Una vez realizada la reserva, el administrador te enviará dos correos informando que ha se completado la reserva e informando de cuando se realizará la entrega del libro.">
+                <abbr title="Haz clic para solicitar préstamo del libro. Una vez completada la reserva bookbusters.es enviará dos correos informando que ha se completado la reserva e informando de cuando se realizará la entrega del libro con la fecha límite devolución (plazo máximo 15 días naturales). (Nota: solo se puede reservar un libro al mismo tiempo, y solo si no se tienen pendientes reservas o devoluciones anteriores).">
                 <button onclick="reservaprestamo()" style="margin-top:0%;">SOLICITAR PRÉSTAMO LIBRO</button></abbr>
                 </center>        
 <?php
@@ -155,7 +155,7 @@
                     //El libro no está disponible, no ha sido reservado por el usuario, no se ha devuelto
 ?>            
                     <center>
-                    <label for="" style="color:red;">Este libro ya está prestado o está reservado por otro usuario. Puedes solicitar reserva préstamo de otro libro haciendo clic en "LIBRO NO DISPONIBLE" o ir a inicio</label>
+                    <label for="" style="color:red;">Este libro ya está prestado o está reservado por otro usuario. Puedes consultar libros disponibles haciendo clic en "LIBRO NO DISPONIBLE" o ir a inicio</label>
                     <!-- <br> -->
                     <button onclick="window.location.href='./index.php'" title="Haz clic para ir a inicio y ver los libros disponibles" style="margin-top:0%;">LIBRO NO DISPONIBLE</button>
                     </center>
@@ -323,16 +323,23 @@
     function reservaprestamo()
     {
         var codlib = $("#codigolibro").val();
-        var user = $("#usuar").val();       
+        var user = $("#usuar").val();               
         $.post(
             "./php/prestamos.php",
             {codigolibro:codlib,usuario:user},
             function(respuesta)
             {
-                window.location.href='reservado.php?codlib='+codlib;                
+                if(respuesta == 1)
+                {
+                    //El libro no está disponible ya que antes de ejectuar esta acción ha sido reservado por otro usuario
+                    window.location.href='verlibro.php?codlib='+codlib;
+                }
+                else
+                {
+                    window.location.href='reservado.php?codlib='+codlib;
+                }                              
             }
-        );
-        
+        );        
     }
 
     //Función para anular reserva préstamo libro en tabla prestamos y actualizar tabla libros
@@ -353,17 +360,23 @@
     }
 
     //Función para anular la reserva préstamo de otro libro en tabla prestamos y actualizar tabla libros
-        //Se recibe de dos input's ocultos el código de libro y el código de usuario, enviándose al correspondiente
-        //documento por $.post(). Se recibe la respuesta de otro documento (que está maquetado con el correspondiente diseño)      
+        //Se recibe de tres input's ocultos el código de libro que ya estaba reservado, el código del libro que se quiere reservar ahora
+        //y el código de usuario, enviándose al correspondiente documento por $.post() para anular la reserva del otro libro. 
+        //Al recibir la respuesta con la anulación reserva del otro libro, se redirige a documento informativo ok anulación reservaanulacion.php,
+        //que al hacer clic en botón Volver redirige a este documento verlibro.php presentando el nuevo libro que se quiere reservar    
     function anularotrareservaprestamo()
     {
-        var codlib = $("#codigootrolibro").val();
+        //Variable con el código del otro libro reservado anteriormente
+        var codotrolib = $("#codigootrolibro").val();
+        //Variable con el código del libro que se quiere reservar ahora 
+        var codlib = $("#codigolibro").val();
         var user = $("#usuar").val();       
         $.post(
             "./php/prestamosbaja.php",
-            {codigolibro:codlib,usuario:user},
+            {codigolibro:codotrolib,usuario:user},
             function(respuesta)
             {
+                //Se envía por GET (mochila ?codlib el código del libro nuevo que se quiere reservar ahora) 
                 window.location.href='reservaanulacion.php?codlib='+codlib;   
             }
         );

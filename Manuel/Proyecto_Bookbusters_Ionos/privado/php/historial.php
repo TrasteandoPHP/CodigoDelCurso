@@ -98,7 +98,7 @@
 											<td style='font-family:auto; font-size:auto;'>$fechaEntrega</td>
 										</tr>
 										<tr>
-											<th style='font-family:auto; text-align:center; padding-top:10px;'>Fecha Prevista</th>
+											<th style='font-family:auto; text-align:center; padding-top:10px;'>Fecha Límite Devolución</th>
 										</tr>
 										<tr>
 											$pintarFechaPrevista

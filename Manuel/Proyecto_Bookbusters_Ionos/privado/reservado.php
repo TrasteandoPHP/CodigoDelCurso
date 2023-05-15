@@ -45,7 +45,7 @@ if(isset($_SESSION['bookbusters']))
 										<header>
 											<center><h1>Reserva realizada!</h1></center>
 									<p><center>Hemos recibido tu reserva del libro. Recibirás un correo describiendo la entrega!</p>
-									<p><center>Recuerda que mientras no devuelvas el libro prestado o tengas una reserva pendiente no puedes solicitar otra reserva</p>
+									<p><center>Recuerda que mientras no devuelvas el libro prestado (plazo máximo 15 días naturales desde la entrega), o tengas una reserva pendiente, no puedes solicitar reserva de otro libro</p>
 										
 										<img style="width: 20%;" src="./../images/Bookbusters (1).png" alt="" />
 										<center>

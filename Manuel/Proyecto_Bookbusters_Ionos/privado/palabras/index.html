@@ -1,0 +1,102 @@
++<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <title>GAME</title>
+</head>
+<body>
+<center>
+    <h1>Superword</h1>
+    <hr>
+    <div id="oculta" style="display:none">
+        <input id="h1" type="text" value="d" maxlength="1" style="width: 1%;">
+        <input id="h2" type="text" value="e" maxlength="1" style="width: 1%;">
+        <input id="h3" type="text" value="d" maxlength="1" style="width: 1%;">
+        <input id="h4" type="text" value="i" maxlength="1" style="width: 1%;">
+        <input id="h5" type="text" value="t" maxlength="1" style="width: 1%;">
+        <input id="h6" type="text" value="o" maxlength="1" style="width: 1%;">
+    </div>
+    <div id="cubrir">
+        <input id="h1" type="text" value="" maxlength="1" style="width: 1%;background-color: lightgrey;">
+        <input id="h2" type="text" value="" maxlength="1" style="width: 1%;background-color: lightgrey;">
+        <input id="h3" type="text" value="" maxlength="1" style="width: 1%;background-color: lightgrey;">
+        <input id="h4" type="text" value="" maxlength="1" style="width: 1%;background-color: lightgrey;">
+        <input id="h5" type="text" value="" maxlength="1" style="width: 1%;background-color: lightgrey;">
+        <input id="h6" type="text" value="" maxlength="1" style="width: 1%;background-color: lightgrey;">
+        <br>
+        <button onclick="check()">Comprobar</button>
+    </div>
+    <div id="resultado">
+        <input id="h1" type="text" value="" maxlength="1" style="width: 1%;">
+        <input id="h2" type="text" value="" maxlength="1" style="width: 1%;">
+        <input id="h3" type="text" value="" maxlength="1" style="width: 1%;">
+        <input id="h4" type="text" value="" maxlength="1" style="width: 1%;">
+        <input id="h5" type="text" value="" maxlength="1" style="width: 1%;">
+        <input id="h6" type="text" value="" maxlength="1" style="width: 1%;">
+		
+        <br>
+        <button onclick="clearcuadro()">Limpiar</button>
+    </div>
+</center>
+    <script>
+        function check(){
+            
+            var pos = 0;
+            var letter = 0;
+            $("div#cubrir input").each(function(){
+                pos = pos+1;
+                letter = $(this).val();
+                var idenc = $(this).attr("id");
+                $("div#oculta input").each(function(){
+                    var hiddenletter = $(this).val();
+                    var idenh = $(this).attr("id");
+                    if (letter==hiddenletter)
+                    {
+                        if(idenc==idenh)
+                        {
+                            $("div#resultado input#"+idenc).val(letter).css('background-color','lightgreen');
+                            var acierto=1;
+                        }
+                        else
+                        {
+                          if (acierto==1)
+                            {
+                                $("div#resultado input#"+idenc).val(letter).css('background-color','yellow');
+                                acierto=0;
+                            }
+                        }
+                    }
+                });
+            });
+            $("div#resultado input").each(function(){
+                 if($(this).val()=="")
+                 {   
+                     var id = $(this).attr("id");
+                     var show = $("div#cubrir input#"+id).val();
+                     $(this).val(show).css('background-color','red'); 
+                 }
+             });
+        }
+        function clearcuadro()
+        {
+            $("div#resultado input").val("").css('background-color','white');
+            $("div#cubrir input").val("").css('background-color','lightgrey');
+
+            
+        }
+         $("div#cubrir input").on("keyup",function() {
+            $(this).next().focus();
+                // body...
+            })
+
+                
+            
+
+        
+
+    </script>
+</body>
+</html>

@@ -12,7 +12,7 @@ if (isset($_SESSION["admin"])) {
 	<html>
 
 	<head>
-		<title>Administradores</title>
+		<title>Bookbusters - Admin. de libros</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../assets/css/main.css" />
@@ -36,10 +36,10 @@ if (isset($_SESSION["admin"])) {
 
 					<!-- Header -->
 					<header id="header">
-						<a href="./index_administrador.php" class="logo"><img style="width: 20%;" src="./../images/logo.png"></a>
+						<a href="../index.php" class="logo"><img style="width: 20%;" src="./../images/logo.png"></a>
 						<ul class="icons">
 							<li><a href="./index_administrador.php" class=" fa fa-home"><span class="label"></span></a></li>
-							<li><a href="#" class=" fa fa-dice"><span class="label"></span></a></li>
+							<li><a href="./php/juegos_adm.php" class=" fa fa-dice"><span class="label"></span></a></li>
 							<li><a href="./login_administrador.html" class="fa-solid fa-arrow-right-from-bracket"><span class="label"></span></a></li>
 						</ul>
 					</header>
@@ -52,8 +52,9 @@ if (isset($_SESSION["admin"])) {
 								<div class="col-1">
 								<abbr title="Volver"><i class="fa-solid fa-circle-arrow-left" style="font-size: 2.5em;cursor:pointer;" onclick="window.location.href='./index_administrador.php'"></i> </abbr>
 								</div>
+								<!-- input para el quicksearch -->
 								<div class="col-9">
-									<input type="text" name="aut" placeholder="Buscar..." >
+									<input type="text" id="buscador" name="aut" placeholder="Buscar..." >
 								</div>
 								<div class="col-2">
 								<button class="primary" style="width: 100%;" onclick="window.location.href='altalibrosform.php'">Alta libro</button> 
@@ -65,10 +66,9 @@ if (isset($_SESSION["admin"])) {
 						<hr class="major" />
 
 						<!-- Elements -->
-						<div class="row gtr-200">
+						<div class="row">
 
-							<body>
-								<table border="1" style="margin-left:5%;margin-right:5%">
+								<table>
 									<thead>
 										<tr>
 											<th>#</th>
@@ -119,7 +119,7 @@ if (isset($_SESSION["admin"])) {
 									</tbody>
 								</table>
 
-							</body>
+					
 						</div>
 
 					</section>
@@ -144,13 +144,13 @@ if (isset($_SESSION["admin"])) {
 							<h2>Menu</h2>
 						</header>
 						<ul>
-							<li><a href="../index.php">Inicio</a></li>
-							<li><a href="#">Juegos</a></li>
+							<li><a href="./index_administrador.php">Inicio</a></li>
+							<li><a href="./php/juegos_adm.php">Juegos</a></li>
 							<li><a href="./login_administrador.html">Salir</a></li>
 						</ul>
 					</nav>
 					<footer id="footer">
-						<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+					<p class="copyright">&copy; Bookbusters.</p>
 					</footer>
 				</div>
 			</div>
@@ -163,6 +163,8 @@ if (isset($_SESSION["admin"])) {
 		<script src="../assets/js/breakpoints.min.js"></script>
 		<script src="../assets/js/util.js"></script>
 		<script src="../assets/js/main.js"></script>
+		<!-- ++++++++++++++++++++++++++++++++++++++++++QUICKSEARCH+++++++++++++++++++++++++++++++++++ -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.quicksearch/2.4.0/jquery.quicksearch.js" integrity="sha512-U+KdQxKTQfGIQJBs2QyDiU3PxJoSu+ffUJV5AAuMmwSFs1CjBz5Xk3/qWrT0mBHOM/C15q3DMko6HJL+37MYNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 
@@ -174,7 +176,11 @@ if (isset($_SESSION["admin"])) {
 					window.location.href=URL;
 				}
 			}
+			$(document).ready(function(){
+				$("#buscador").quicksearch("table tbody tr");
+			})
 		</script>
+		
 	</body>
 
 	</html>

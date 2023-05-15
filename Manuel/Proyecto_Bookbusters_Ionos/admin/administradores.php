@@ -12,7 +12,7 @@ if (isset($_SESSION["admin"])) {
 	<html>
 
 	<head>
-		<title>Administradores</title>
+		<title>Bookbusters - Administradores</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../assets/css/main.css" />
@@ -32,19 +32,19 @@ if (isset($_SESSION["admin"])) {
 					<header id="header">
 						<a href="../index.php" class="logo"><img style="width: 20%;" src="./../images/logo.png"></a>
 						<ul class="icons">
-							<li><a href="../index.php" class=" fa fa-home"><span class="label"></span></a></li>
-							<li><a href="#" class=" fa fa-dice"><span class="label"></span></a></li>
+							<li><a href="./index_administrador.php" class=" fa fa-home"><span class="label"></span></a></li>
+							<li><a href="./php/juegos_adm.php" class=" fa fa-dice"><span class="label"></span></a></li>
 							<li><a href="./login_administrador.html" class="fa-solid fa-arrow-right-from-bracket"><span class="label"></span></a></li>
 						</ul>
 					</header>
 
 					<!-- Content -->
-					<section>
+					<section id="principal">
 						<header class="main">
 							<h2>Administradores</h2>
 						</header>
 
-						<div class="row" style="margin-bottom:2%;">
+						<div id="boton" class="row" style="margin-bottom:2%;">
 							<div>
 								<button id="but" class="primary  col-6" onclick="desplegar_input()">Crear administrador</button>
 							</div>
@@ -53,7 +53,7 @@ if (isset($_SESSION["admin"])) {
 							</div>
 						</div>
 
-						<form style="display:none;">
+						<form style="display:none;" id="ey" style="z-index:900">
 							<div class="row gtr-uniform col-12 ">
 								<label for="" class="col-2">Nombre:</label>
 								<div class="col-10 col-10-xsmall">
@@ -117,13 +117,13 @@ if (isset($_SESSION["admin"])) {
 							<h2>Menu</h2>
 						</header>
 						<ul>
-							<li><a href="../index.php">Inicio</a></li>
-							<li><a href="#">Juegos</a></li>
+							<li><a href="./index_administrador.php">Inicio</a></li>
+							<li><a href="./php/juegos_adm.php">Juegos</a></li>
 							<li><a href="./login_administrador.html">Salir</a></li>
 						</ul>
 					</nav>
 					<footer id="footer">
-						<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+						<p class="copyright">&copy; Bookbusters.</p>
 					</footer>
 				</div>
 			</div>
@@ -141,6 +141,30 @@ if (isset($_SESSION["admin"])) {
 
 
 		<script>
+
+			// $(document).mouseup(
+			// 	function(e){
+			// 		$("#principal > *").each(function(){
+			// 			alert(this);
+			// 		});
+			// 	}
+			// );
+
+			// $(function() {
+
+			// 	$("#principal > *").on("click",function(){
+			// 		if(this.id != "ey" || this.id != "#boton")
+			// 		{
+			// 			$("form").hide();
+			// 		}
+			// 	})
+				
+			// })	
+
+			// $("form").parent().on("click",function(){
+			// 	alert();
+			// })
+
 			$(function() {
 				$.post("./php/busca_administradores.php", {}, function(echoadmin) {
 					$("tbody").html(echoadmin);

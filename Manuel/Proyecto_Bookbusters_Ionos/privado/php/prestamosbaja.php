@@ -36,9 +36,57 @@
       $para = "reservas@bookbusters.es";
       //$para = el correo de administrador de la pagina
       $asunto = "Reserva Anulada";
-      $mensaje = "<p>La reserva del  libro $book fue anulada por $nom $ap1 $ap2</p>
-                  <p>$ema</p>
-                  <img src='https://bookbusters.es/images/Bookbusters (3).png'>";
+      $mensaje ='<!DOCTYPE html>
+      <html lang="en">
+      <head>
+          <meta charset="UTF-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>EMAIL</title>
+          <style>
+              @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,600italic|Roboto+Slab:400,700");
+                  body{
+                      color: #7f888f;
+                      font-family: "Open Sans", sans-serif;
+                      font-size: 13pt;
+                      font-weight: 400;
+                      line-height: 1.65;
+                    }
+                  a{
+                      text-decoration: none;
+                      color: #ff39ba;
+                    }
+                  a:hover{
+                      color: #ff39bb;
+                    }
+                  hr{
+                    border: none;
+                    }
+          </style>
+      </head>
+      <body>
+          <div style="float:left; width:90%; margin-left:5%">    
+              <div style="float:left; width:50%">
+                <a href="https://bookbusters.es/index.php" style="width: 15%; margin-top: 2%;"><img src="https://bookbusters.es/images/logo.png"></a>
+              </div>     
+              <div style="float:left; width:100%">
+                  <hr style="background-color:#ff39ba; height:4px">
+                  <center>
+                      <h1>Hey Boss</h1>
+                  </center>
+                  <br>
+                  <p style="float:left; margin-left: 1%;">'.$nom.' '.$ap1.' '.$ap2.' anuló la reserva del libro '.$book.' </p>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>        
+                  <img style="margin-left:42.5%; width:15%;"  src="https://bookbusters.es/images/Bookbusterspre.png" alt="" />
+                  <h4 style="margin-left: 1%;">Nota: Este mail ha sido generado automáticamente desde bookbusters.es</h4>
+              </div>              
+          </div>
+      </body>
+      </html>';
       $header = "MIME-Version: 1.0 \r\n";
       $header .= "Content-type:text/html;charset=UTF-8 \r\n";
       $header .= "From: reservas@bookbusters.es";
@@ -48,8 +96,57 @@
       //$para = "alfonso@medellin.ef";
       $para = $ema;
       $asunto = "Reserva Anulada";
-      $mensaje = "<p>Anulaste la reserva del libro $book.</p>
-                <img src='https://bookbusters.es/images/Bookbusters (3).png'>";
+      $mensaje ='<!DOCTYPE html>
+      <html lang="en">
+      <head>
+          <meta charset="UTF-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>EMAIL</title>
+          <style>
+              @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,600italic|Roboto+Slab:400,700");
+                  body{
+                    color: #7f888f;
+                    font-family: "Open Sans", sans-serif;
+                    font-size: 13pt;
+                    font-weight: 400;
+                    line-height: 1.65;
+                  }
+                  a{
+                    text-decoration: none;
+                    color: #ff39ba;
+                  }
+                  a:hover{
+                    color: #ff39bb;
+                  }
+                  hr{
+                    border: none;
+                  }
+          </style>
+      </head>
+      <body>
+          <div style="float:left; width:90%; margin-left:5%">    
+              <div style="float:left; width:50%">
+                <a href="https://bookbusters.es/index.php" style="width: 15%; margin-top: 2%;"><img src="https://bookbusters.es/images/logo.png"></a>
+              </div>   
+              <div style="float:left; width:100%">
+                  <hr style="background-color:#ff39ba; height:4px">
+                  <center>
+                      <h1>Hola '.$nom.' '.$ap1.' '. $ap2.'</h1>
+                  </center>
+                  <br>
+                  <p style="float:left; margin-left: 1%;">Anulaste la reserva del libro '.$book.'</p>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>        
+                  <img style="margin-left:42.5%; width:15%;"  src="https://bookbusters.es/images/Bookbusterspre.png" alt="" />
+                  <h4 style="margin-left: 1%;">Nota: Este mail ha sido generado automáticamente desde bookbusters.es</h4>
+              </div>
+          </div>
+      </body>
+      </html>';
       $header = "MIME-Version: 1.0 \r\n";
       $header .= "Content-type:text/html;charset=UTF-8 \r\n";
       $header .= "From: reservas@bookbusters.es";

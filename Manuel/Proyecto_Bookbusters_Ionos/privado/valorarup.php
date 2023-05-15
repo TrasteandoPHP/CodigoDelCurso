@@ -10,7 +10,7 @@ if(conex()->query($sql))
 {
     header ("Cache-Control: no-cache, must-revalidate"); //no guardar en CACHE 
     header ("Pragma: no-cache"); 
-    header('location:https://bookbusters.es');
+    header('location:https://bookbusters.es/graciasvaloracion.html');
         echo "valorado";
     }
 }

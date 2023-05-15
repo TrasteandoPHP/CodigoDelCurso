@@ -1,44 +1,48 @@
 <?php
 	session_start();
-	if(isset($_SESSION["bookbusters"])){
-    ?>
+	if(isset($_SESSION['bookbusters']))
+	{
+?>
+<!DOCTYPE HTML>
+
 <html>
 	<head>
-		<title>Bookbusters - Favoritos</title>
+		<title>PERFIL DE USUARIO</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../assets/css/main.css" />
-    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="./../assets/css/main.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	</head>
 	<body class="is-preload">
-	<script>
-		function notif(cod)
-		{
-			$.post
-			(
-				"./php/notifica_icon.php",
-				{
-					cod_usu : cod
-				},
-				function vuelta(notif){
-					if(notif!="")
+
+		<script>
+			function notif(cod)
+			{
+				$.post
+				(
+					"./php/notifica_icon.php",
 					{
-						$("#notificaciones").attr("class","fa fa-bell fa-bounce");
+						cod_usu : cod
+					},
+					function vuelta(notif){
+						if(notif!="")
+						{
+							$("#notificaciones").attr("class","fa fa-bell fa-bounce");
+						}
 					}
-				}
-			);
-		}
-	</script>
+				);
+			}
+		</script>
 
 		<!-- Wrapper -->
 			<div id="wrapper">
 
 				<!-- Main -->
 					<div id="main">
-		<div class="inner">
+						<div class="inner">
 
-			<!-- Header -->
+							<!-- Header -->
 								<header id="header">
 									<a href="index.php" class="logo"><img style="width: 20%;" src="./../images/logo.png"></a>
 									<ul class="icons">
@@ -51,8 +55,7 @@
 										<li><a href="exit.php" class="fa-solid fa-arrow-right-from-bracket" title="Salir sesión"><span class="label"></span></a></li>
 									</ul>
 								</header>
-								
-								<?php
+						<?php
 
 							// usamos cod_usu=1 de ejemplo a la espera de que haya session
 							$cod_usu = $_SESSION["bookbusters"];
@@ -60,17 +63,10 @@
 							// miramos si hay notificaciones----------------------------------------------COMPROBACION NOTIFICACION 
 							echo "<script>notif('$cod_usu')</script>";
 
-							if($img == "")
-							{
-								$img1 = "avatares/Bookbusters.png";
-							}
-							else
-							{
-								$img1 = $img;
-							}
+							
 						?>
 
-							<!-- Section -->
+							<!-- Banner -->
 								<section>
 									<header class="major">
 										<h2>Favoritos</h2>
@@ -104,7 +100,7 @@
 							<!-- añadimos las variables del libro a mostrar -->
 							<a href="./verlibro.php?codlib=<?php echo $codigo_libro ?>" class="image"><img src="../images/portadas/<?php echo $codigo_libro?>/<?php echo $portada?>" alt="" style="height:550px"/></a>
 							<h3><?php echo $titulo ?></h3>
-							<p><?php echo $resumen?></p>
+							
 							<ul class="actions">
 								<li><a href="./verlibro.php?codlib=<?php echo $codigo_libro ?>" class="button">Prestamo</a></li>
 								<li>
@@ -169,17 +165,31 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="../assets/js/jquery.min.js"></script>
-			<script src="../assets/js/browser.min.js"></script>
-			<script src="../assets/js/breakpoints.min.js"></script>
-			<script src="../assets/js/util.js"></script>
-			<script src="../assets/js/main.js"></script>
-			<script src="../assets/js/favoritos.js"></script> 
+			<script src="./../assets/js/jquery.min.js"></script>
+			<script src="./../assets/js/browser.min.js"></script>
+			<script src="./../assets/js/breakpoints.min.js"></script>
+			<script src="./../assets/js/util.js"></script>
+			<script src="./../assets/js/main.js"></script>
+			<script src="./../assets/js/favoritos.js"></script> 
+			<script type="text/javascript">
+				function seleccion(iden)
+				{
+					var img = $("#"+iden).attr("src");
+					$.post(
+						"./php/cambiaimg.php",
+						{pic:img},
+						function(respuesta)
+						{
+							window.location.href='./perfil.php';
+						}
+						);
+				}
+			</script>
 
 	</body>
-	
 </html>
 <?php
+	$conexion->close();
 }
 else
 {
@@ -190,4 +200,5 @@ else
 		</script>
 	";
 }
+
 ?>

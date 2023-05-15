@@ -12,7 +12,7 @@ require_once("./php/funciones.php");
 if($ver=="usado")
 {conex()->close();
 echo "<script>
-alert('vinculo usuado');
+alert('vinculo usado');
 
 window.location.href='https://bookbusters.es';
 	</script>";

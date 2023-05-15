@@ -16,7 +16,7 @@
 -->
 <html>
 	<head>
-		<title>Menu de Administrador</title>
+		<title>Bookbusters - Menu de Administrador</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../assets/css/main.css" />
@@ -35,8 +35,8 @@
 								<header id="header">
 									<a href="../index.php" class="logo"><img style="width: 20%;" src="./../images/logo.png"></a>
 									<ul class="icons">
-										<li><a href="../index_administrador.php" class=" fa fa-home"><span class="label"></span></a></li>
-										<li><a href="#" class=" fa fa-dice"><span class="label"></span></a></li>
+										<li><a href="./index_administrador.php" class=" fa fa-home"><span class="label"></span></a></li>
+										<li><a href="./php/juegos_adm.php" class=" fa fa-dice"><span class="label"></span></a></li>
 										<li><a href="./login_administrador.html" class="fa-solid fa-arrow-right-from-bracket"><span class="label"></span></a></li>
 									</ul>
 								</header>
@@ -113,12 +113,12 @@
 								</header>
 								<ul>
 									<li><a href="../index.php">Inicio</a></li>
-									<li><a href="#">Juegos</a></li>
+									<li><a href="./php/juegos_adm.php">Juegos</a></li>
 									<li><a href="./login_administrador.html">Salir</a></li>
 								</ul>
 							</nav>
 							<footer id="footer">
-								<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+							<p class="copyright">&copy; Bookbusters.</p>
 							</footer>
 					</div>
 

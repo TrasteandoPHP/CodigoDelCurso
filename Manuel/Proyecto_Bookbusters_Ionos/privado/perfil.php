@@ -129,6 +129,24 @@
 										<img src="avatares/Bookbustersazul.png" alt="Bookbustersazul.png" id="img12" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
 										<img src="avatares/BookbustersRojo.png" alt="BookbustersRojo.png" id="img13" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
 										<img src="avatares/Bookbusterscasco.png" alt="Bookbusterscasco.png" id="img14" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
+										<img src="avatares/Bookbustersvik.png" alt="Bookbustersvik.png" id="img15" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
+										<img src="avatares/bookbustersplumas.png" alt="bookbustersplumas.png" id="img16" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
+										<img src="avatares/Bookbustersgorropiel.png" alt="Bookbustersgorropiel.png" id="img17" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
+										<img src="avatares/Bookbustersgorra.png" alt="Bookbustersgorra.png" id="img18" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
+										<img src="avatares/Bookbusterssanta.png" alt="Bookbusterssanta.png" id="img19" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
+										<img src="avatares/Bookbustersjester.png" alt="Bookbustersjester.png" id="img20" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
+										<img src="avatares/Bookbustersturbante.png" alt="Bookbustersturbante.png" id="img21" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
+										<img src="avatares/Bookbustersvelo.png" alt="Bookbustersvelo.png" id="img22" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
+										<img src="avatares/Bookbustersfaldah.png" alt="Bookbustersfaldah.png" id="img23" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
+										<img src="avatares/Bookbustersbat.png" alt="Bookbustersbat.png" id="img24" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
+										<img src="avatares/Bookbustersmask.png" alt="Bookbustersmask.png" id="img25" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
+										<img src="avatares/Bookbustersninja.png" alt="Bookbustersninja.png" id="img26" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
+										<img src="avatares/Bookbustersbarba.png" alt="Bookbustersbarba.png" id="img27" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
+										<img src="avatares/Bookbustersobra.png" alt="Bookbustersobra.png" id="img28" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
+										<img src="avatares/Bookbusterscop.png" alt="Bookbusterscop.png" id="img29" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
+										<img src="avatares/Bookbusterscowboy.png" alt="Bookbusterscowboy.png" id="img30" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
+										<img src="avatares/Bookbustersmil.png" alt="Bookbustersmil.png" id="img31" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
+
 
 								<!-- </section>		 -->
 							<!-- Section -->
@@ -150,7 +168,6 @@
 											<div class="content">
 												<h3><?php ?></h3>
 												<p style=color:green>Fecha de Alta: <?php  echo "$fal"?></p>
-											</div>
 										</article>					
 															
 										<article>

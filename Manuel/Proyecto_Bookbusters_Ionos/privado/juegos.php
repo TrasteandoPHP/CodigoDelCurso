@@ -1,70 +1,26 @@
-<?php
-	 session_start();
-	 if(isset($_SESSION['bookbusters']))
-	{
- 		$codusuario = $_SESSION['bookbusters'];
-		
- 		
- 		 $conexion = new mysqli("db5012901176.hosting-data.io","dbu3726201","PpJ_mP5WdLp!3mPpDb2i@bookaab","dbs10835059");
- 		$sql= "SELECT * FROM usuarios Where cod_usu=$codusuario";
- 		$eje=$conexion->query($sql);
- 		if ($reg = $eje->fetch_array())
-
- 		{
- 			$nom = $reg["nom_usu"];
-			$ap1 = $reg["ap1_usu"];
- 			$ap2 = $reg["ap2_usu"];
- 			$ema = $reg["email_usu"];
- 			$pas = $reg["pass_usu"];
- 			$act = $reg["activo_usu"];
- 			$img = $reg["img_usu"];
- 			$fal =$reg["falta_usu"];
-
- 		}
- 		else
- 		{
- 			echo "Usuario inexistente";
- 		}
- ?>
 <!DOCTYPE HTML>
-
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
 	<head>
-		<title>PERFIL DE USUARIO</title>
+		<title>Juegos</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="./../assets/css/main.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="./../assets/css/main.css"/>
+		<script src="https://kit.fontawesome.com/7b8eabe9ec.js" crossorigin="anonymous"></script>
 	</head>
 	<body class="is-preload">
 
-		<script>
-			function notif(cod)
-			{
-				$.post
-				(
-					"./php/notifica_icon.php",
-					{
-						cod_usu : cod
-					},
-					function vuelta(notif){
-						if(notif!="")
-						{
-							$("#notificaciones").attr("class","fa fa-bell fa-bounce");
-						}
-					}
-				);
-			}
-		</script>
-
 		<!-- Wrapper -->
-			<div id="wrapper">
+			<div id="wrapper">				
 
 				<!-- Main -->
 					<div id="main">
-						<div class="inner">
-
+						<div class="inner">	
+						
 							<!-- Header -->
 								<header id="header">
 									<a href="index.php" class="logo"><img style="width: 20%;" src="./../images/logo.png"></a>
@@ -78,100 +34,74 @@
 										<li><a href="exit.php" class="fa-solid fa-arrow-right-from-bracket" title="Salir sesión"><span class="label"></span></a></li>
 									</ul>
 								</header>
-						<?php
+								
+							<!-- Section -->
 
-							// usamos cod_usu=1 de ejemplo a la espera de que haya session
-							$cod_usu = $_SESSION["bookbusters"];
 
-							// miramos si hay notificaciones----------------------------------------------COMPROBACION NOTIFICACION 
-							echo "<script>notif('$cod_usu')</script>";
-
-							if($img == "")
-							{
-								$img1 = "avatares/Bookbusters.png";
-							}
-							else
-							{
-								$img1 = $img;
-							}
-						?>
-
-							<!-- Banner -->
-								<section id="banner">
+						<section id="banner">
 									<div class="content">
 										<header>
-											<h1> <?php echo   "$nom";?><br />
-											</h1>
-											<H2>JUEGOS<H2>
+											<H2>Disfruta los Juegos<H2>
 										</header>
 										<h1 style=color:blue>BOOKBUSTERS</h1>
-										<ul class="actions">
-											<!-- <li><a href="#" class="button big">learn more</a></li> -->
-										</ul>
-									</div>
-									<span class="image object">
-										<img src="<?php echo "$img1"?>" alt="" style="max-height:400px; max-width: 400px">
 
-									</span>
+									</div>							
 
-								</section>
-								<!-- <button onclick="window.location.href='modificarimg.php'">Cambiar Imagen</button> -->
-								<!-- <section> -->
-										<img src="avatares/Bookbusters1.png" alt="Bookbusters1.png" id="img1" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
-										<img src="avatares/Bookbusters2.png" alt="Bookbusters2.png" id="img2" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
-										<img src="avatares/Bookbusters3.png" alt="Bookbusters3.png" id="img3" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
-										<img src="avatares/Bookbusters4.png" alt="Bookbusters4.png" id="img4" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
-										<img src="avatares/Bookbustersbotas.png" alt="Bookbustersbotas.png" id="img5" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
-										<img src="avatares/Bookbusterscapa.png" alt="Bookbusterscapa.png" id="img6" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
-										<img src="avatares/Bookbustersgafas.png" alt="Bookbustersgafas.png" id="img7" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
-										<img src="avatares/Bookbusterssombrero.png" alt="Bookbusterssombrero.png" id="img8" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
-										<img src="avatares/Bookbustersnariz.jpg" alt="Bookbustersnariz.jpg" id="img9" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
-										<img src="avatares/Bookbustersverde.png" alt="Bookbustersverde.png" id="img10" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
-										<img src="avatares/Bookbusters5.png" alt="Bookbusters5.png" id="img11" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
-										<img src="avatares/Bookbustersazul.png" alt="Bookbustersazul.png" id="img12" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
-										<img src="avatares/BookbustersRojo.png" alt="BookbustersRojo.png" id="img13" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
-										<img src="avatares/Bookbusterscasco.png" alt="Bookbusterscasco.png" id="img14" style="max-height:50px; max-width: 50px;cursor:pointer" onclick="seleccion(this.id)">
-
-								<!-- </section>		 -->
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Datos Personales</h2>
-									</header>
 									<div class="features">
 										
 										<article>
-											<span> <i class="icon solid fa-solid fa-user"></i>"></i></span>
+											<span> <i class="icon solid fa-solid fa-user"></i></span>
 											<div class="content">
-												<h2>JUEGO 1</h2>
-												<p></p>
+												<h2>MINIJUEGOS</h2>
+												<?php 
+												$envio2 = base64_encode("https://www.minijuegos.com/");
+												?>
+												<button onclick="window.location.href='./verjuegos.php?t=Ahorcado&p=<?php echo $envio2?>'">Jugar</button>
 											</div>
 										</article>
 										<article>
-											<span> <i class="icon solid fa-solid fa-user"></i>" style="color: #1b1c54;"></i></span>
+											<span> <i class="icon solid fa-solid fa-user"></i></span>
 											<div class="content">
-												<h2>JUEGO 2</h2>
-												<p style=color:green>:</p>
+												<h2>WONDERWORD</h2>
+												<h3>Adivina la palabra oculta</h3>
+												<?php 
+												$envio3 = base64_encode("https://bookbusters.es/privado/palabras/index.html");
+												?> 
+												<button onclick="window.location.href='./verjuegos.php?t=Wonderword&p=<?php echo $envio3?>'">Jugar</button>
+												
 											</div>
 										</article>					
 															
 										<article>
 											<span> <i class="icon solid fa-solid fa-user"></i></span>
 											<div class="content">
-												<h2>JUEGO 3</h2>
-												<p style=color:blue></p>
+												<h2>CRUCIGRAMAS</h2>
+												<?php
+													$envio4 = base64_encode("https://www.tarkus.info/");
+												?>
+												<button onclick="window.location.href='./verjuegos.php?t=crucigramas&p=<?php echo $envio4?>'">Jugar</button>
 											</div>
 										</article>
 										<article>
 											<span> <i class="icon solid fa-solid fa-user"></i> </span>
 											<div class="content">
-												<h2>JUEGO 4 </h2>
-												<p style=color:blue></p>
+												<h2>DAMAS</h2> 
+												<h4>1€ Partida Bizum a Dino, gracias</h4>
+
+												<?php
+													$envio = base64_encode("https://playpager.com/damas/");
+												?>
+												<button onclick="window.location.href='./verjuegos.php?t=Damas&p=<?php echo $envio?>'">Jugar</button>
 											</div>
 										</article>										
 									</div>
-								</section>								
-										
+					</section>
+					<a href="perfil.php" class="button primary">Volver</a>
+					</div>
+			</div>
+
+
+				<!-- Sidebar -->
 					<div id="sidebar" class="inactive">
 						<div class="inner">
 
@@ -212,22 +142,18 @@
 
 						</div>
 					</div>
+
 			</div>
 
-		
+		<!-- Scripts -->
+			<script src="./assets/js/jquery.min.js"></script>
+			<script src="./assets/js/jquery.quicksearch.js"></script>
+			<script src="./assets/js/browser.min.js"></script>
+			<script src="./assets/js/breakpoints.min.js"></script>
+			<script src="./assets/js/util.js"></script>
+			<script src="./assets/js/main.js"></script>
+
+
+
 	</body>
 </html>
-<?php
-
-
-}
-else
-{
-	echo "
-		<script>
-			alert('Area restringida');
-			window.location.href='../login.html';
-		</script>
-	";
-}
-?>

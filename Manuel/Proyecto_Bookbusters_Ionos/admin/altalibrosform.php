@@ -87,7 +87,7 @@ if (isset($_SESSION["admin"])) {
 															<div class="col-4 col-12-xsmall">
 																<select name="gen" required>
 								                                    <?php
-								                                    $conexion=new mysqli("10.10.10.199","busters","1234","biblioteca");
+								                                    $conexion=new mysqli("db5012901176.hosting-data.io","dbu3726201","PpJ_mP5WdLp!3mPpDb2i@bookaab","dbs10835059");
 								                                    $sql="SELECT * FROM generos";
 								                                    $ejecutar=$conexion->query($sql);
 								                                    echo "<option>Selecicone el género</option>";
@@ -95,7 +95,7 @@ if (isset($_SESSION["admin"])) {
 								                                    foreach($ejecutar as $registro)
 								                                    {
 								                                        $genero=$registro["nom_gen"];
-								                                        $cgenero=$registro["cod_gen"];
+								                                        $cgenero=$registro["genero_lib"];
 								                                        echo "<option value=$cgenero>$genero</option>";
 								                                    }
 								                                    ?>
