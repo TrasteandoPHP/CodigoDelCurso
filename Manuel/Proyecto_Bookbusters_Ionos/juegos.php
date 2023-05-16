@@ -9,6 +9,7 @@
 		<title>Juegos</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="icon" type="image/png" sizes="96x96" href="./images/favicon/favicon-96x96.ico">
 		<link rel="stylesheet" href="./../assets/css/main.css"/>
 		<script src="https://kit.fontawesome.com/7b8eabe9ec.js" crossorigin="anonymous"></script>
 	</head>
