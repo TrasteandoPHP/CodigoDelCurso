@@ -20,6 +20,7 @@ $ejecutar=$con->query($sql);
 		<title>Blockbusters</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
 	<body class="is-preload">
@@ -80,9 +81,10 @@ $ejecutar=$con->query($sql);
 										<li><a href="index.php" style="font-size:medium ;">Inicio</a></li>
 										<li><a href="registro.html" style="font-size:medium ;">Registro</a></li>
 										<li><a href="login.html" style="font-size:medium">Login</a></li>
+										<li><a href="./admin/login_administrador.html" class="fa fa-lock" style="font-size:30px"></a></li>
+										<li><a href="./equipo.html">Equipo de Desarrollo</a></li>
 									</ul>
 								</nav>
-								<a href="./admin/login_administrador.html" class="fa fa-lock" style="font-size:30px"></a>
 							<!-- Footer -->
 								<footer id="footer">
 									<p class="copyright">&copy; Bookbuster</p>

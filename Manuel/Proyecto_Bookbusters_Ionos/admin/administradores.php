@@ -142,28 +142,18 @@ if (isset($_SESSION["admin"])) {
 
 		<script>
 
-			// $(document).mouseup(
-			// 	function(e){
-			// 		$("#principal > *").each(function(){
-			// 			alert(this);
-			// 		});
-			// 	}
-			// );
-
 			// $(function() {
 
 			// 	$("#principal > *").on("click",function(){
-			// 		if(this.id != "ey" || this.id != "#boton")
+			// 		if(this.id != "ey" && this.id != "boton")
 			// 		{
-			// 			$("form").hide();
+			// 			$("form").hide(500);
+			// 			$("#but").show(500);
 			// 		}
 			// 	})
 				
-			// })	
-
-			// $("form").parent().on("click",function(){
-			// 	alert();
 			// })
+
 
 			$(function() {
 				$.post("./php/busca_administradores.php", {}, function(echoadmin) {

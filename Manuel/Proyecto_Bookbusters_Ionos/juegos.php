@@ -10,6 +10,23 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="icon" type="image/png" sizes="96x96" href="./images/favicon/favicon-96x96.ico">
+		<link rel="apple-touch-icon" sizes="57x57" href="./images/favicon/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="./images/favicon/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="./images/favicon/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="./images/favicon/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="./images/favicon/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="./images/favicon/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="./images/favicon/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="./images/favicon/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="./images/favicon/apple-icon-180x180.png">
+		<!-- <link rel="icon" type="image/png" sizes="192x192"  href="./images/favicon/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="./images/favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="./images/favicon/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="./images/favicon/favicon-16x16.png"> -->
+		<link rel="manifest" href="./images/favicon/manifest.json">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="./images/favicon/ms-icon-144x144.png">
+		<meta name="theme-color" content="#ffffff">
 		<link rel="stylesheet" href="./../assets/css/main.css"/>
 		<script src="https://kit.fontawesome.com/7b8eabe9ec.js" crossorigin="anonymous"></script>
 	</head>
@@ -103,42 +120,28 @@
 
 
 				<!-- Sidebar -->
-					<div id="sidebar" class="inactive">
+					<div id="sidebar">
 						<div class="inner">
 
-							<!-- Search -->
+							<!-- Search
 								
 
-							<!-- Menu -->
+							<!- Menu -->
 								<nav id="menu">
 									<header class="major">
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="./index.php">Inicio</a></li>
-										<li><a href="./historial.html">Historial</a></li>
-										<li><a href="./index_favoritos.php">Favoritos</a></li>
-										<li><a href="./perfil.php">Perfil</a></li>
-										<li><a href="juegos.php">Juegos</a></li>									
-										<li><a href="./exit.php">Salir</a></li>									
+										<li><a href="index.php" style="font-size:medium ;">Inicio</a></li>
+										<li><a href="registro.html" style="font-size:medium ;">Registro</a></li>
+										<li><a href="login.html" style="font-size:medium">Login</a></li>
+										<li><a href="./admin/login_administrador.html" class="fa fa-lock" style="font-size:30px"></a><li>
+										<li><a href="./equipo.html">Equipo de Desarrollo</a></li>
 									</ul>
 								</nav>
-								<section>
-									<header class="major">
-										<h2>Información</h2>
-									</header>
-									<p>Tu biblioteca online</p>
-									<ul class="contact">
-										<li class="icon solid fa-envelope"><a href="formulario.html">Enviar correo</a></li>
-										<li class="icon solid fa-book"><a href="terminosuso.php">Terminos de uso</a></li>	
-										<li class="icon solid fa-newspaper"><a href="polpriv.php">Politica de Privacidad</a></li>
-									</ul>
-								</section>
-
-							
 							<!-- Footer -->
 								<footer id="footer">
-									<p class="copyright">&copy; Bookbusters</a>.</p>
+									<p class="copyright">&copy; Bookbuster</p>
 								</footer>
 
 						</div>
